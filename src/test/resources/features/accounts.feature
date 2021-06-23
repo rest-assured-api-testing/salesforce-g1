@@ -15,13 +15,15 @@ Feature: Accounts
   @DeleteAccount
   Scenario: Post an Account
     Given I build a "POST" request for an Account
-    When I execute the post Account request on "/Account" endpoint
+    When I create Account body with name "My Account for testing"
+    And I execute the post Account request on "/Account" endpoint
     Then The response status code should be "CREATED" on post Account request
 
   @CreateAndDeleteAccount
   Scenario: Patch an Account
     Given I build a "PATCH" request for an Account
-    When I execute the patch Account request on "/Account/{AccountId}" endpoint
+    When I create Account body with name "My Account with changed name"
+    And I execute the patch Account request on "/Account/{AccountId}" endpoint
     Then The response status code should be "NO CONTENT" on patch Account request
 
   @CreateAccount
