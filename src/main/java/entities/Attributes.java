@@ -1,4 +1,4 @@
-package entities.account;
+package entities;
 
 public class Attributes{
     public String type;

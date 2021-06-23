@@ -1,4 +1,4 @@
-package entities.account;
+package entities;
 
 public class BillingAddress{
     public String city;
