@@ -1,15 +1,21 @@
+/**
+ * Copyright (c) 2021 Fundacion Jala.
+ * This software is the confidential and proprietary information of Fundacion Jala
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Fundacion Jala
+ */
+
 package api;
 
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ApiRequest {
-
     private String baseUri;
     private String endpoint;
     private String body;
@@ -65,24 +71,13 @@ public class ApiRequest {
         this.method = method;
     }
 
-    //    public void addHeader(final String header, final String value) {
-//        headers.add(new Header(header, value));
-//    }
     public void addHeaders(List<Header> headers) {
         this.headers = headers;
     }
 
-//    public void addQueryParam(final String param, final String value) {
-//        queryParams.put(param, value);
-//    }
-
     public void addQueryParams(Map<String, String> queryParams) {
         this.queryParams = queryParams;
     }
-
-//    public void addPathParam(final String param, final String value) {
-//        pathParams.put(param, value);
-//    }
 
     public void addPathParams(Map<String, String> pathParams) {
         this.pathParams = pathParams;
