@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "url"
+      ]
+    },
+    "Id": {
+      "type": "string"
+    },
+    "ContactId": {
+      "type": "null"
+    },
+    "AccountId": {
+      "type": "string"
+    },
+    "ParentId": {
+      "type": "null"
+    },
+    "RootAssetId": {
+      "type": "string"
+    },
+    "Product2Id": {
+      "type": "null"
+    },
+    "ProductCode": {
+      "type": "null"
+    },
+    "IsCompetitorProduct": {
+      "type": "boolean"
+    },
+    "CreatedDate": {
+      "type": "string"
+    },
+    "CreatedById": {
+      "type": "string"
+    },
+    "LastModifiedDate": {
+      "type": "string"
+    },
+    "LastModifiedById": {
+      "type": "string"
+    },
+    "SystemModstamp": {
+      "type": "string"
+    },
+    "IsDeleted": {
+      "type": "boolean"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "SerialNumber": {
+      "type": "string"
+    },
+    "InstallDate": {
+      "type": "string"
+    },
+    "PurchaseDate": {
+      "type": "string"
+    },
+    "UsageEndDate": {
+      "type": "string"
+    },
+    "LifecycleStartDate": {
+      "type": "null"
+    },
+    "LifecycleEndDate": {
+      "type": "null"
+    },
+    "Status": {
+      "type": "string"
+    },
+    "Price": {
+      "type": "number"
+    },
+    "Quantity": {
+      "type": "number"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "AssetProvidedById": {
+      "type": "null"
+    },
+    "AssetServicedById": {
+      "type": "null"
+    },
+    "IsInternal": {
+      "type": "boolean"
+    },
+    "AssetLevel": {
+      "type": "integer"
+    },
+    "StockKeepingUnit": {
+      "type": "null"
+    },
+    "HasLifecycleManagement": {
+      "type": "boolean"
+    },
+    "CurrentMrr": {
+      "type": "null"
+    },
+    "CurrentLifecycleEndDate": {
+      "type": "null"
+    },
+    "CurrentQuantity": {
+      "type": "null"
+    },
+    "CurrentAmount": {
+      "type": "null"
+    },
+    "TotalLifecycleAmount": {
+      "type": "null"
+    },
+    "LastViewedDate": {
+      "type": "string"
+    },
+    "LastReferencedDate": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "attributes",
+    "Id",
+    "ContactId",
+    "AccountId",
+    "ParentId",
+    "RootAssetId",
+    "Product2Id",
+    "ProductCode",
+    "IsCompetitorProduct",
+    "CreatedDate",
+    "CreatedById",
+    "LastModifiedDate",
+    "LastModifiedById",
+    "SystemModstamp",
+    "IsDeleted",
+    "Name",
+    "SerialNumber",
+    "InstallDate",
+    "PurchaseDate",
+    "UsageEndDate",
+    "LifecycleStartDate",
+    "LifecycleEndDate",
+    "Status",
+    "Price",
+    "Quantity",
+    "Description",
+    "OwnerId",
+    "AssetProvidedById",
+    "AssetServicedById",
+    "IsInternal",
+    "AssetLevel",
+    "StockKeepingUnit",
+    "HasLifecycleManagement",
+    "CurrentMrr",
+    "CurrentLifecycleEndDate",
+    "CurrentQuantity",
+    "CurrentAmount",
+    "TotalLifecycleAmount",
+    "LastViewedDate",
+    "LastReferencedDate"
+  ]
+}
