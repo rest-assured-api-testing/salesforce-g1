@@ -37,10 +37,10 @@ public class AccountBaseTest {
     }
 
     @AfterMethod(onlyForGroups = "deleteAccount")
-    public void deleteProject() {
+    public void deleteAccount() {
         requestBuilder
                 .addEndpoint("/Account/{accountID}")
-                .addPathParams("accountID", responseObject.getId().toString())
+                .addPathParams("accountID", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build());
