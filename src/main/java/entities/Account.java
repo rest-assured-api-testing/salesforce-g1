@@ -45,13 +45,13 @@ public class Account {
     private String rating;
     private String site;
     private String ownerId;
-    private Date createdDate;
+    private String createdDate;
     private String createdById;
-    private Date lastModifiedDate;
+    private String lastModifiedDate;
     private String lastModifiedById;
-    private Date systemModstamp;
+    private String systemModstamp;
     private String lastActivityDate;
-    private Date lastViewedDate;
+    private String lastViewedDate;
     private String lastReferencedDate;
     private String jigsaw;
     private String jigsawCompanyId;
@@ -472,12 +472,12 @@ public class Account {
     }
 
     @JsonProperty("CreatedDate")
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
     @JsonProperty("CreatedDate")
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -492,12 +492,12 @@ public class Account {
     }
 
     @JsonProperty("LastModifiedDate")
-    public Date getLastModifiedDate() {
+    public String getLastModifiedDate() {
         return lastModifiedDate;
     }
 
     @JsonProperty("LastModifiedDate")
-    public void setLastModifiedDate(Date lastModifiedDate) {
+    public void setLastModifiedDate(String lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 
@@ -512,12 +512,12 @@ public class Account {
     }
 
     @JsonProperty("SystemModstamp")
-    public Date getSystemModstamp() {
+    public String getSystemModstamp() {
         return systemModstamp;
     }
 
     @JsonProperty("SystemModstamp")
-    public void setSystemModstamp(Date systemModstamp) {
+    public void setSystemModstamp(String systemModstamp) {
         this.systemModstamp = systemModstamp;
     }
 
@@ -532,12 +532,12 @@ public class Account {
     }
 
     @JsonProperty("LastViewedDate")
-    public Date getLastViewedDate() {
+    public String getLastViewedDate() {
         return lastViewedDate;
     }
 
     @JsonProperty("LastViewedDate")
-    public void setLastViewedDate(Date lastViewedDate) {
+    public void setLastViewedDate(String lastViewedDate) {
         this.lastViewedDate = lastViewedDate;
     }
 
