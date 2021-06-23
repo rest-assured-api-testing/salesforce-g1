@@ -48,16 +48,16 @@
       "type": "string"
     },
     "Description": {
-      "type": "null"
+      "type": "string"
     },
     "CustomerAuthorizedById": {
-      "type": "null"
+      "type": "string"
     },
     "CustomerAuthorizedDate": {
       "type": "null"
     },
     "CompanyAuthorizedById": {
-      "type": "null"
+      "type": "string"
     },
     "CompanyAuthorizedDate": {
       "type": "null"
@@ -66,19 +66,19 @@
       "type": "null"
     },
     "BillingStreet": {
-      "type": "null"
+      "type": "string"
     },
     "BillingCity": {
-      "type": "null"
+      "type": "string"
     },
     "BillingState": {
-      "type": "null"
+      "type": "string"
     },
     "BillingPostalCode": {
-      "type": "null"
+      "type": "string"
     },
     "BillingCountry": {
-      "type": "null"
+      "type": "string"
     },
     "BillingLatitude": {
       "type": "null"
@@ -90,22 +90,58 @@
       "type": "null"
     },
     "BillingAddress": {
-      "type": "null"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
     },
     "ShippingStreet": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingCity": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingState": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingPostalCode": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingCountry": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingLatitude": {
       "type": "null"
@@ -117,7 +153,43 @@
       "type": "null"
     },
     "ShippingAddress": {
-      "type": "null"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
     },
     "Name": {
       "type": "null"

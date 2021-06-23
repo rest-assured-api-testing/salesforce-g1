@@ -36,25 +36,25 @@
       "type": "string"
     },
     "Salutation": {
-      "type": "null"
+      "type": "string"
     },
     "Name": {
       "type": "string"
     },
     "OtherStreet": {
-      "type": "null"
+      "type": "string"
     },
     "OtherCity": {
-      "type": "null"
+      "type": "string"
     },
     "OtherState": {
-      "type": "null"
+      "type": "string"
     },
     "OtherPostalCode": {
-      "type": "null"
+      "type": "string"
     },
     "OtherCountry": {
-      "type": "null"
+      "type": "string"
     },
     "OtherLatitude": {
       "type": "null"
@@ -66,22 +66,58 @@
       "type": "null"
     },
     "OtherAddress": {
-      "type": "null"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
     },
     "MailingStreet": {
-      "type": "null"
+      "type": "string"
     },
     "MailingCity": {
-      "type": "null"
+      "type": "string"
     },
     "MailingState": {
-      "type": "null"
+      "type": "string"
     },
     "MailingPostalCode": {
-      "type": "null"
+      "type": "string"
     },
     "MailingCountry": {
-      "type": "null"
+      "type": "string"
     },
     "MailingLatitude": {
       "type": "null"
@@ -93,49 +129,85 @@
       "type": "null"
     },
     "MailingAddress": {
-      "type": "null"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
     },
     "Phone": {
-      "type": "null"
+      "type": "string"
     },
     "Fax": {
-      "type": "null"
+      "type": "string"
     },
     "MobilePhone": {
-      "type": "null"
+      "type": "string"
     },
     "HomePhone": {
-      "type": "null"
+      "type": "string"
     },
     "OtherPhone": {
-      "type": "null"
+      "type": "string"
     },
     "AssistantPhone": {
-      "type": "null"
+      "type": "string"
     },
     "ReportsToId": {
-      "type": "null"
+      "type": "string"
     },
     "Email": {
-      "type": "null"
+      "type": "string"
     },
     "Title": {
-      "type": "null"
+      "type": "string"
     },
     "Department": {
-      "type": "null"
+      "type": "string"
     },
     "AssistantName": {
-      "type": "null"
+      "type": "string"
     },
     "LeadSource": {
-      "type": "null"
+      "type": "string"
     },
     "Birthdate": {
-      "type": "null"
+      "type": "string"
     },
     "Description": {
-      "type": "null"
+      "type": "string"
     },
     "OwnerId": {
       "type": "string"
@@ -195,10 +267,10 @@
       "type": "null"
     },
     "Level__c": {
-      "type": "null"
+      "type": "string"
     },
     "Languages__c": {
-      "type": "null"
+      "type": "string"
     }
   },
   "required": [

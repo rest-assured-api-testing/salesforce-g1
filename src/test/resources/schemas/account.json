@@ -30,25 +30,25 @@
       "type": "string"
     },
     "Type": {
-      "type": "null"
+      "type": "string"
     },
     "ParentId": {
       "type": "null"
     },
     "BillingStreet": {
-      "type": "null"
+      "type": "string"
     },
     "BillingCity": {
-      "type": "null"
+      "type": "string"
     },
     "BillingState": {
-      "type": "null"
+      "type": "string"
     },
     "BillingPostalCode": {
-      "type": "null"
+      "type": "string"
     },
     "BillingCountry": {
-      "type": "null"
+      "type": "string"
     },
     "BillingLatitude": {
       "type": "null"
@@ -60,22 +60,58 @@
       "type": "null"
     },
     "BillingAddress": {
-      "type": "null"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
     },
     "ShippingStreet": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingCity": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingState": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingPostalCode": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingCountry": {
-      "type": "null"
+      "type": "string"
     },
     "ShippingLatitude": {
       "type": "null"
@@ -87,49 +123,85 @@
       "type": "null"
     },
     "ShippingAddress": {
-      "type": "null"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
     },
     "Phone": {
-      "type": "null"
+      "type": "string"
     },
     "Fax": {
-      "type": "null"
+      "type": "string"
     },
     "AccountNumber": {
-      "type": "null"
+      "type": "string"
     },
     "Website": {
-      "type": "null"
+      "type": "string"
     },
     "PhotoUrl": {
       "type": "string"
     },
     "Sic": {
-      "type": "null"
+      "type": "string"
     },
     "Industry": {
-      "type": "null"
+      "type": "string"
     },
     "AnnualRevenue": {
-      "type": "null"
+      "type": "number"
     },
     "NumberOfEmployees": {
-      "type": "null"
+      "type": "integer"
     },
     "Ownership": {
-      "type": "null"
+      "type": "string"
     },
     "TickerSymbol": {
-      "type": "null"
+      "type": "string"
     },
     "Description": {
-      "type": "null"
+      "type": "string"
     },
     "Rating": {
-      "type": "null"
+      "type": "string"
     },
     "Site": {
-      "type": "null"
+      "type": "string"
     },
     "OwnerId": {
       "type": "string"
@@ -195,25 +267,25 @@
       "type": "null"
     },
     "CustomerPriority__c": {
-      "type": "null"
+      "type": "string"
     },
     "SLA__c": {
-      "type": "null"
+      "type": "string"
     },
     "Active__c": {
-      "type": "null"
+      "type": "string"
     },
     "NumberofLocations__c": {
-      "type": "null"
+      "type": "number"
     },
     "UpsellOpportunity__c": {
-      "type": "null"
+      "type": "string"
     },
     "SLASerialNumber__c": {
-      "type": "null"
+      "type": "string"
     },
     "SLAExpirationDate__c": {
-      "type": "null"
+      "type": "string"
     }
   },
   "required": [

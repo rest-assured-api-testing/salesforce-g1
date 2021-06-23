@@ -33,7 +33,7 @@
       "type": "string"
     },
     "Product2Id": {
-      "type": "null"
+      "type": "string"
     },
     "ProductCode": {
       "type": "null"
@@ -63,16 +63,16 @@
       "type": "string"
     },
     "SerialNumber": {
-      "type": "null"
+      "type": "string"
     },
     "InstallDate": {
-      "type": "null"
+      "type": "string"
     },
     "PurchaseDate": {
-      "type": "null"
+      "type": "string"
     },
     "UsageEndDate": {
-      "type": "null"
+      "type": "string"
     },
     "LifecycleStartDate": {
       "type": "null"
@@ -81,16 +81,16 @@
       "type": "null"
     },
     "Status": {
-      "type": "null"
+      "type": "string"
     },
     "Price": {
-      "type": "null"
+      "type": "number"
     },
     "Quantity": {
-      "type": "null"
+      "type": "number"
     },
     "Description": {
-      "type": "null"
+      "type": "string"
     },
     "OwnerId": {
       "type": "string"

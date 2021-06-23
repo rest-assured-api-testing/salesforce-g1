@@ -1,70 +1,134 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Date;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Contact {
-    private Attribute attributes;
-    private String id;
-    private boolean isDeleted;
-    private String masterRecordId;
-    private String accountId;
-    private String lastName;
-    private String firstName;
-    private String salutation;
-    private String name;
-    private String otherStreet;
-    private String otherCity;
-    private String otherState;
-    private String otherPostalCode;
-    private String otherCountry;
-    private String otherLatitude;
-    private String otherLongitude;
-    private String otherGeocodeAccuracy;
-    private String otherAddress;
-    private String mailingStreet;
-    private String mailingCity;
-    private String mailingState;
-    private String mailingPostalCode;
-    private String mailingCountry;
-    private String mailingLatitude;
-    private String mailingLongitude;
-    private String mailingGeocodeAccuracy;
-    private String mailingAddress;
-    private String phone;
-    private String fax;
-    private String mobilePhone;
-    private String homePhone;
-    private String otherPhone;
-    private String assistantPhone;
-    private String reportsToId;
-    private String email;
-    private String title;
-    private String department;
-    private String assistantName;
-    private String leadSource;
-    private String birthdate;
-    private String description;
-    private String ownerId;
-    private String createdDate;
-    private String createdById;
-    private String lastModifiedDate;
-    private String lastModifiedById;
-    private String systemModstamp;
-    private String lastActivityDate;
-    private String lastCURequestDate;
-    private String lastCUUpdateDate;
-    private String lastViewedDate;
-    private String lastReferencedDate;
-    private String emailBouncedReason;
-    private String emailBouncedDate;
-    private boolean isEmailBounced;
-    private String photoUrl;
-    private String jigsaw;
-    private String jigsawContactId;
-    private String cleanStatus;
-    private String individualId;
-    private String levelC;
-    private String languagesC;
+    public Attribute attributes;
+    @JsonProperty("Id")
+    public String id;
+    @JsonProperty("IsDeleted")
+    public boolean isDeleted;
+    @JsonProperty("MasterRecordId")
+    public Object masterRecordId;
+    @JsonProperty("AccountId")
+    public String accountId;
+    @JsonProperty("LastName")
+    public String lastName;
+    @JsonProperty("FirstName")
+    public String firstName;
+    @JsonProperty("Salutation")
+    public String salutation;
+    @JsonProperty("Name")
+    public String name;
+    @JsonProperty("OtherStreet")
+    public String otherStreet;
+    @JsonProperty("OtherCity")
+    public String otherCity;
+    @JsonProperty("OtherState")
+    public String otherState;
+    @JsonProperty("OtherPostalCode")
+    public String otherPostalCode;
+    @JsonProperty("OtherCountry")
+    public String otherCountry;
+    @JsonProperty("OtherLatitude")
+    public Object otherLatitude;
+    @JsonProperty("OtherLongitude")
+    public Object otherLongitude;
+    @JsonProperty("OtherGeocodeAccuracy")
+    public Object otherGeocodeAccuracy;
+    @JsonProperty("OtherAddress")
+    public OtherAddress otherAddress;
+    @JsonProperty("MailingStreet")
+    public String mailingStreet;
+    @JsonProperty("MailingCity")
+    public String mailingCity;
+    @JsonProperty("MailingState")
+    public String mailingState;
+    @JsonProperty("MailingPostalCode")
+    public String mailingPostalCode;
+    @JsonProperty("MailingCountry")
+    public String mailingCountry;
+    @JsonProperty("MailingLatitude")
+    public Object mailingLatitude;
+    @JsonProperty("MailingLongitude")
+    public Object mailingLongitude;
+    @JsonProperty("MailingGeocodeAccuracy")
+    public Object mailingGeocodeAccuracy;
+    @JsonProperty("MailingAddress")
+    public MailingAddress mailingAddress;
+    @JsonProperty("Phone")
+    public String phone;
+    @JsonProperty("Fax")
+    public String fax;
+    @JsonProperty("MobilePhone")
+    public String mobilePhone;
+    @JsonProperty("HomePhone")
+    public String homePhone;
+    @JsonProperty("OtherPhone")
+    public String otherPhone;
+    @JsonProperty("AssistantPhone")
+    public String assistantPhone;
+    @JsonProperty("ReportsToId")
+    public String reportsToId;
+    @JsonProperty("Email")
+    public String email;
+    @JsonProperty("Title")
+    public String title;
+    @JsonProperty("Department")
+    public String department;
+    @JsonProperty("AssistantName")
+    public String assistantName;
+    @JsonProperty("LeadSource")
+    public String leadSource;
+    @JsonProperty("Birthdate")
+    public String birthdate;
+    @JsonProperty("Description")
+    public String description;
+    @JsonProperty("OwnerId")
+    public String ownerId;
+    @JsonProperty("CreatedDate")
+    public Date createdDate;
+    @JsonProperty("CreatedById")
+    public String createdById;
+    @JsonProperty("LastModifiedDate")
+    public Date lastModifiedDate;
+    @JsonProperty("LastModifiedById")
+    public String lastModifiedById;
+    @JsonProperty("SystemModstamp")
+    public Date systemModstamp;
+    @JsonProperty("LastActivityDate")
+    public Object lastActivityDate;
+    @JsonProperty("LastCURequestDate")
+    public Object lastCURequestDate;
+    @JsonProperty("LastCUUpdateDate")
+    public Object lastCUUpdateDate;
+    @JsonProperty("LastViewedDate")
+    public Date lastViewedDate;
+    @JsonProperty("LastReferencedDate")
+    public Date lastReferencedDate;
+    @JsonProperty("EmailBouncedReason")
+    public Object emailBouncedReason;
+    @JsonProperty("EmailBouncedDate")
+    public Object emailBouncedDate;
+    @JsonProperty("IsEmailBounced")
+    public boolean isEmailBounced;
+    @JsonProperty("PhotoUrl")
+    public String photoUrl;
+    @JsonProperty("Jigsaw")
+    public Object jigsaw;
+    @JsonProperty("JigsawContactId")
+    public Object jigsawContactId;
+    @JsonProperty("CleanStatus")
+    public String cleanStatus;
+    @JsonProperty("IndividualId")
+    public Object individualId;
+    @JsonProperty("Level__c")
+    public String level__c;
+    @JsonProperty("Languages__c")
+    public String languages__c;
 
     public Attribute getAttributes() {
         return attributes;
@@ -74,613 +138,491 @@ public class Contact {
         this.attributes = attributes;
     }
 
-    @JsonProperty("Id")
     public String getId() {
         return id;
     }
 
-    @JsonProperty("Id")
     public void setId(String id) {
         this.id = id;
     }
 
-    @JsonProperty("IsDeleted")
     public boolean isDeleted() {
         return isDeleted;
     }
 
-    @JsonProperty("IsDeleted")
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
-    @JsonProperty("MasterRecordId")
-    public String getMasterRecordId() {
+    public Object getMasterRecordId() {
         return masterRecordId;
     }
 
-    @JsonProperty("MasterRecordId")
-    public void setMasterRecordId(String masterRecordId) {
+    public void setMasterRecordId(Object masterRecordId) {
         this.masterRecordId = masterRecordId;
     }
 
-    @JsonProperty("AccountId")
     public String getAccountId() {
         return accountId;
     }
 
-    @JsonProperty("AccountId")
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    @JsonProperty("LastName")
     public String getLastName() {
         return lastName;
     }
 
-    @JsonProperty("LastName")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @JsonProperty("FirstName")
     public String getFirstName() {
         return firstName;
     }
 
-    @JsonProperty("FirstName")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @JsonProperty("Salutation")
     public String getSalutation() {
         return salutation;
     }
 
-    @JsonProperty("Salutation")
     public void setSalutation(String salutation) {
         this.salutation = salutation;
     }
 
-    @JsonProperty("Name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("Name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @JsonProperty("OtherStreet")
     public String getOtherStreet() {
         return otherStreet;
     }
 
-    @JsonProperty("OtherStreet")
     public void setOtherStreet(String otherStreet) {
         this.otherStreet = otherStreet;
     }
 
-    @JsonProperty("OtherCity")
     public String getOtherCity() {
         return otherCity;
     }
 
-    @JsonProperty("OtherCity")
     public void setOtherCity(String otherCity) {
         this.otherCity = otherCity;
     }
 
-    @JsonProperty("OtherState")
     public String getOtherState() {
         return otherState;
     }
 
-    @JsonProperty("OtherState")
     public void setOtherState(String otherState) {
         this.otherState = otherState;
     }
 
-    @JsonProperty("OtherPostalCode")
     public String getOtherPostalCode() {
         return otherPostalCode;
     }
 
-    @JsonProperty("OtherPostalCode")
     public void setOtherPostalCode(String otherPostalCode) {
         this.otherPostalCode = otherPostalCode;
     }
 
-    @JsonProperty("OtherCountry")
     public String getOtherCountry() {
         return otherCountry;
     }
 
-    @JsonProperty("OtherCountry")
     public void setOtherCountry(String otherCountry) {
         this.otherCountry = otherCountry;
     }
 
-    @JsonProperty("OtherLatitude")
-    public String getOtherLatitude() {
+    public Object getOtherLatitude() {
         return otherLatitude;
     }
 
-    @JsonProperty("OtherLatitude")
-    public void setOtherLatitude(String otherLatitude) {
+    public void setOtherLatitude(Object otherLatitude) {
         this.otherLatitude = otherLatitude;
     }
 
-    @JsonProperty("OtherLongitude")
-    public String getOtherLongitude() {
+    public Object getOtherLongitude() {
         return otherLongitude;
     }
 
-    @JsonProperty("OtherLongitude")
-    public void setOtherLongitude(String otherLongitude) {
+    public void setOtherLongitude(Object otherLongitude) {
         this.otherLongitude = otherLongitude;
     }
 
-    @JsonProperty("OtherGeocodeAccuracy")
-    public String getOtherGeocodeAccuracy() {
+    public Object getOtherGeocodeAccuracy() {
         return otherGeocodeAccuracy;
     }
 
-    @JsonProperty("OtherGeocodeAccuracy")
-    public void setOtherGeocodeAccuracy(String otherGeocodeAccuracy) {
+    public void setOtherGeocodeAccuracy(Object otherGeocodeAccuracy) {
         this.otherGeocodeAccuracy = otherGeocodeAccuracy;
     }
 
-    @JsonProperty("OtherAddress")
-    public String getOtherAddress() {
+    public OtherAddress getOtherAddress() {
         return otherAddress;
     }
 
-    @JsonProperty("OtherAddress")
-    public void setOtherAddress(String otherAddress) {
+    public void setOtherAddress(OtherAddress otherAddress) {
         this.otherAddress = otherAddress;
     }
 
-    @JsonProperty("MailingStreet")
     public String getMailingStreet() {
         return mailingStreet;
     }
 
-    @JsonProperty("MailingStreet")
     public void setMailingStreet(String mailingStreet) {
         this.mailingStreet = mailingStreet;
     }
 
-    @JsonProperty("MailingCity")
     public String getMailingCity() {
         return mailingCity;
     }
 
-    @JsonProperty("MailingCity")
     public void setMailingCity(String mailingCity) {
         this.mailingCity = mailingCity;
     }
 
-    @JsonProperty("MailingState")
     public String getMailingState() {
         return mailingState;
     }
 
-    @JsonProperty("MailingState")
     public void setMailingState(String mailingState) {
         this.mailingState = mailingState;
     }
 
-    @JsonProperty("MailingPostalCode")
     public String getMailingPostalCode() {
         return mailingPostalCode;
     }
 
-    @JsonProperty("MailingPostalCode")
     public void setMailingPostalCode(String mailingPostalCode) {
         this.mailingPostalCode = mailingPostalCode;
     }
 
-    @JsonProperty("MailingCountry")
     public String getMailingCountry() {
         return mailingCountry;
     }
 
-    @JsonProperty("MailingCountry")
     public void setMailingCountry(String mailingCountry) {
         this.mailingCountry = mailingCountry;
     }
 
-    @JsonProperty("MailingLatitude")
-    public String getMailingLatitude() {
+    public Object getMailingLatitude() {
         return mailingLatitude;
     }
 
-    @JsonProperty("MailingLatitude")
-    public void setMailingLatitude(String mailingLatitude) {
+    public void setMailingLatitude(Object mailingLatitude) {
         this.mailingLatitude = mailingLatitude;
     }
 
-    @JsonProperty("MailingLongitude")
-    public String getMailingLongitude() {
+    public Object getMailingLongitude() {
         return mailingLongitude;
     }
 
-    @JsonProperty("MailingLongitude")
-    public void setMailingLongitude(String mailingLongitude) {
+    public void setMailingLongitude(Object mailingLongitude) {
         this.mailingLongitude = mailingLongitude;
     }
 
-    @JsonProperty("MailingGeocodeAccuracy")
-    public String getMailingGeocodeAccuracy() {
+    public Object getMailingGeocodeAccuracy() {
         return mailingGeocodeAccuracy;
     }
 
-    @JsonProperty("MailingGeocodeAccuracy")
-    public void setMailingGeocodeAccuracy(String mailingGeocodeAccuracy) {
+    public void setMailingGeocodeAccuracy(Object mailingGeocodeAccuracy) {
         this.mailingGeocodeAccuracy = mailingGeocodeAccuracy;
     }
 
-    @JsonProperty("MailingAddress")
-    public String getMailingAddress() {
+    public MailingAddress getMailingAddress() {
         return mailingAddress;
     }
 
-    @JsonProperty("MailingAddress")
-    public void setMailingAddress(String mailingAddress) {
+    public void setMailingAddress(MailingAddress mailingAddress) {
         this.mailingAddress = mailingAddress;
     }
 
-    @JsonProperty("Phone")
     public String getPhone() {
         return phone;
     }
 
-    @JsonProperty("Phone")
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    @JsonProperty("Fax")
     public String getFax() {
         return fax;
     }
 
-    @JsonProperty("Fax")
     public void setFax(String fax) {
         this.fax = fax;
     }
 
-    @JsonProperty("MobilePhone")
     public String getMobilePhone() {
         return mobilePhone;
     }
 
-    @JsonProperty("MobilePhone")
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
-    @JsonProperty("HomePhone")
     public String getHomePhone() {
         return homePhone;
     }
 
-    @JsonProperty("HomePhone")
     public void setHomePhone(String homePhone) {
         this.homePhone = homePhone;
     }
 
-    @JsonProperty("OtherPhone")
     public String getOtherPhone() {
         return otherPhone;
     }
 
-    @JsonProperty("OtherPhone")
     public void setOtherPhone(String otherPhone) {
         this.otherPhone = otherPhone;
     }
 
-    @JsonProperty("AssistantPhone")
     public String getAssistantPhone() {
         return assistantPhone;
     }
 
-    @JsonProperty("AssistantPhone")
     public void setAssistantPhone(String assistantPhone) {
         this.assistantPhone = assistantPhone;
     }
 
-    @JsonProperty("ReportsToId")
     public String getReportsToId() {
         return reportsToId;
     }
 
-    @JsonProperty("ReportsToId")
     public void setReportsToId(String reportsToId) {
         this.reportsToId = reportsToId;
     }
 
-    @JsonProperty("Email")
     public String getEmail() {
         return email;
     }
 
-    @JsonProperty("Email")
     public void setEmail(String email) {
         this.email = email;
     }
 
-    @JsonProperty("Title")
     public String getTitle() {
         return title;
     }
 
-    @JsonProperty("Title")
     public void setTitle(String title) {
         this.title = title;
     }
 
-    @JsonProperty("Department")
     public String getDepartment() {
         return department;
     }
 
-    @JsonProperty("Department")
     public void setDepartment(String department) {
         this.department = department;
     }
 
-    @JsonProperty("AssistantName")
     public String getAssistantName() {
         return assistantName;
     }
 
-    @JsonProperty("AssistantName")
     public void setAssistantName(String assistantName) {
         this.assistantName = assistantName;
     }
 
-    @JsonProperty("LeadSource")
     public String getLeadSource() {
         return leadSource;
     }
 
-    @JsonProperty("LeadSource")
     public void setLeadSource(String leadSource) {
         this.leadSource = leadSource;
     }
 
-    @JsonProperty("Birthdate")
     public String getBirthdate() {
         return birthdate;
     }
 
-    @JsonProperty("Birthdate")
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
-    @JsonProperty("Description")
     public String getDescription() {
         return description;
     }
 
-    @JsonProperty("Description")
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @JsonProperty("OwnerId")
     public String getOwnerId() {
         return ownerId;
     }
 
-    @JsonProperty("OwnerId")
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
-    @JsonProperty("CreatedDate")
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    @JsonProperty("CreatedDate")
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    @JsonProperty("CreatedById")
     public String getCreatedById() {
         return createdById;
     }
 
-    @JsonProperty("CreatedById")
     public void setCreatedById(String createdById) {
         this.createdById = createdById;
     }
 
-    @JsonProperty("LastModifiedDate")
-    public String getLastModifiedDate() {
+    public Date getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    @JsonProperty("LastModifiedDate")
-    public void setLastModifiedDate(String lastModifiedDate) {
+    public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @JsonProperty("LastModifiedById")
     public String getLastModifiedById() {
         return lastModifiedById;
     }
 
-    @JsonProperty("LastModifiedById")
     public void setLastModifiedById(String lastModifiedById) {
         this.lastModifiedById = lastModifiedById;
     }
 
-    @JsonProperty("SystemModstamp")
-    public String getSystemModstamp() {
+    public Date getSystemModstamp() {
         return systemModstamp;
     }
 
-    @JsonProperty("SystemModstamp")
-    public void setSystemModstamp(String systemModstamp) {
+    public void setSystemModstamp(Date systemModstamp) {
         this.systemModstamp = systemModstamp;
     }
 
-    @JsonProperty("LastActivityDate")
-    public String getLastActivityDate() {
+    public Object getLastActivityDate() {
         return lastActivityDate;
     }
 
-    @JsonProperty("LastActivityDate")
-    public void setLastActivityDate(String lastActivityDate) {
+    public void setLastActivityDate(Object lastActivityDate) {
         this.lastActivityDate = lastActivityDate;
     }
 
-    @JsonProperty("LastCURequestDate")
-    public String getLastCURequestDate() {
+    public Object getLastCURequestDate() {
         return lastCURequestDate;
     }
 
-    @JsonProperty("LastCURequestDate")
-    public void setLastCURequestDate(String lastCURequestDate) {
+    public void setLastCURequestDate(Object lastCURequestDate) {
         this.lastCURequestDate = lastCURequestDate;
     }
 
-    @JsonProperty("LastCUUpdateDate")
-    public String getLastCUUpdateDate() {
+    public Object getLastCUUpdateDate() {
         return lastCUUpdateDate;
     }
 
-    @JsonProperty("LastCUUpdateDate")
-    public void setLastCUUpdateDate(String lastCUUpdateDate) {
+    public void setLastCUUpdateDate(Object lastCUUpdateDate) {
         this.lastCUUpdateDate = lastCUUpdateDate;
     }
 
-    @JsonProperty("LastViewedDate")
-    public String getLastViewedDate() {
+    public Date getLastViewedDate() {
         return lastViewedDate;
     }
 
-    @JsonProperty("LastViewedDate")
-    public void setLastViewedDate(String lastViewedDate) {
+    public void setLastViewedDate(Date lastViewedDate) {
         this.lastViewedDate = lastViewedDate;
     }
 
-    @JsonProperty("LastReferencedDate")
-    public String getLastReferencedDate() {
+    public Date getLastReferencedDate() {
         return lastReferencedDate;
     }
 
-    @JsonProperty("LastReferencedDate")
-    public void setLastReferencedDate(String lastReferencedDate) {
+    public void setLastReferencedDate(Date lastReferencedDate) {
         this.lastReferencedDate = lastReferencedDate;
     }
 
-    @JsonProperty("EmailBouncedReason")
-    public String getEmailBouncedReason() {
+    public Object getEmailBouncedReason() {
         return emailBouncedReason;
     }
 
-    @JsonProperty("EmailBouncedReason")
-    public void setEmailBouncedReason(String emailBouncedReason) {
+    public void setEmailBouncedReason(Object emailBouncedReason) {
         this.emailBouncedReason = emailBouncedReason;
     }
 
-    @JsonProperty("EmailBouncedDate")
-    public String getEmailBouncedDate() {
+    public Object getEmailBouncedDate() {
         return emailBouncedDate;
     }
 
-    @JsonProperty("EmailBouncedDate")
-    public void setEmailBouncedDate(String emailBouncedDate) {
+    public void setEmailBouncedDate(Object emailBouncedDate) {
         this.emailBouncedDate = emailBouncedDate;
     }
 
-    @JsonProperty("IsEmailBounced")
     public boolean isEmailBounced() {
         return isEmailBounced;
     }
 
-    @JsonProperty("IsEmailBounced")
     public void setEmailBounced(boolean emailBounced) {
         isEmailBounced = emailBounced;
     }
 
-    @JsonProperty("PhotoUrl")
     public String getPhotoUrl() {
         return photoUrl;
     }
 
-    @JsonProperty("PhotoUrl")
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
     }
 
-    @JsonProperty("Jigsaw")
-    public String getJigsaw() {
+    public Object getJigsaw() {
         return jigsaw;
     }
 
-    @JsonProperty("Jigsaw")
-    public void setJigsaw(String jigsaw) {
+    public void setJigsaw(Object jigsaw) {
         this.jigsaw = jigsaw;
     }
 
-    @JsonProperty("JigsawContactId")
-    public String getJigsawContactId() {
+    public Object getJigsawContactId() {
         return jigsawContactId;
     }
 
-    @JsonProperty("JigsawContactId")
-    public void setJigsawContactId(String jigsawContactId) {
+    public void setJigsawContactId(Object jigsawContactId) {
         this.jigsawContactId = jigsawContactId;
     }
 
-    @JsonProperty("CleanStatus")
     public String getCleanStatus() {
         return cleanStatus;
     }
 
-    @JsonProperty("CleanStatus")
     public void setCleanStatus(String cleanStatus) {
         this.cleanStatus = cleanStatus;
     }
 
-    @JsonProperty("IndividualId")
-    public String getIndividualId() {
+    public Object getIndividualId() {
         return individualId;
     }
 
-    @JsonProperty("IndividualId")
-    public void setIndividualId(String individualId) {
+    public void setIndividualId(Object individualId) {
         this.individualId = individualId;
     }
 
-    @JsonProperty("Level__c")
-    public String getLevelC() {
-        return levelC;
+    public String getLevel__c() {
+        return level__c;
     }
 
-    @JsonProperty("Level__c")
-    public void setLevelC(String levelC) {
-        this.levelC = levelC;
+    public void setLevel__c(String level__c) {
+        this.level__c = level__c;
     }
 
-    @JsonProperty("Languages__c")
-    public String getLanguagesC() {
-        return languagesC;
+    public String getLanguages__c() {
+        return languages__c;
     }
 
-    @JsonProperty("Languages__c")
-    public void setLanguagesC(String languagesC) {
-        this.languagesC = languagesC;
+    public void setLanguages__c(String languages__c) {
+        this.languages__c = languages__c;
     }
 }

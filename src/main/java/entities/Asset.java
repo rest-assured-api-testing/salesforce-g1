@@ -1,48 +1,90 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Date;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Asset {
-    private Attribute attributes;
-    private String id;
-    private String contactId;
-    private String accountId;
-    private String parentId;
-    private String rootAssetId;
-    private String product2Id;
-    private String productCode;
-    private boolean isCompetitorProduct;
-    private String createdDate;
-    private String createdById;
-    private String lastModifiedDate;
-    private String lastModifiedById;
-    private String systemModstamp;
-    private boolean isDeleted;
-    private String name;
-    private String serialNumber;
-    private String installDate;
-    private String purchaseDate;
-    private String usageEndDate;
-    private String lifecycleStartDate;
-    private String lifecycleEndDate;
-    private String status;
-    private String price;
-    private String quantity;
-    private String description;
-    private String ownerId;
-    private String assetProvidedById;
-    private String assetServicedById;
-    private boolean isInternal;
-    private int assetLevel;
-    private String stockKeepingUnit;
-    private boolean hasLifecycleManagement;
-    private String currentMrr;
-    private String currentLifecycleEndDate;
-    private String currentQuantity;
-    private String currentAmount;
-    private String totalLifecycleAmount;
-    private String lastViewedDate;
-    private String lastReferencedDate;
+    public Attribute attributes;
+    @JsonProperty("Id")
+    public String id;
+    @JsonProperty("ContactId")
+    public String contactId;
+    @JsonProperty("AccountId")
+    public String accountId;
+    @JsonProperty("ParentId")
+    public Object parentId;
+    @JsonProperty("RootAssetId")
+    public String rootAssetId;
+    @JsonProperty("Product2Id")
+    public String product2Id;
+    @JsonProperty("ProductCode")
+    public Object productCode;
+    @JsonProperty("IsCompetitorProduct")
+    public boolean isCompetitorProduct;
+    @JsonProperty("CreatedDate")
+    public Date createdDate;
+    @JsonProperty("CreatedById")
+    public String createdById;
+    @JsonProperty("LastModifiedDate")
+    public Date lastModifiedDate;
+    @JsonProperty("LastModifiedById")
+    public String lastModifiedById;
+    @JsonProperty("SystemModstamp")
+    public Date systemModstamp;
+    @JsonProperty("IsDeleted")
+    public boolean isDeleted;
+    @JsonProperty("Name")
+    public String name;
+    @JsonProperty("SerialNumber")
+    public String serialNumber;
+    @JsonProperty("InstallDate")
+    public String installDate;
+    @JsonProperty("PurchaseDate")
+    public String purchaseDate;
+    @JsonProperty("UsageEndDate")
+    public String usageEndDate;
+    @JsonProperty("LifecycleStartDate")
+    public Object lifecycleStartDate;
+    @JsonProperty("LifecycleEndDate")
+    public Object lifecycleEndDate;
+    @JsonProperty("Status")
+    public String status;
+    @JsonProperty("Price")
+    public double price;
+    @JsonProperty("Quantity")
+    public double quantity;
+    @JsonProperty("Description")
+    public String description;
+    @JsonProperty("OwnerId")
+    public String ownerId;
+    @JsonProperty("AssetProvidedById")
+    public Object assetProvidedById;
+    @JsonProperty("AssetServicedById")
+    public Object assetServicedById;
+    @JsonProperty("IsInternal")
+    public boolean isInternal;
+    @JsonProperty("AssetLevel")
+    public int assetLevel;
+    @JsonProperty("StockKeepingUnit")
+    public Object stockKeepingUnit;
+    @JsonProperty("HasLifecycleManagement")
+    public boolean hasLifecycleManagement;
+    @JsonProperty("CurrentMrr")
+    public Object currentMrr;
+    @JsonProperty("CurrentLifecycleEndDate")
+    public Object currentLifecycleEndDate;
+    @JsonProperty("CurrentQuantity")
+    public Object currentQuantity;
+    @JsonProperty("CurrentAmount")
+    public Object currentAmount;
+    @JsonProperty("TotalLifecycleAmount")
+    public Object totalLifecycleAmount;
+    @JsonProperty("LastViewedDate")
+    public Date lastViewedDate;
+    @JsonProperty("LastReferencedDate")
+    public Date lastReferencedDate;
 
     public Attribute getAttributes() {
         return attributes;
@@ -52,393 +94,315 @@ public class Asset {
         this.attributes = attributes;
     }
 
-    @JsonProperty("Id")
     public String getId() {
         return id;
     }
 
-    @JsonProperty("Id")
     public void setId(String id) {
         this.id = id;
     }
 
-    @JsonProperty("ContactId")
     public String getContactId() {
         return contactId;
     }
 
-    @JsonProperty("ContactId")
     public void setContactId(String contactId) {
         this.contactId = contactId;
     }
 
-    @JsonProperty("AccountId")
     public String getAccountId() {
         return accountId;
     }
 
-    @JsonProperty("AccountId")
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    @JsonProperty("ParentId")
-    public String getParentId() {
+    public Object getParentId() {
         return parentId;
     }
 
-    @JsonProperty("ParentId")
-    public void setParentId(String parentId) {
+    public void setParentId(Object parentId) {
         this.parentId = parentId;
     }
 
-    @JsonProperty("RootAssetId")
     public String getRootAssetId() {
         return rootAssetId;
     }
 
-    @JsonProperty("RootAssetId")
     public void setRootAssetId(String rootAssetId) {
         this.rootAssetId = rootAssetId;
     }
 
-    @JsonProperty("Product2Id")
     public String getProduct2Id() {
         return product2Id;
     }
 
-    @JsonProperty("Product2Id")
     public void setProduct2Id(String product2Id) {
         this.product2Id = product2Id;
     }
 
-    @JsonProperty("ProductCode")
-    public String getProductCode() {
+    public Object getProductCode() {
         return productCode;
     }
 
-    @JsonProperty("ProductCode")
-    public void setProductCode(String productCode) {
+    public void setProductCode(Object productCode) {
         this.productCode = productCode;
     }
 
-    @JsonProperty("IsCompetitorProduct")
     public boolean isCompetitorProduct() {
         return isCompetitorProduct;
     }
 
-    @JsonProperty("IsCompetitorProduct")
     public void setCompetitorProduct(boolean competitorProduct) {
         isCompetitorProduct = competitorProduct;
     }
 
-    @JsonProperty("CreatedDate")
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    @JsonProperty("CreatedDate")
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    @JsonProperty("CreatedById")
     public String getCreatedById() {
         return createdById;
     }
 
-    @JsonProperty("CreatedById")
     public void setCreatedById(String createdById) {
         this.createdById = createdById;
     }
 
-    @JsonProperty("LastModifiedDate")
-    public String getLastModifiedDate() {
+    public Date getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    @JsonProperty("LastModifiedDate")
-    public void setLastModifiedDate(String lastModifiedDate) {
+    public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @JsonProperty("LastModifiedById")
     public String getLastModifiedById() {
         return lastModifiedById;
     }
 
-    @JsonProperty("LastModifiedById")
     public void setLastModifiedById(String lastModifiedById) {
         this.lastModifiedById = lastModifiedById;
     }
 
-    @JsonProperty("SystemModstamp")
-    public String getSystemModstamp() {
+    public Date getSystemModstamp() {
         return systemModstamp;
     }
 
-    @JsonProperty("SystemModstamp")
-    public void setSystemModstamp(String systemModstamp) {
+    public void setSystemModstamp(Date systemModstamp) {
         this.systemModstamp = systemModstamp;
     }
 
-    @JsonProperty("IsDeleted")
     public boolean isDeleted() {
         return isDeleted;
     }
 
-    @JsonProperty("IsDeleted")
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
-    @JsonProperty("Name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("Name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @JsonProperty("SerialNumber")
     public String getSerialNumber() {
         return serialNumber;
     }
 
-    @JsonProperty("SerialNumber")
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    @JsonProperty("InstallDate")
     public String getInstallDate() {
         return installDate;
     }
 
-    @JsonProperty("InstallDate")
     public void setInstallDate(String installDate) {
         this.installDate = installDate;
     }
 
-    @JsonProperty("PurchaseDate")
     public String getPurchaseDate() {
         return purchaseDate;
     }
 
-    @JsonProperty("PurchaseDate")
     public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    @JsonProperty("UsageEndDate")
     public String getUsageEndDate() {
         return usageEndDate;
     }
 
-    @JsonProperty("UsageEndDate")
     public void setUsageEndDate(String usageEndDate) {
         this.usageEndDate = usageEndDate;
     }
 
-    @JsonProperty("LifecycleStartDate")
-    public String getLifecycleStartDate() {
+    public Object getLifecycleStartDate() {
         return lifecycleStartDate;
     }
 
-    @JsonProperty("LifecycleStartDate")
-    public void setLifecycleStartDate(String lifecycleStartDate) {
+    public void setLifecycleStartDate(Object lifecycleStartDate) {
         this.lifecycleStartDate = lifecycleStartDate;
     }
 
-    @JsonProperty("LifecycleEndDate")
-    public String getLifecycleEndDate() {
+    public Object getLifecycleEndDate() {
         return lifecycleEndDate;
     }
 
-    @JsonProperty("LifecycleEndDate")
-    public void setLifecycleEndDate(String lifecycleEndDate) {
+    public void setLifecycleEndDate(Object lifecycleEndDate) {
         this.lifecycleEndDate = lifecycleEndDate;
     }
 
-    @JsonProperty("Status")
     public String getStatus() {
         return status;
     }
 
-    @JsonProperty("Status")
     public void setStatus(String status) {
         this.status = status;
     }
 
-    @JsonProperty("Price")
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    @JsonProperty("Price")
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    @JsonProperty("Quantity")
-    public String getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    @JsonProperty("Quantity")
-    public void setQuantity(String quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
-    @JsonProperty("Description")
     public String getDescription() {
         return description;
     }
 
-    @JsonProperty("Description")
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @JsonProperty("OwnerId")
     public String getOwnerId() {
         return ownerId;
     }
 
-    @JsonProperty("OwnerId")
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
-    @JsonProperty("AssetProvidedById")
-    public String getAssetProvidedById() {
+    public Object getAssetProvidedById() {
         return assetProvidedById;
     }
 
-    @JsonProperty("AssetProvidedById")
-    public void setAssetProvidedById(String assetProvidedById) {
+    public void setAssetProvidedById(Object assetProvidedById) {
         this.assetProvidedById = assetProvidedById;
     }
 
-    @JsonProperty("AssetServicedById")
-    public String getAssetServicedById() {
+    public Object getAssetServicedById() {
         return assetServicedById;
     }
 
-    @JsonProperty("AssetServicedById")
-    public void setAssetServicedById(String assetServicedById) {
+    public void setAssetServicedById(Object assetServicedById) {
         this.assetServicedById = assetServicedById;
     }
 
-    @JsonProperty("IsInternal")
     public boolean isInternal() {
         return isInternal;
     }
 
-    @JsonProperty("IsInternal")
     public void setInternal(boolean internal) {
         isInternal = internal;
     }
 
-    @JsonProperty("AssetLevel")
     public int getAssetLevel() {
         return assetLevel;
     }
 
-    @JsonProperty("AssetLevel")
     public void setAssetLevel(int assetLevel) {
         this.assetLevel = assetLevel;
     }
 
-    @JsonProperty("StockKeepingUnit")
-    public String getStockKeepingUnit() {
+    public Object getStockKeepingUnit() {
         return stockKeepingUnit;
     }
 
-    @JsonProperty("StockKeepingUnit")
-    public void setStockKeepingUnit(String stockKeepingUnit) {
+    public void setStockKeepingUnit(Object stockKeepingUnit) {
         this.stockKeepingUnit = stockKeepingUnit;
     }
 
-    @JsonProperty("HasLifecycleManagement")
     public boolean isHasLifecycleManagement() {
         return hasLifecycleManagement;
     }
 
-    @JsonProperty("HasLifecycleManagement")
     public void setHasLifecycleManagement(boolean hasLifecycleManagement) {
         this.hasLifecycleManagement = hasLifecycleManagement;
     }
 
-    @JsonProperty("CurrentMrr")
-    public String getCurrentMrr() {
+    public Object getCurrentMrr() {
         return currentMrr;
     }
 
-    @JsonProperty("CurrentMrr")
-    public void setCurrentMrr(String currentMrr) {
+    public void setCurrentMrr(Object currentMrr) {
         this.currentMrr = currentMrr;
     }
 
-    @JsonProperty("CurrentLifecycleEndDate")
-    public String getCurrentLifecycleEndDate() {
+    public Object getCurrentLifecycleEndDate() {
         return currentLifecycleEndDate;
     }
 
-    @JsonProperty("CurrentLifecycleEndDate")
-    public void setCurrentLifecycleEndDate(String currentLifecycleEndDate) {
+    public void setCurrentLifecycleEndDate(Object currentLifecycleEndDate) {
         this.currentLifecycleEndDate = currentLifecycleEndDate;
     }
 
-    @JsonProperty("CurrentQuantity")
-    public String getCurrentQuantity() {
+    public Object getCurrentQuantity() {
         return currentQuantity;
     }
 
-    @JsonProperty("CurrentQuantity")
-    public void setCurrentQuantity(String currentQuantity) {
+    public void setCurrentQuantity(Object currentQuantity) {
         this.currentQuantity = currentQuantity;
     }
 
-    @JsonProperty("CurrentAmount")
-    public String getCurrentAmount() {
+    public Object getCurrentAmount() {
         return currentAmount;
     }
 
-    @JsonProperty("CurrentAmount")
-    public void setCurrentAmount(String currentAmount) {
+    public void setCurrentAmount(Object currentAmount) {
         this.currentAmount = currentAmount;
     }
 
-    @JsonProperty("TotalLifecycleAmount")
-    public String getTotalLifecycleAmount() {
+    public Object getTotalLifecycleAmount() {
         return totalLifecycleAmount;
     }
 
-    @JsonProperty("TotalLifecycleAmount")
-    public void setTotalLifecycleAmount(String totalLifecycleAmount) {
+    public void setTotalLifecycleAmount(Object totalLifecycleAmount) {
         this.totalLifecycleAmount = totalLifecycleAmount;
     }
 
-    @JsonProperty("LastViewedDate")
-    public String getLastViewedDate() {
+    public Date getLastViewedDate() {
         return lastViewedDate;
     }
 
-    @JsonProperty("LastViewedDate")
-    public void setLastViewedDate(String lastViewedDate) {
+    public void setLastViewedDate(Date lastViewedDate) {
         this.lastViewedDate = lastViewedDate;
     }
 
-    @JsonProperty("LastReferencedDate")
-    public String getLastReferencedDate() {
+    public Date getLastReferencedDate() {
         return lastReferencedDate;
     }
 
-    @JsonProperty("LastReferencedDate")
-    public void setLastReferencedDate(String lastReferencedDate) {
+    public void setLastReferencedDate(Date lastReferencedDate) {
         this.lastReferencedDate = lastReferencedDate;
     }
 }

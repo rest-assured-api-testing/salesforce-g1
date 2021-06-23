@@ -1,62 +1,119 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Date;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Order {
-    private Attribute attributes;
-    private String id;
-    private String ownerId;
-    private String contractId;
-    private String accountId;
-    private String priceBook2Id;
-    private String originalOrderId;
-    private String effectiveDate;
-    private String endDate;
-    private boolean isReductionOrder;
-    private String status;
-    private String description;
-    private String customerAuthorizedById;
-    private String customerAuthorizedDate;
-    private String companyAuthorizedById;
-    private String companyAuthorizedDate;
-    private String type;
-    private String billingStreet;
-    private String billingCity;
-    private String billingState;
-    private String billingPostalCode;
-    private String billingCountry;
-    private String billingLatitude;
-    private String billingLongitude;
-    private String billingGeocodeAccuracy;
-    private String billingAddress;
-    private String shippingStreet;
-    private String shippingCity;
-    private String shippingState;
-    private String shippingPostalCode;
-    private String shippingCountry;
-    private String shippingLatitude;
-    private String shippingLongitude;
-    private String shippingGeocodeAccuracy;
-    private String shippingAddress;
-    private String name;
-    private String poDate;
-    private String poNumber;
-    private String orderReferenceNumber;
-    private String billToContactId;
-    private String shipToContactId;
-    private String activatedDate;
-    private String activatedById;
-    private String statusCode;
-    private String orderNumber;
-    private String totalAmount;
-    private String createdDate;
-    private String createdById;
-    private String lastModifiedDate;
-    private String lastModifiedById;
-    private boolean isDeleted;
-    private String systemModstamp;
-    private String lastViewedDate;
-    private String lastReferencedDate;
+    public Attribute attributes;
+    @JsonProperty("Id")
+    public String id;
+    @JsonProperty("OwnerId")
+    public String ownerId;
+    @JsonProperty("ContractId")
+    public String contractId;
+    @JsonProperty("AccountId")
+    public String accountId;
+    @JsonProperty("Pricebook2Id")
+    public Object pricebook2Id;
+    @JsonProperty("OriginalOrderId")
+    public Object originalOrderId;
+    @JsonProperty("EffectiveDate")
+    public String effectiveDate;
+    @JsonProperty("EndDate")
+    public Object endDate;
+    @JsonProperty("IsReductionOrder")
+    public boolean isReductionOrder;
+    @JsonProperty("Status")
+    public String status;
+    @JsonProperty("Description")
+    public String description;
+    @JsonProperty("CustomerAuthorizedById")
+    public String customerAuthorizedById;
+    @JsonProperty("CustomerAuthorizedDate")
+    public Object customerAuthorizedDate;
+    @JsonProperty("CompanyAuthorizedById")
+    public String companyAuthorizedById;
+    @JsonProperty("CompanyAuthorizedDate")
+    public Object companyAuthorizedDate;
+    @JsonProperty("Type")
+    public Object type;
+    @JsonProperty("BillingStreet")
+    public String billingStreet;
+    @JsonProperty("BillingCity")
+    public String billingCity;
+    @JsonProperty("BillingState")
+    public String billingState;
+    @JsonProperty("BillingPostalCode")
+    public String billingPostalCode;
+    @JsonProperty("BillingCountry")
+    public String billingCountry;
+    @JsonProperty("BillingLatitude")
+    public Object billingLatitude;
+    @JsonProperty("BillingLongitude")
+    public Object billingLongitude;
+    @JsonProperty("BillingGeocodeAccuracy")
+    public Object billingGeocodeAccuracy;
+    @JsonProperty("BillingAddress")
+    public BillingAddress billingAddress;
+    @JsonProperty("ShippingStreet")
+    public String shippingStreet;
+    @JsonProperty("ShippingCity")
+    public String shippingCity;
+    @JsonProperty("ShippingState")
+    public String shippingState;
+    @JsonProperty("ShippingPostalCode")
+    public String shippingPostalCode;
+    @JsonProperty("ShippingCountry")
+    public String shippingCountry;
+    @JsonProperty("ShippingLatitude")
+    public Object shippingLatitude;
+    @JsonProperty("ShippingLongitude")
+    public Object shippingLongitude;
+    @JsonProperty("ShippingGeocodeAccuracy")
+    public Object shippingGeocodeAccuracy;
+    @JsonProperty("ShippingAddress")
+    public ShippingAddress shippingAddress;
+    @JsonProperty("Name")
+    public Object name;
+    @JsonProperty("PoDate")
+    public Object poDate;
+    @JsonProperty("PoNumber")
+    public Object poNumber;
+    @JsonProperty("OrderReferenceNumber")
+    public Object orderReferenceNumber;
+    @JsonProperty("BillToContactId")
+    public Object billToContactId;
+    @JsonProperty("ShipToContactId")
+    public Object shipToContactId;
+    @JsonProperty("ActivatedDate")
+    public Object activatedDate;
+    @JsonProperty("ActivatedById")
+    public Object activatedById;
+    @JsonProperty("StatusCode")
+    public String statusCode;
+    @JsonProperty("OrderNumber")
+    public String orderNumber;
+    @JsonProperty("TotalAmount")
+    public double totalAmount;
+    @JsonProperty("CreatedDate")
+    public Date createdDate;
+    @JsonProperty("CreatedById")
+    public String createdById;
+    @JsonProperty("LastModifiedDate")
+    public Date lastModifiedDate;
+    @JsonProperty("LastModifiedById")
+    public String lastModifiedById;
+    @JsonProperty("IsDeleted")
+    public boolean isDeleted;
+    @JsonProperty("SystemModstamp")
+    public Date systemModstamp;
+    @JsonProperty("LastViewedDate")
+    public Date lastViewedDate;
+    @JsonProperty("LastReferencedDate")
+    public Date lastReferencedDate;
 
     public Attribute getAttributes() {
         return attributes;
@@ -66,523 +123,427 @@ public class Order {
         this.attributes = attributes;
     }
 
-    @JsonProperty("Id")
     public String getId() {
         return id;
     }
 
-    @JsonProperty("Id")
     public void setId(String id) {
         this.id = id;
     }
 
-    @JsonProperty("OwnerId")
     public String getOwnerId() {
         return ownerId;
     }
 
-    @JsonProperty("OwnerId")
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
-    @JsonProperty("ContractId")
     public String getContractId() {
         return contractId;
     }
 
-    @JsonProperty("ContractId")
     public void setContractId(String contractId) {
         this.contractId = contractId;
     }
 
-    @JsonProperty("AccountId")
     public String getAccountId() {
         return accountId;
     }
 
-    @JsonProperty("AccountId")
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    @JsonProperty("Pricebook2Id")
-    public String getPriceBook2Id() {
-        return priceBook2Id;
+    public Object getPricebook2Id() {
+        return pricebook2Id;
     }
 
-    @JsonProperty("Pricebook2Id")
-    public void setPriceBook2Id(String priceBook2Id) {
-        this.priceBook2Id = priceBook2Id;
+    public void setPricebook2Id(Object pricebook2Id) {
+        this.pricebook2Id = pricebook2Id;
     }
 
-    @JsonProperty("OriginalOrderId")
-    public String getOriginalOrderId() {
+    public Object getOriginalOrderId() {
         return originalOrderId;
     }
 
-    @JsonProperty("OriginalOrderId")
-    public void setOriginalOrderId(String originalOrderId) {
+    public void setOriginalOrderId(Object originalOrderId) {
         this.originalOrderId = originalOrderId;
     }
 
-    @JsonProperty("EffectiveDate")
     public String getEffectiveDate() {
         return effectiveDate;
     }
 
-    @JsonProperty("EffectiveDate")
     public void setEffectiveDate(String effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
-    @JsonProperty("EndDate")
-    public String getEndDate() {
+    public Object getEndDate() {
         return endDate;
     }
 
-    @JsonProperty("EndDate")
-    public void setEndDate(String endDate) {
+    public void setEndDate(Object endDate) {
         this.endDate = endDate;
     }
 
-    @JsonProperty("IsReductionOrder")
     public boolean isReductionOrder() {
         return isReductionOrder;
     }
 
-    @JsonProperty("IsReductionOrder")
     public void setReductionOrder(boolean reductionOrder) {
         isReductionOrder = reductionOrder;
     }
 
-    @JsonProperty("Status")
     public String getStatus() {
         return status;
     }
 
-    @JsonProperty("Status")
     public void setStatus(String status) {
         this.status = status;
     }
 
-    @JsonProperty("Description")
     public String getDescription() {
         return description;
     }
 
-    @JsonProperty("Description")
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @JsonProperty("CustomerAuthorizedById")
     public String getCustomerAuthorizedById() {
         return customerAuthorizedById;
     }
 
-    @JsonProperty("CustomerAuthorizedById")
     public void setCustomerAuthorizedById(String customerAuthorizedById) {
         this.customerAuthorizedById = customerAuthorizedById;
     }
 
-    @JsonProperty("CustomerAuthorizedDate")
-    public String getCustomerAuthorizedDate() {
+    public Object getCustomerAuthorizedDate() {
         return customerAuthorizedDate;
     }
 
-    @JsonProperty("CustomerAuthorizedDate")
-    public void setCustomerAuthorizedDate(String customerAuthorizedDate) {
+    public void setCustomerAuthorizedDate(Object customerAuthorizedDate) {
         this.customerAuthorizedDate = customerAuthorizedDate;
     }
 
-    @JsonProperty("CompanyAuthorizedById")
     public String getCompanyAuthorizedById() {
         return companyAuthorizedById;
     }
 
-    @JsonProperty("CompanyAuthorizedById")
     public void setCompanyAuthorizedById(String companyAuthorizedById) {
         this.companyAuthorizedById = companyAuthorizedById;
     }
 
-    @JsonProperty("CompanyAuthorizedDate")
-    public String getCompanyAuthorizedDate() {
+    public Object getCompanyAuthorizedDate() {
         return companyAuthorizedDate;
     }
 
-    @JsonProperty("CompanyAuthorizedDate")
-    public void setCompanyAuthorizedDate(String companyAuthorizedDate) {
+    public void setCompanyAuthorizedDate(Object companyAuthorizedDate) {
         this.companyAuthorizedDate = companyAuthorizedDate;
     }
 
-    @JsonProperty("Type")
-    public String getType() {
+    public Object getType() {
         return type;
     }
 
-    @JsonProperty("Type")
-    public void setType(String type) {
+    public void setType(Object type) {
         this.type = type;
     }
 
-    @JsonProperty("BillingStreet")
     public String getBillingStreet() {
         return billingStreet;
     }
 
-    @JsonProperty("BillingStreet")
     public void setBillingStreet(String billingStreet) {
         this.billingStreet = billingStreet;
     }
 
-    @JsonProperty("BillingCity")
     public String getBillingCity() {
         return billingCity;
     }
 
-    @JsonProperty("BillingCity")
     public void setBillingCity(String billingCity) {
         this.billingCity = billingCity;
     }
 
-    @JsonProperty("BillingState")
     public String getBillingState() {
         return billingState;
     }
 
-    @JsonProperty("BillingState")
     public void setBillingState(String billingState) {
         this.billingState = billingState;
     }
 
-    @JsonProperty("BillingPostalCode")
     public String getBillingPostalCode() {
         return billingPostalCode;
     }
 
-    @JsonProperty("BillingPostalCode")
     public void setBillingPostalCode(String billingPostalCode) {
         this.billingPostalCode = billingPostalCode;
     }
 
-    @JsonProperty("BillingCountry")
     public String getBillingCountry() {
         return billingCountry;
     }
 
-    @JsonProperty("BillingCountry")
     public void setBillingCountry(String billingCountry) {
         this.billingCountry = billingCountry;
     }
 
-    @JsonProperty("BillingLatitude")
-    public String getBillingLatitude() {
+    public Object getBillingLatitude() {
         return billingLatitude;
     }
 
-    @JsonProperty("BillingLatitude")
-    public void setBillingLatitude(String billingLatitude) {
+    public void setBillingLatitude(Object billingLatitude) {
         this.billingLatitude = billingLatitude;
     }
 
-    @JsonProperty("BillingLongitude")
-    public String getBillingLongitude() {
+    public Object getBillingLongitude() {
         return billingLongitude;
     }
 
-    @JsonProperty("BillingLongitude")
-    public void setBillingLongitude(String billingLongitude) {
+    public void setBillingLongitude(Object billingLongitude) {
         this.billingLongitude = billingLongitude;
     }
 
-    @JsonProperty("BillingGeocodeAccuracy")
-    public String getBillingGeocodeAccuracy() {
+    public Object getBillingGeocodeAccuracy() {
         return billingGeocodeAccuracy;
     }
 
-    @JsonProperty("BillingGeocodeAccuracy")
-    public void setBillingGeocodeAccuracy(String billingGeocodeAccuracy) {
+    public void setBillingGeocodeAccuracy(Object billingGeocodeAccuracy) {
         this.billingGeocodeAccuracy = billingGeocodeAccuracy;
     }
 
-    @JsonProperty("BillingAddress")
-    public String getBillingAddress() {
+    public BillingAddress getBillingAddress() {
         return billingAddress;
     }
 
-    @JsonProperty("BillingAddress")
-    public void setBillingAddress(String billingAddress) {
+    public void setBillingAddress(BillingAddress billingAddress) {
         this.billingAddress = billingAddress;
     }
 
-    @JsonProperty("ShippingStreet")
     public String getShippingStreet() {
         return shippingStreet;
     }
 
-    @JsonProperty("ShippingStreet")
     public void setShippingStreet(String shippingStreet) {
         this.shippingStreet = shippingStreet;
     }
 
-    @JsonProperty("ShippingCity")
     public String getShippingCity() {
         return shippingCity;
     }
 
-    @JsonProperty("ShippingCity")
     public void setShippingCity(String shippingCity) {
         this.shippingCity = shippingCity;
     }
 
-    @JsonProperty("ShippingState")
     public String getShippingState() {
         return shippingState;
     }
 
-    @JsonProperty("ShippingState")
     public void setShippingState(String shippingState) {
         this.shippingState = shippingState;
     }
 
-    @JsonProperty("ShippingPostalCode")
     public String getShippingPostalCode() {
         return shippingPostalCode;
     }
 
-    @JsonProperty("ShippingPostalCode")
     public void setShippingPostalCode(String shippingPostalCode) {
         this.shippingPostalCode = shippingPostalCode;
     }
 
-    @JsonProperty("ShippingCountry")
     public String getShippingCountry() {
         return shippingCountry;
     }
 
-    @JsonProperty("ShippingCountry")
     public void setShippingCountry(String shippingCountry) {
         this.shippingCountry = shippingCountry;
     }
 
-    @JsonProperty("ShippingLatitude")
-    public String getShippingLatitude() {
+    public Object getShippingLatitude() {
         return shippingLatitude;
     }
 
-    @JsonProperty("ShippingLatitude")
-    public void setShippingLatitude(String shippingLatitude) {
+    public void setShippingLatitude(Object shippingLatitude) {
         this.shippingLatitude = shippingLatitude;
     }
 
-    @JsonProperty("ShippingLongitude")
-    public String getShippingLongitude() {
+    public Object getShippingLongitude() {
         return shippingLongitude;
     }
 
-    @JsonProperty("ShippingLongitude")
-    public void setShippingLongitude(String shippingLongitude) {
+    public void setShippingLongitude(Object shippingLongitude) {
         this.shippingLongitude = shippingLongitude;
     }
 
-    @JsonProperty("ShippingGeocodeAccuracy")
-    public String getShippingGeocodeAccuracy() {
+    public Object getShippingGeocodeAccuracy() {
         return shippingGeocodeAccuracy;
     }
 
-    @JsonProperty("ShippingGeocodeAccuracy")
-    public void setShippingGeocodeAccuracy(String shippingGeocodeAccuracy) {
+    public void setShippingGeocodeAccuracy(Object shippingGeocodeAccuracy) {
         this.shippingGeocodeAccuracy = shippingGeocodeAccuracy;
     }
 
-    @JsonProperty("ShippingAddress")
-    public String getShippingAddress() {
+    public ShippingAddress getShippingAddress() {
         return shippingAddress;
     }
 
-    @JsonProperty("ShippingAddress")
-    public void setShippingAddress(String shippingAddress) {
+    public void setShippingAddress(ShippingAddress shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
 
-    @JsonProperty("Name")
-    public String getName() {
+    public Object getName() {
         return name;
     }
 
-    @JsonProperty("Name")
-    public void setName(String name) {
+    public void setName(Object name) {
         this.name = name;
     }
 
-    @JsonProperty("PoDate")
-    public String getPoDate() {
+    public Object getPoDate() {
         return poDate;
     }
 
-    @JsonProperty("PoDate")
-    public void setPoDate(String poDate) {
+    public void setPoDate(Object poDate) {
         this.poDate = poDate;
     }
 
-    @JsonProperty("PoNumber")
-    public String getPoNumber() {
+    public Object getPoNumber() {
         return poNumber;
     }
 
-    @JsonProperty("PoNumber")
-    public void setPoNumber(String poNumber) {
+    public void setPoNumber(Object poNumber) {
         this.poNumber = poNumber;
     }
 
-    @JsonProperty("OrderReferenceNumber")
-    public String getOrderReferenceNumber() {
+    public Object getOrderReferenceNumber() {
         return orderReferenceNumber;
     }
 
-    @JsonProperty("OrderReferenceNumber")
-    public void setOrderReferenceNumber(String orderReferenceNumber) {
+    public void setOrderReferenceNumber(Object orderReferenceNumber) {
         this.orderReferenceNumber = orderReferenceNumber;
     }
 
-    @JsonProperty("BillToContactId")
-    public String getBillToContactId() {
+    public Object getBillToContactId() {
         return billToContactId;
     }
 
-    @JsonProperty("BillToContactId")
-    public void setBillToContactId(String billToContactId) {
+    public void setBillToContactId(Object billToContactId) {
         this.billToContactId = billToContactId;
     }
 
-    @JsonProperty("ShipToContactId")
-    public String getShipToContactId() {
+    public Object getShipToContactId() {
         return shipToContactId;
     }
 
-    @JsonProperty("ShipToContactId")
-    public void setShipToContactId(String shipToContactId) {
+    public void setShipToContactId(Object shipToContactId) {
         this.shipToContactId = shipToContactId;
     }
 
-    @JsonProperty("ActivatedDate")
-    public String getActivatedDate() {
+    public Object getActivatedDate() {
         return activatedDate;
     }
 
-    @JsonProperty("ActivatedDate")
-    public void setActivatedDate(String activatedDate) {
+    public void setActivatedDate(Object activatedDate) {
         this.activatedDate = activatedDate;
     }
 
-    @JsonProperty("ActivatedById")
-    public String getActivatedById() {
+    public Object getActivatedById() {
         return activatedById;
     }
 
-    @JsonProperty("ActivatedById")
-    public void setActivatedById(String activatedById) {
+    public void setActivatedById(Object activatedById) {
         this.activatedById = activatedById;
     }
 
-    @JsonProperty("StatusCode")
     public String getStatusCode() {
         return statusCode;
     }
 
-    @JsonProperty("StatusCode")
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
     }
 
-    @JsonProperty("OrderNumber")
     public String getOrderNumber() {
         return orderNumber;
     }
 
-    @JsonProperty("OrderNumber")
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 
-    @JsonProperty("TotalAmount")
-    public String getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    @JsonProperty("TotalAmount")
-    public void setTotalAmount(String totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    @JsonProperty("CreatedDate")
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    @JsonProperty("CreatedDate")
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    @JsonProperty("CreatedById")
     public String getCreatedById() {
         return createdById;
     }
 
-    @JsonProperty("CreatedById")
     public void setCreatedById(String createdById) {
         this.createdById = createdById;
     }
 
-    @JsonProperty("LastModifiedDate")
-    public String getLastModifiedDate() {
+    public Date getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    @JsonProperty("LastModifiedDate")
-    public void setLastModifiedDate(String lastModifiedDate) {
+    public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @JsonProperty("LastModifiedById")
     public String getLastModifiedById() {
         return lastModifiedById;
     }
 
-    @JsonProperty("LastModifiedById")
     public void setLastModifiedById(String lastModifiedById) {
         this.lastModifiedById = lastModifiedById;
     }
 
-    @JsonProperty("SystemModstamp")
-    public String getSystemModstamp() {
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public Date getSystemModstamp() {
         return systemModstamp;
     }
 
-    @JsonProperty("SystemModstamp")
-    public void setSystemModstamp(String systemModstamp) {
+    public void setSystemModstamp(Date systemModstamp) {
         this.systemModstamp = systemModstamp;
     }
 
-    @JsonProperty("LastViewedDate")
-    public String getLastViewedDate() {
+    public Date getLastViewedDate() {
         return lastViewedDate;
     }
 
-    @JsonProperty("LastViewedDate")
-    public void setLastViewedDate(String lastViewedDate) {
+    public void setLastViewedDate(Date lastViewedDate) {
         this.lastViewedDate = lastViewedDate;
     }
 
-    @JsonProperty("LastReferencedDate")
-    public String getLastReferencedDate() {
+    public Date getLastReferencedDate() {
         return lastReferencedDate;
     }
 
-    @JsonProperty("LastReferencedDate")
-    public void setLastReferencedDate(String lastReferencedDate) {
+    public void setLastReferencedDate(Date lastReferencedDate) {
         this.lastReferencedDate = lastReferencedDate;
     }
 }
