@@ -16,7 +16,7 @@ public class AccountTest extends AccountBaseTest{
                 .addPathParams("accountID", responseObject.getId())
                 .addMethod(ApiMethod.GET)
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
 //        Account account = apiResponse.getBody(Account.class);
 //        System.out.println("------------ " + account.getName());
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
@@ -45,7 +45,7 @@ public class AccountTest extends AccountBaseTest{
                 .addPathParams("accountID", responseObject.getId().toString())
                 .addMethod(ApiMethod.DELETE)
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
 //        Account account = apiResponse.getBody(Account.class);
 //        System.out.println("------------ " + account.getName());
         Assert.assertEquals(apiResponse.getStatusCode(), 204);

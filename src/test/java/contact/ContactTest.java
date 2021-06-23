@@ -16,8 +16,7 @@ public class ContactTest extends ContactBaseTest{
                 .addPathParams("contactID", responseObject.getId())
                 .addMethod(ApiMethod.GET)
                 .build();
-
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
 //        Contact contact = apiResponse.getBody(Contact.class);
 //        System.out.println("------------ " + contact.getFirstName());
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
@@ -45,7 +44,7 @@ public class ContactTest extends ContactBaseTest{
                 .addPathParams("contactID", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
         Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
 //

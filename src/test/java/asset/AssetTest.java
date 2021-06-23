@@ -16,7 +16,7 @@ public class AssetTest extends AssetBaseTest{
                 .addPathParams("assetID", responseObject.getId())
                 .addMethod(ApiMethod.GET)
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
 //        Asset asset = apiResponse.getBody(Asset.class);
 //        System.out.println("------------ " + asset.getFirstName());
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
@@ -44,7 +44,7 @@ public class AssetTest extends AssetBaseTest{
                 .addPathParams("assetID", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
         Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
 
