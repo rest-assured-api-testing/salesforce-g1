@@ -20,7 +20,10 @@ public class ApiManager {
                 .pathParams(apiRequest.getPathParams())
                 .baseUri(apiRequest.getBaseUri())
                 .contentType(ContentType.JSON)
-                .log().all();
+                .auth()
+                .oauth2(apiRequest.getToken())
+                .log()
+                .all();
     }
 
     public static ApiResponse executeWithBody(ApiRequest apiRequest){
