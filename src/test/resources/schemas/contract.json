@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "url"
+      ]
+    },
+    "Id": {
+      "type": "string"
+    },
+    "AccountId": {
+      "type": "string"
+    },
+    "Pricebook2Id": {
+      "type": "string"
+    },
+    "OwnerExpirationNotice": {
+      "type": "string"
+    },
+    "StartDate": {
+      "type": "string"
+    },
+    "EndDate": {
+      "type": "string"
+    },
+    "BillingStreet": {
+      "type": "string"
+    },
+    "BillingCity": {
+      "type": "string"
+    },
+    "BillingState": {
+      "type": "string"
+    },
+    "BillingPostalCode": {
+      "type": "string"
+    },
+    "BillingCountry": {
+      "type": "string"
+    },
+    "BillingLatitude": {
+      "type": "null"
+    },
+    "BillingLongitude": {
+      "type": "null"
+    },
+    "BillingGeocodeAccuracy": {
+      "type": "null"
+    },
+    "BillingAddress": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
+    },
+    "ContractTerm": {
+      "type": "integer"
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string"
+    },
+    "CompanySignedId": {
+      "type": "string"
+    },
+    "CompanySignedDate": {
+      "type": "string"
+    },
+    "CustomerSignedId": {
+      "type": "string"
+    },
+    "CustomerSignedTitle": {
+      "type": "string"
+    },
+    "CustomerSignedDate": {
+      "type": "string"
+    },
+    "SpecialTerms": {
+      "type": "string"
+    },
+    "ActivatedById": {
+      "type": "null"
+    },
+    "ActivatedDate": {
+      "type": "null"
+    },
+    "StatusCode": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "IsDeleted": {
+      "type": "boolean"
+    },
+    "ContractNumber": {
+      "type": "string"
+    },
+    "LastApprovedDate": {
+      "type": "null"
+    },
+    "CreatedDate": {
+      "type": "string"
+    },
+    "CreatedById": {
+      "type": "string"
+    },
+    "LastModifiedDate": {
+      "type": "string"
+    },
+    "LastModifiedById": {
+      "type": "string"
+    },
+    "SystemModstamp": {
+      "type": "string"
+    },
+    "LastActivityDate": {
+      "type": "null"
+    },
+    "LastViewedDate": {
+      "type": "string"
+    },
+    "LastReferencedDate": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "attributes",
+    "Id",
+    "AccountId",
+    "Pricebook2Id",
+    "OwnerExpirationNotice",
+    "StartDate",
+    "EndDate",
+    "BillingStreet",
+    "BillingCity",
+    "BillingState",
+    "BillingPostalCode",
+    "BillingCountry",
+    "BillingLatitude",
+    "BillingLongitude",
+    "BillingGeocodeAccuracy",
+    "BillingAddress",
+    "ContractTerm",
+    "OwnerId",
+    "Status",
+    "CompanySignedId",
+    "CompanySignedDate",
+    "CustomerSignedId",
+    "CustomerSignedTitle",
+    "CustomerSignedDate",
+    "SpecialTerms",
+    "ActivatedById",
+    "ActivatedDate",
+    "StatusCode",
+    "Description",
+    "IsDeleted",
+    "ContractNumber",
+    "LastApprovedDate",
+    "CreatedDate",
+    "CreatedById",
+    "LastModifiedDate",
+    "LastModifiedById",
+    "SystemModstamp",
+    "LastActivityDate",
+    "LastViewedDate",
+    "LastReferencedDate"
+  ]
+}
