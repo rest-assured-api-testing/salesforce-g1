@@ -9,20 +9,56 @@
 
 package rest.salesforce.org.steps;
 
+import api.ApiManager;
+import api.ApiMethod;
+import api.ApiRequestBuilder;
+import api.ApiResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import entities.Account;
+import entities.responseobject.ResponseObject;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+
+import static configfile.Configuration.dotenv;
 
 public class AccountsApiSteps {
+
+    private ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
+    private ResponseObject responseObject = new ResponseObject();
+    private ApiResponse apiResponse = new ApiResponse();
+    Account accountToSend = new Account();
+
     @Before("@CreateAndDeleteAccount")
-    public void createAnAccount() {
+    public void createAnAccount() throws JsonProcessingException {
+        accountToSend.setName("cristian choque desde java");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Account/")
+                .addBody(new ObjectMapper().writeValueAsString(accountToSend))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
     @After("@CreateAndDeleteAccount")
     public void deleteAnAccount() {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Account/{accountID}")
+                .addPathParams("accountID", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
     }
 
     @Before("@CreateAccount")
@@ -35,14 +71,25 @@ public class AccountsApiSteps {
 
     @Given("I build a {string} request for a single Account")
     public void iBuildARequestForASingleAccount(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addMethod(ApiMethod.GET);
     }
 
     @When("I execute the get single Account request on {string} endpoint")
     public void iExecuteTheGetSingleAccountRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint("/Account/{accountID}")
+                .addPathParams("accountID", responseObject.getId())
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on get single Account request")
     public void theResponseStatusCodeShouldBeOnGetSingleAccountRequest(final String statusCCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 200);
+        apiResponse.getResponse().then().log().body();
     }
 
     @Given("I build a {string} request for all Accounts")

@@ -9,19 +9,58 @@
 
 package rest.salesforce.org.steps;
 
+import api.ApiManager;
+import api.ApiMethod;
+import api.ApiRequestBuilder;
+import api.ApiResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import entities.Contract;
+import entities.Order;
+import entities.responseobject.ResponseObject;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+
+import static configfile.Configuration.dotenv;
 
 public class OrdersApiSteps {
+    private ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
+    private ResponseObject responseObject = new ResponseObject();
+    private ApiResponse apiResponse = new ApiResponse();
+    Order orderToSend = new Order();
+
     @Before("@CreateAndDeleteOrder")
-    public void createAnOrder() {
+    public void createAnOrder() throws JsonProcessingException {
+        orderToSend.setStatus("Draft");
+        orderToSend.setAccountId("0015e00000BFWjNAAX");
+        orderToSend.setContractId("8005e0000009XEmAAM");
+        orderToSend.setEffectiveDate("2021-07-28");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Order/")
+                .addBody(new ObjectMapper().writeValueAsString(orderToSend))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
     @After("@CreateAndDeleteOrder")
     public void deleteAnOrder() {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Order/{orderID}")
+                .addPathParams("orderID", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
     }
 
     @Before("@CreateOrder")
@@ -34,14 +73,25 @@ public class OrdersApiSteps {
 
     @Given("I build a {string} request for a single Order")
     public void iBuildARequestForASingleOrder(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addMethod(ApiMethod.GET);
     }
 
     @When("I execute the get single Order request on {string} endpoint")
     public void iExecuteTheGetSingleOrderRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint("/Order/{orderID}")
+                .addPathParams("orderID", responseObject.getId())
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on get single Order request")
     public void theResponseStatusCodeShouldBeOnGetSingleOrderRequest(final String statusCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 200);
+        apiResponse.getResponse().then().log().body();
     }
 
     @Given("I build a {string} request for all Orders")

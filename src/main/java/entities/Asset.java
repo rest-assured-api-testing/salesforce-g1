@@ -22,7 +22,7 @@ public class Asset {
     @JsonProperty("ProductCode")
     public Object productCode;
     @JsonProperty("IsCompetitorProduct")
-    public boolean isCompetitorProduct;
+    public Boolean isCompetitorProduct;
     @JsonProperty("CreatedDate")
     public Date createdDate;
     @JsonProperty("CreatedById")
@@ -34,7 +34,7 @@ public class Asset {
     @JsonProperty("SystemModstamp")
     public Date systemModstamp;
     @JsonProperty("IsDeleted")
-    public boolean isDeleted;
+    public Boolean isDeleted;
     @JsonProperty("Name")
     public String name;
     @JsonProperty("SerialNumber")
@@ -64,13 +64,13 @@ public class Asset {
     @JsonProperty("AssetServicedById")
     public Object assetServicedById;
     @JsonProperty("IsInternal")
-    public boolean isInternal;
+    public Boolean isInternal;
     @JsonProperty("AssetLevel")
-    public int assetLevel;
+    public Integer assetLevel;
     @JsonProperty("StockKeepingUnit")
     public Object stockKeepingUnit;
     @JsonProperty("HasLifecycleManagement")
-    public boolean hasLifecycleManagement;
+    public Boolean hasLifecycleManagement;
     @JsonProperty("CurrentMrr")
     public Object currentMrr;
     @JsonProperty("CurrentLifecycleEndDate")
@@ -150,11 +150,11 @@ public class Asset {
         this.productCode = productCode;
     }
 
-    public boolean isCompetitorProduct() {
+    public Boolean isCompetitorProduct() {
         return isCompetitorProduct;
     }
 
-    public void setCompetitorProduct(boolean competitorProduct) {
+    public void setCompetitorProduct(Boolean competitorProduct) {
         isCompetitorProduct = competitorProduct;
     }
 
@@ -198,11 +198,11 @@ public class Asset {
         this.systemModstamp = systemModstamp;
     }
 
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
 
@@ -318,19 +318,19 @@ public class Asset {
         this.assetServicedById = assetServicedById;
     }
 
-    public boolean isInternal() {
+    public Boolean isInternal() {
         return isInternal;
     }
 
-    public void setInternal(boolean internal) {
+    public void setInternal(Boolean internal) {
         isInternal = internal;
     }
 
-    public int getAssetLevel() {
+    public Integer getAssetLevel() {
         return assetLevel;
     }
 
-    public void setAssetLevel(int assetLevel) {
+    public void setAssetLevel(Integer assetLevel) {
         this.assetLevel = assetLevel;
     }
 
@@ -342,11 +342,11 @@ public class Asset {
         this.stockKeepingUnit = stockKeepingUnit;
     }
 
-    public boolean isHasLifecycleManagement() {
+    public Boolean isHasLifecycleManagement() {
         return hasLifecycleManagement;
     }
 
-    public void setHasLifecycleManagement(boolean hasLifecycleManagement) {
+    public void setHasLifecycleManagement(Boolean hasLifecycleManagement) {
         this.hasLifecycleManagement = hasLifecycleManagement;
     }
 
