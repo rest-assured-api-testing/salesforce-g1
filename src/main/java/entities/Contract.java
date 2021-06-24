@@ -65,7 +65,7 @@ public class Contract {
     @JsonProperty("Description")
     public String description;
     @JsonProperty("IsDeleted")
-    public boolean isDeleted;
+    public Boolean isDeleted;
     @JsonProperty("ContractNumber")
     public String contractNumber;
     @JsonProperty("LastApprovedDate")
@@ -319,11 +319,11 @@ public class Contract {
         this.description = description;
     }
 
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
 

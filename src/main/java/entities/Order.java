@@ -25,7 +25,7 @@ public class Order {
     @JsonProperty("EndDate")
     public Object endDate;
     @JsonProperty("IsReductionOrder")
-    public boolean isReductionOrder;
+    public Boolean isReductionOrder;
     @JsonProperty("Status")
     public String status;
     @JsonProperty("Description")
@@ -97,7 +97,7 @@ public class Order {
     @JsonProperty("OrderNumber")
     public String orderNumber;
     @JsonProperty("TotalAmount")
-    public double totalAmount;
+    public Double totalAmount;
     @JsonProperty("CreatedDate")
     public Date createdDate;
     @JsonProperty("CreatedById")
@@ -107,7 +107,7 @@ public class Order {
     @JsonProperty("LastModifiedById")
     public String lastModifiedById;
     @JsonProperty("IsDeleted")
-    public boolean isDeleted;
+    public Boolean isDeleted;
     @JsonProperty("SystemModstamp")
     public Date systemModstamp;
     @JsonProperty("LastViewedDate")
@@ -187,11 +187,11 @@ public class Order {
         this.endDate = endDate;
     }
 
-    public boolean isReductionOrder() {
+    public Boolean isReductionOrder() {
         return isReductionOrder;
     }
 
-    public void setReductionOrder(boolean reductionOrder) {
+    public void setReductionOrder(Boolean reductionOrder) {
         isReductionOrder = reductionOrder;
     }
 
@@ -475,11 +475,11 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public double getTotalAmount() {
+    public Double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -515,11 +515,11 @@ public class Order {
         this.lastModifiedById = lastModifiedById;
     }
 
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
 
