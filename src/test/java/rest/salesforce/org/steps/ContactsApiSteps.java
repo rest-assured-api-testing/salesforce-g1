@@ -34,11 +34,31 @@ public class ContactsApiSteps {
     Contact contact = new Contact();
 
     @Before("@CreateAndDeleteContact")
-    public void createAContact() {
+    public void createAContact() throws JsonProcessingException {
+        contact.setFirstName("contact from java");
+        contact.setLastName("last name from java");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Contact/")
+                .addBody(new ObjectMapper().writeValueAsString(contact))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
     @After("@CreateAndDeleteContact")
     public void deleteAContact() {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Contact/{contactID}")
+                .addPathParams("contactID", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
     }
 
     @Before("@CreateContact")
@@ -63,14 +83,25 @@ public class ContactsApiSteps {
 
     @Given("I build a {string} request for a single Contact")
     public void iBuildARequestForASingleContact(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addMethod(ApiMethod.GET);
     }
 
     @When("I execute the get single Contact request on {string} endpoint")
     public void iExecuteTheGetSingleContactRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint("/Contact/{contactID}")
+                .addPathParams("contactID", responseObject.getId())
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on get single Contact request")
     public void theResponseStatusCodeShouldBeOnGetSingleContactRequest(final String statusCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 200);
+        apiResponse.getResponse().then().log().body();
     }
 
     @Given("I build a {string} request for all Contacts")

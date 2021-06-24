@@ -9,7 +9,10 @@
 
 package rest.salesforce.org.steps;
 
-import api.*;
+import api.ApiManager;
+import api.ApiMethod;
+import api.ApiRequestBuilder;
+import api.ApiResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
@@ -34,11 +37,31 @@ public class AssetsApiSteps {
     String accountID = "";
 
     @Before("@CreateAndDeleteAsset")
-    public void createAnAsset() {
+    public void createAnAsset() throws JsonProcessingException {
+        asset.setName("asset name from java");
+        asset.setAccountId("0015e00000BFWjNAAX");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Asset/")
+                .addBody(new ObjectMapper().writeValueAsString(asset))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
     @After("@CreateAndDeleteAsset")
     public void deleteAnAsset() {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Asset/{assetID}")
+                .addPathParams("assetID", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
     }
 
     @Before("@CreateAsset")
@@ -87,14 +110,25 @@ public class AssetsApiSteps {
 
     @Given("I build {string} request for a single Asset")
     public void iBuildRequestForASingleAsset(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addMethod(ApiMethod.GET);
     }
 
     @When("I execute the get single Asset request on {string} endpoint")
     public void iExecuteTheGetSingleAssetRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint("/Asset/{assetID}")
+                .addPathParams("assetID", responseObject.getId())
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on get single Asset request")
     public void theResponseStatusCodeShouldBeOnGetSingleAssetRequest(final String statusCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 200);
+        apiResponse.getResponse().then().log().body();
     }
 
     @Given("I build a {string} request for all Assets")

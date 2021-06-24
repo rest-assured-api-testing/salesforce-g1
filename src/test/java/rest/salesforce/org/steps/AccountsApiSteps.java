@@ -9,7 +9,10 @@
 
 package rest.salesforce.org.steps;
 
-import api.*;
+import api.ApiManager;
+import api.ApiMethod;
+import api.ApiRequestBuilder;
+import api.ApiResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
@@ -31,11 +34,30 @@ public class AccountsApiSteps {
     Account account = new Account();
 
     @Before("@CreateAndDeleteAccount")
-    public void createAnAccount() {
+    public void createAnAccount() throws JsonProcessingException {
+        account.setName("cristian choque from java");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Account/")
+                .addBody(new ObjectMapper().writeValueAsString(account))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
     @After("@CreateAndDeleteAccount")
     public void deleteAnAccount() {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Account/{accountID}")
+                .addPathParams("accountID", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
     }
 
     @Before("@CreateAccount")
@@ -59,14 +81,25 @@ public class AccountsApiSteps {
 
     @Given("I build a {string} request for a single Account")
     public void iBuildARequestForASingleAccount(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addMethod(ApiMethod.GET);
     }
 
     @When("I execute the get single Account request on {string} endpoint")
     public void iExecuteTheGetSingleAccountRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint("/Account/{accountID}")
+                .addPathParams("accountID", responseObject.getId())
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on get single Account request")
     public void theResponseStatusCodeShouldBeOnGetSingleAccountRequest(final String statusCCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 200);
+        apiResponse.getResponse().then().log().body();
     }
 
     @Given("I build a {string} request for all Accounts")
