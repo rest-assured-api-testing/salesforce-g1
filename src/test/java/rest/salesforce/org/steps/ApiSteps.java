@@ -25,7 +25,7 @@ public class ApiSteps {
 
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() throws JsonProcessingException {
-        accountToSend.setName("Account used for testing");
+        accountToSend.setName("New Account used for testing");
         requestBuilder
                 .clearPathParams()
                 .addToken(dotenv.get("TOKEN"))
@@ -41,11 +41,27 @@ public class ApiSteps {
     @After("@CreateAndDeleteAccount")
     public void deleteAnAccount() {
         requestBuilder
+                .clearPathParams()
                 .addEndpoint("/Account/{accountID}")
                 .addPathParams("accountID", apiResponseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build());
+    }
+
+    @Before("@CreateAccount")
+    public void createAccount() throws JsonProcessingException {
+        accountToSend.setName("New Account used for testing");
+        requestBuilder
+                .clearPathParams()
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Account/")
+                .addBody(new ObjectMapper().writeValueAsString(accountToSend))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
     }
 
     @After("@DeleteAccount")
@@ -90,5 +106,33 @@ public class ApiSteps {
 
     @When("I execute the request on {string} endpoint and {string} param")
     public void iExecuteTheRequestOnEndpointAndParam(final String endpoint, final String param) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .addPathParams(param, apiResponseObject.getId())
+                .build();
+        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+    }
+
+    @When("I execute the request on {string}")
+    public void iExecuteTheRequestOn(final String endpoint) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .build();
+        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+    }
+
+    @And("I execute the request with body on {string} endpoint and {string} param")
+    public void iExecuteTheRequestWithBodyOnEndpointAndParam(final String endpoint, final String param) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .addPathParams(param, apiResponseObject.getId())
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+    }
+
+    @When("^I set body with parameters$")
+    public void iSetBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException {
+        accountToSend.setName(entry.get("name"));
+        requestBuilder.setBody(new ObjectMapper().writeValueAsString(accountToSend));
     }
 }

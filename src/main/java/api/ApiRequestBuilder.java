@@ -123,6 +123,14 @@ public  class ApiRequestBuilder implements IBuilder{
         return this;
     }
 
+    /**
+     * Sets the body
+     * @param newBody a String with the new body
+     */
+    public void setBody(final String newBody) {
+        this.body = newBody;
+    }
+
     @Override
     public ApiRequest build() {
         ApiRequest apiRequest = new ApiRequest();
