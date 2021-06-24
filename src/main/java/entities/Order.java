@@ -21,7 +21,7 @@ public class Order {
     @JsonProperty("OriginalOrderId")
     public Object originalOrderId;
     @JsonProperty("EffectiveDate")
-    public Date effectiveDate;
+    public String effectiveDate;
     @JsonProperty("EndDate")
     public Object endDate;
     @JsonProperty("IsReductionOrder")
@@ -171,11 +171,11 @@ public class Order {
         this.originalOrderId = originalOrderId;
     }
 
-    public Date getEffectiveDate() {
+    public String getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(Date effectiveDate) {
+    public void setEffectiveDate(String effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 

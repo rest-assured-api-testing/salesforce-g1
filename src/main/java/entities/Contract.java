@@ -17,7 +17,7 @@ public class Contract {
     @JsonProperty("OwnerExpirationNotice")
     public String ownerExpirationNotice;
     @JsonProperty("StartDate")
-    public Date startDate;
+    public String startDate;
     @JsonProperty("EndDate")
     public String endDate;
     @JsonProperty("BillingStreet")
@@ -127,11 +127,11 @@ public class Contract {
         this.ownerExpirationNotice = ownerExpirationNotice;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 

@@ -23,7 +23,7 @@ Feature: Contracts
       | object | Contract |
       | accountId | 0015e00000B0PtfAAF |
       | status | Draft |
-      | startDate | 28/06/2021 |
+      | startDate | 2021-06-28 |
       | contractTerm | 6 |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "CREATED"

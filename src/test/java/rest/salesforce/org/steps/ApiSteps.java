@@ -173,13 +173,13 @@ public class ApiSteps {
         } else if (entry.get("object").equals("Contract")) {
             contractToSend.setAccountId(entry.get("accountId"));
             contractToSend.setStatus(entry.get("status"));
-            contractToSend.setStartDate(new SimpleDateFormat("dd/MM/yyyy").parse(entry.get("startDate")));
+            contractToSend.setStartDate(entry.get("startDate"));
             contractToSend.setContractTerm(Integer.parseInt(entry.get("contractTerm")));
             requestBuilder.addBody(new ObjectMapper().writeValueAsString(contractToSend));
         } else if (entry.get("object").equals("Order")) {
             orderToSend.setAccountId(entry.get("accountId"));
             orderToSend.setStatus(entry.get("status"));
-            orderToSend.setEffectiveDate(new SimpleDateFormat("dd/MM/yyyy").parse(entry.get("effectiveDate")));
+            orderToSend.setEffectiveDate(entry.get("effectiveDate"));
             orderToSend.setContractId(entry.get("contractId"));
             requestBuilder.addBody(new ObjectMapper().writeValueAsString(orderToSend));
         }

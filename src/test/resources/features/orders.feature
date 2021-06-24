@@ -23,7 +23,7 @@ Feature: Orders
       | object | Order |
       | accountId | 0015e00000B0PtfAAF |
       | status | Draft |
-      | effectiveDate | 01/07/2021 |
+      | effectiveDate | 2021-07-01 |
       | contractId | 8005e000000cIKBAA2 |
     And I execute the request on "/Order" endpoint
     Then The response status code should be "CREATED"
