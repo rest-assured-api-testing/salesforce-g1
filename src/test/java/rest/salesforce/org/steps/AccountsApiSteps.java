@@ -24,9 +24,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
 import static configfile.Configuration.dotenv;
-
 public class AccountsApiSteps {
     ResponseObject responseObject = new ResponseObject();
     ApiResponse apiResponse = new ApiResponse();
@@ -74,7 +72,6 @@ public class AccountsApiSteps {
         apiResponse = ApiManager.executeWithBody(requestBuilder.build());
         responseObject = apiResponse.getBody(ResponseObject.class);
     }
-
     @After("@DeleteAccount")
     public void deleteAccount() {
     }
@@ -105,38 +102,30 @@ public class AccountsApiSteps {
     @Given("I build a {string} request for all Accounts")
     public void iBuildARequestForAllAccounts(final String apiMethod) {
     }
-
     @When("I execute the get all Accounts request on {string} endpoint")
     public void iExecuteTheGetAllAccountsRequestOnEndpoint(final String endpoint) {
     }
-
     @Then("The response status code should be {string} on get all Accounts request")
     public void theResponseStatusCodeShouldBeOnGetAllAccountsRequest(final String statusCode) {
     }
-
     @Given("I build a {string} request for an Account")
     public void iBuildARequestForAnAccount(final String apiMethod) {
         requestBuilder
                 .addToken(dotenv.get("TOKEN"))
                 .addBaseUri(dotenv.get("BASE_URL"));
     }
-
     @And("I execute the post Account request on {string} endpoint")
     public void iExecuteThePostAccountRequestOnEndpoint(final String endpoint) {
     }
-
     @Then("The response status code should be {string} on post Account request")
     public void theResponseStatusCodeShouldBeOnPostAccountRequest(final String statusCode) {
     }
-
     @And("I execute the patch Account request on {string} endpoint")
     public void iExecuteThePatchAccountRequestOnEndpoint(final String endpoint) {
     }
-
     @Then("The response status code should be {string} on patch Account request")
     public void theResponseStatusCodeShouldBeOnPatchAccountRequest(final String statusCode) {
     }
-
     @When("I execute the delete Account request on {string} endpoint")
     public void iExecuteTheDeleteAccountRequestOnEndpoint(final String endpoint) {
         requestBuilder
@@ -146,12 +135,10 @@ public class AccountsApiSteps {
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());
     }
-
     @Then("The response status code should be {string} on delete Account request")
     public void theResponseStatusCodeShouldBeOnDeleteAccountRequest(final String statusCode) {
         Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
-
     @When("I create Account body with name {string}")
     public void iCreateAccountBodyWithName(final String accountName) {
     }

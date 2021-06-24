@@ -14,10 +14,19 @@ Feature: Contracts
 
   @DeleteContract
   Scenario: Post a Contract
-    Given I build a "POST" request for a Contract
-    When I create Contract body with start date "25/06/2021"
-    And I execute the post Contract request on "/Contract" endpoint
-    Then The response status code should be "CREATED" on post Contract request
+#    Given I build a "POST" request for a Contract
+#    When I create Contract body with start date "25/06/2021"
+#    And I execute the post Contract request on "/Contract" endpoint
+#    Then The response status code should be "CREATED" on post Contract request
+    Given I build a "POST" request
+    When I create body with parameters
+      | object | Contract |
+      | accountId | 0015e00000B0PtfAAF |
+      | status | Draft |
+      | startDate | 2021-06-28 |
+      | contractTerm | 6 |
+    And I execute the request on "/Contract" endpoint
+    Then The response status code should be "CREATED"
 
   @CreateAndDeleteContract
   Scenario: Patch a Contract
