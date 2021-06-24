@@ -135,8 +135,8 @@ public class AssetsApiSteps {
     @When("I execute the delete Asset request on {string} endpoint")
     public void iExecuteTheDeleteAssetRequestOnEndpoint(final String endpoint) {
         requestBuilder
-                .addEndpoint("/Asset/{assetID}")
-                .addPathParams("assetID", responseObject.getId())
+                .addEndpoint(endpoint)
+                .addPathParams("AssetId", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());

@@ -111,8 +111,8 @@ public class ContactsApiSteps {
     @When("I execute the delete Contact request on {string} endpoint")
     public void iExecuteTheDeleteContactRequestOnEndpoint(final String endpoint) {
         requestBuilder
-                .addEndpoint("/Contact/{contactID}")
-                .addPathParams("contactID", responseObject.getId())
+                .addEndpoint(endpoint)
+                .addPathParams("ContactId", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());

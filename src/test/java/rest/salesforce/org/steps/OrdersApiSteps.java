@@ -165,8 +165,8 @@ public class OrdersApiSteps {
     @When("I execute the delete Order request on {string} endpoint")
     public void iExecuteTheDeleteOrderRequestOnEndpoint(final String endpoint) {
         requestBuilder
-                .addEndpoint("/Order/{orderID}")
-                .addPathParams("orderID", responseObject.getId())
+                .addEndpoint(endpoint)
+                .addPathParams("OrderId", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());

@@ -141,8 +141,8 @@ public class ContractsApiSteps {
     @When("I execute the delete Contract request on {string} endpoint")
     public void iExecuteTheDeleteContractRequestOnEndpoint(final String endpoint) {
         requestBuilder
-                .addEndpoint("/Contract/{contractID}")
-                .addPathParams("contractID", responseObject.getId())
+                .addEndpoint(endpoint)
+                .addPathParams("ContractId", responseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());

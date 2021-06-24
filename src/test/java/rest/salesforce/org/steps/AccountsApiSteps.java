@@ -107,8 +107,8 @@ public class AccountsApiSteps {
     @When("I execute the delete Account request on {string} endpoint")
     public void iExecuteTheDeleteAccountRequestOnEndpoint(final String endpoint) {
         requestBuilder
-                .addEndpoint("/Account/{accountID}")
-                .addPathParams("accountID", responseObject.getId().toString())
+                .addEndpoint(endpoint)
+                .addPathParams("AccountId", responseObject.getId().toString())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());
