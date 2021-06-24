@@ -19,7 +19,8 @@ Feature: Accounts
 #    And I execute the post Account request on "/Account" endpoint
 #    Then The response status code should be "CREATED" on post Account request
     Given I build a "POST" request
-    When I create "Account" body with parameters
+    When I create body with parameters
+      | object | Account |
       | name | My Account for Testing |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"

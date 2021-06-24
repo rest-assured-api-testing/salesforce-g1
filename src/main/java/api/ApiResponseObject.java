@@ -7,11 +7,11 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package entities;
+package api;
 
 import java.util.List;
 
-public class ResponseObject {
+public class ApiResponseObject {
     public String id;
     public boolean success;
     public List<Object> errors;

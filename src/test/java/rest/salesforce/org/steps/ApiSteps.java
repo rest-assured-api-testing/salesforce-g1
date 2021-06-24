@@ -4,7 +4,7 @@ import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
-import entities.ResponseObject;
+import api.ApiResponseObject;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -18,7 +18,7 @@ import static configfile.Configuration.dotenv;
 
 public class ApiSteps {
     ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
-    ResponseObject responseObject = new ResponseObject();
+    ApiResponseObject apiResponseObject = new ApiResponseObject();
     ApiResponse apiResponse = new ApiResponse();
     Account accountToSend = new Account();
 
@@ -29,7 +29,7 @@ public class ApiSteps {
                 .addToken(dotenv.get("TOKEN"))
                 .addBaseUri(dotenv.get("BASE_URL"))
                 .addEndpoint("/Account/{accountID}")
-                .addPathParams("accountID", responseObject.getId().toString())
+                .addPathParams("accountID", apiResponseObject.getId().toString())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build());
@@ -42,7 +42,7 @@ public class ApiSteps {
                 .addMethod(ApiMethod.valueOf(apiMethod));
     }
 
-    @When("^I create {string} body with parameters$")
+    @When("^I create body with parameters$")
     public void iCreateBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException {
         accountToSend.setName(entry.get("name"));
         requestBuilder.addBody(new ObjectMapper().writeValueAsString(accountToSend));
@@ -54,7 +54,7 @@ public class ApiSteps {
                 .addEndpoint(endpoint)
                 .build();
         apiResponse = ApiManager.executeWithBody(requestBuilder.build());
-        responseObject = apiResponse.getBody(ResponseObject.class);
+        apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
     }
 
     @Then("The response status code should be {string}")
