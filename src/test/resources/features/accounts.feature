@@ -2,9 +2,12 @@ Feature: Accounts
   Description
   @CreateAndDeleteAccount
   Scenario: Get a single Account
-    Given I build a "GET" request for a single Account
-    When I execute the get single Account request on "/Account/{AccountId}" endpoint
-    Then The response status code should be "OK" on get single Account request
+#    Given I build a "GET" request for a single Account
+#    When I execute the get single Account request on "/Account/{AccountId}" endpoint
+#    Then The response status code should be "OK" on get single Account request
+    Given I build a "GET" request
+    When I execute the request on "/Account/{AccountId}" endpoint
+    Then The response status code should be "OK"
 
   @CreateAndDeleteAccount
   Scenario: Get all Accounts
