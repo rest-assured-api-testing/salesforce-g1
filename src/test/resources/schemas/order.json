@@ -1,0 +1,308 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "url"
+      ]
+    },
+    "Id": {
+      "type": "string"
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "ContractId": {
+      "type": "string"
+    },
+    "AccountId": {
+      "type": "string"
+    },
+    "Pricebook2Id": {
+      "type": "null"
+    },
+    "OriginalOrderId": {
+      "type": "null"
+    },
+    "EffectiveDate": {
+      "type": "string"
+    },
+    "EndDate": {
+      "type": "null"
+    },
+    "IsReductionOrder": {
+      "type": "boolean"
+    },
+    "Status": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "CustomerAuthorizedById": {
+      "type": "string"
+    },
+    "CustomerAuthorizedDate": {
+      "type": "null"
+    },
+    "CompanyAuthorizedById": {
+      "type": "string"
+    },
+    "CompanyAuthorizedDate": {
+      "type": "null"
+    },
+    "Type": {
+      "type": "null"
+    },
+    "BillingStreet": {
+      "type": "string"
+    },
+    "BillingCity": {
+      "type": "string"
+    },
+    "BillingState": {
+      "type": "string"
+    },
+    "BillingPostalCode": {
+      "type": "string"
+    },
+    "BillingCountry": {
+      "type": "string"
+    },
+    "BillingLatitude": {
+      "type": "null"
+    },
+    "BillingLongitude": {
+      "type": "null"
+    },
+    "BillingGeocodeAccuracy": {
+      "type": "null"
+    },
+    "BillingAddress": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
+    },
+    "ShippingStreet": {
+      "type": "string"
+    },
+    "ShippingCity": {
+      "type": "string"
+    },
+    "ShippingState": {
+      "type": "string"
+    },
+    "ShippingPostalCode": {
+      "type": "string"
+    },
+    "ShippingCountry": {
+      "type": "string"
+    },
+    "ShippingLatitude": {
+      "type": "null"
+    },
+    "ShippingLongitude": {
+      "type": "null"
+    },
+    "ShippingGeocodeAccuracy": {
+      "type": "null"
+    },
+    "ShippingAddress": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "geocodeAccuracy": {
+          "type": "null"
+        },
+        "latitude": {
+          "type": "null"
+        },
+        "longitude": {
+          "type": "null"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "city",
+        "country",
+        "geocodeAccuracy",
+        "latitude",
+        "longitude",
+        "postalCode",
+        "state",
+        "street"
+      ]
+    },
+    "Name": {
+      "type": "null"
+    },
+    "PoDate": {
+      "type": "null"
+    },
+    "PoNumber": {
+      "type": "null"
+    },
+    "OrderReferenceNumber": {
+      "type": "null"
+    },
+    "BillToContactId": {
+      "type": "null"
+    },
+    "ShipToContactId": {
+      "type": "null"
+    },
+    "ActivatedDate": {
+      "type": "null"
+    },
+    "ActivatedById": {
+      "type": "null"
+    },
+    "StatusCode": {
+      "type": "string"
+    },
+    "OrderNumber": {
+      "type": "string"
+    },
+    "TotalAmount": {
+      "type": "number"
+    },
+    "CreatedDate": {
+      "type": "string"
+    },
+    "CreatedById": {
+      "type": "string"
+    },
+    "LastModifiedDate": {
+      "type": "string"
+    },
+    "LastModifiedById": {
+      "type": "string"
+    },
+    "IsDeleted": {
+      "type": "boolean"
+    },
+    "SystemModstamp": {
+      "type": "string"
+    },
+    "LastViewedDate": {
+      "type": "string"
+    },
+    "LastReferencedDate": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "attributes",
+    "Id",
+    "OwnerId",
+    "ContractId",
+    "AccountId",
+    "Pricebook2Id",
+    "OriginalOrderId",
+    "EffectiveDate",
+    "EndDate",
+    "IsReductionOrder",
+    "Status",
+    "Description",
+    "CustomerAuthorizedById",
+    "CustomerAuthorizedDate",
+    "CompanyAuthorizedById",
+    "CompanyAuthorizedDate",
+    "Type",
+    "BillingStreet",
+    "BillingCity",
+    "BillingState",
+    "BillingPostalCode",
+    "BillingCountry",
+    "BillingLatitude",
+    "BillingLongitude",
+    "BillingGeocodeAccuracy",
+    "BillingAddress",
+    "ShippingStreet",
+    "ShippingCity",
+    "ShippingState",
+    "ShippingPostalCode",
+    "ShippingCountry",
+    "ShippingLatitude",
+    "ShippingLongitude",
+    "ShippingGeocodeAccuracy",
+    "ShippingAddress",
+    "Name",
+    "PoDate",
+    "PoNumber",
+    "OrderReferenceNumber",
+    "BillToContactId",
+    "ShipToContactId",
+    "ActivatedDate",
+    "ActivatedById",
+    "StatusCode",
+    "OrderNumber",
+    "TotalAmount",
+    "CreatedDate",
+    "CreatedById",
+    "LastModifiedDate",
+    "LastModifiedById",
+    "IsDeleted",
+    "SystemModstamp",
+    "LastViewedDate",
+    "LastReferencedDate"
+  ]
+}
