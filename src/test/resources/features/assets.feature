@@ -14,10 +14,17 @@ Feature:  Assets
 
   @DeleteAsset
   Scenario: Post an Asset
-    Given I build a "POST" request for an Asset
-    When I create Asset body with name "My Asset for testing"
-    And I execute the post Asset request on "/Asset" endpoint
-    Then The response status code should be "CREATED" on post Asset request
+#    Given I build a "POST" request for an Asset
+#    When I create Asset body with name "My Asset for testing"
+#    And I execute the post Asset request on "/Asset" endpoint
+#    Then The response status code should be "CREATED" on post Asset request
+    Given I build a "POST" request
+    When I create body with parameters
+      | object | Asset |
+      | name | My Asset for Testing |
+      | assetId | 0015e00000B0PtfAAF |
+    And I execute the request on "/Asset" endpoint
+    Then The response status code should be "CREATED"
 
   @CreateAndDeleteAsset
   Scenario: Patch an Asset

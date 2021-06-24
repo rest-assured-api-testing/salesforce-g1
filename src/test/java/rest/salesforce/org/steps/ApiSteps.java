@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
 import api.ApiResponseObject;
+import entities.Asset;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -30,6 +31,7 @@ public class ApiSteps {
     ApiResponseObject apiResponseObject = new ApiResponseObject();
     ApiResponse apiResponse = new ApiResponse();
     Account accountToSend = new Account();
+    Asset assetToSend = new Asset();
 
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() throws JsonProcessingException {
@@ -85,6 +87,19 @@ public class ApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
+    @After("@DeleteAsset")
+    public void deleteAsset() {
+        requestBuilder
+                .clearPathParams()
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Asset/{assetID}")
+                .addPathParams("assetID", apiResponseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
+    }
+
     @Given("I build a {string} request")
     public void iBuildARequest(final String apiMethod) {
         requestBuilder.addToken(dotenv.get("TOKEN"))
@@ -94,8 +109,14 @@ public class ApiSteps {
 
     @When("^I create body with parameters$")
     public void iCreateBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException {
-        accountToSend.setName(entry.get("name"));
-        requestBuilder.addBody(new ObjectMapper().writeValueAsString(accountToSend));
+        if (entry.get("object").equals("Account")) {
+            accountToSend.setName(entry.get("name"));
+            requestBuilder.addBody(new ObjectMapper().writeValueAsString(accountToSend));
+        } else if (entry.get("object").equals("Asset")) {
+            assetToSend.setName(entry.get("name"));
+            assetToSend.setAccountId(entry.get("assetId"));
+            requestBuilder.addBody(new ObjectMapper().writeValueAsString(assetToSend));
+        }
     }
 
     @And("I execute the request on {string} endpoint")
