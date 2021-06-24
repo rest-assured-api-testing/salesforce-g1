@@ -15,6 +15,7 @@ import api.ApiRequestBuilder;
 import api.ApiResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import entities.Account;
 import entities.Asset;
 import entities.ResponseObject;
 import io.cucumber.java.After;
@@ -28,20 +29,23 @@ import org.testng.Assert;
 import static configfile.Configuration.dotenv;
 
 public class AssetsApiSteps {
-    ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
     ResponseObject responseObject = new ResponseObject();
     ApiResponse apiResponse = new ApiResponse();
-    Asset assetToSend = new Asset();
+    ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
+    Asset asset = new Asset();
+    Account account = new Account();
+    String accountID = "";
+
     @Before("@CreateAndDeleteAsset")
     public void createAnAsset() throws JsonProcessingException {
-        assetToSend.setName("asset name from java");
-        assetToSend.setAccountId("0015e00000BFWjNAAX");
+        asset.setName("asset name from java");
+        asset.setAccountId("0015e00000BFWjNAAX");
         requestBuilder
                 .addToken(dotenv.get("TOKEN"))
                 .addBaseUri(dotenv.get("BASE_URL"))
                 .clearPathParams()
                 .addEndpoint("/Asset/")
-                .addBody(new ObjectMapper().writeValueAsString(assetToSend))
+                .addBody(new ObjectMapper().writeValueAsString(asset))
                 .addMethod(ApiMethod.POST)
                 .build();
         apiResponse = ApiManager.executeWithBody(requestBuilder.build());
@@ -61,7 +65,43 @@ public class AssetsApiSteps {
     }
 
     @Before("@CreateAsset")
-    public void createAsset() {
+    public void createAsset() throws JsonProcessingException {
+        account.setName("account name to test");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Account/")
+                .addBody(new ObjectMapper().writeValueAsString(account))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
+        accountID = responseObject.getId();
+
+        asset.setName("asset name to test");
+        asset.setAccountId(responseObject.getId());
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Asset/")
+                .addBody(new ObjectMapper().writeValueAsString(asset))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
+    }
+
+    @After("@CreateAsset")
+    public void deleteAssetAccount() {
+        requestBuilder
+                .addEndpoint("/Account/{accountID}")
+                .clearPathParams()
+                .addPathParams("accountID", accountID)
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
     }
 
     @After("@DeleteAsset")
@@ -105,6 +145,9 @@ public class AssetsApiSteps {
 
     @Given("I build a {string} request for an Asset")
     public void iBuildARequestForAnAsset(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"));
     }
 
     @And("I execute the post Asset request on {string} endpoint")
@@ -125,10 +168,17 @@ public class AssetsApiSteps {
 
     @When("I execute the delete Asset request on {string} endpoint")
     public void iExecuteTheDeleteAssetRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .addPathParams("AssetId", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on delete Asset request")
     public void theResponseStatusCodeShouldBeOnDeleteAssetRequest(final String statusCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
 
     @When("I create Asset body with name {string}")

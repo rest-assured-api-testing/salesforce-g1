@@ -3,7 +3,6 @@ package entities;
 import java.util.List;
 
 public class ResponseObject {
-
     public String id;
     public boolean success;
     public List<Object> errors;
