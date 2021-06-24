@@ -9,11 +9,19 @@
 
 package rest.salesforce.org.steps;
 
-import api.*;
+import api.ApiManager;
+import api.ApiResponseObject;
+import api.ApiResponse;
+import api.ApiStatusCode;
+import api.ApiRequestBuilder;
+import api.ApiMethod;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entities.*;
-import api.ApiResponseObject;
+import entities.Account;
+import entities.Asset;
+import entities.Contact;
+import entities.Contract;
+import entities.Order;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
