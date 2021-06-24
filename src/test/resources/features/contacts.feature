@@ -14,10 +14,17 @@ Feature: Contacts
 
   @DeleteContact
   Scenario: Post a Contact
-    Given I build a "POST" request for a Contact
-    When I create Contact body with name "My Contact for testing"
-    And I execute the post Contact request on "/Contact" endpoint
-    Then The response status code should be "CREATED" on post Contact request
+#    Given I build a "POST" request for a Contact
+#    When I create Contact body with name "My Contact for testing"
+#    And I execute the post Contact request on "/Contact" endpoint
+#    Then The response status code should be "CREATED" on post Contact request
+    Given I build a "POST" request
+    When I create body with parameters
+      | object | Contact |
+      | lastName | Perez |
+      | accountId | 0015e00000B0PtfAAF |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "CREATED"
 
   @CreateAndDeleteContact
   Scenario: Patch a Contact

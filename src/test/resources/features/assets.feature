@@ -22,7 +22,7 @@ Feature:  Assets
     When I create body with parameters
       | object | Asset |
       | name | My Asset for Testing |
-      | assetId | 0015e00000B0PtfAAF |
+      | accountId | 0015e00000B0PtfAAF |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
 

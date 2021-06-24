@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
 import api.ApiResponseObject;
 import entities.Asset;
+import entities.Contact;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -32,6 +33,7 @@ public class ApiSteps {
     ApiResponse apiResponse = new ApiResponse();
     Account accountToSend = new Account();
     Asset assetToSend = new Asset();
+    Contact contactToSend = new Contact();
 
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() throws JsonProcessingException {
@@ -100,6 +102,19 @@ public class ApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
+    @After("@DeleteContact")
+    public void deleteContact() {
+        requestBuilder
+                .clearPathParams()
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Contact/{contactID}")
+                .addPathParams("contactID", apiResponseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
+    }
+
     @Given("I build a {string} request")
     public void iBuildARequest(final String apiMethod) {
         requestBuilder.addToken(dotenv.get("TOKEN"))
@@ -114,8 +129,12 @@ public class ApiSteps {
             requestBuilder.addBody(new ObjectMapper().writeValueAsString(accountToSend));
         } else if (entry.get("object").equals("Asset")) {
             assetToSend.setName(entry.get("name"));
-            assetToSend.setAccountId(entry.get("assetId"));
+            assetToSend.setAccountId(entry.get("accountId"));
             requestBuilder.addBody(new ObjectMapper().writeValueAsString(assetToSend));
+        } else if (entry.get("object").equals("Contact")) {
+            contactToSend.setLastName(entry.get("lastName"));
+            contactToSend.setAccountId(entry.get("accountId"));
+            requestBuilder.addBody(new ObjectMapper().writeValueAsString(contactToSend));
         }
     }
 
