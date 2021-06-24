@@ -1,4 +1,4 @@
-package entities.responseobject;
+package entities;
 
 import java.util.List;
 

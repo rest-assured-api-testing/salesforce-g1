@@ -3,7 +3,7 @@ package contact;
 import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entities.responseobject.ResponseObject;
+import entities.ResponseObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
