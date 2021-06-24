@@ -36,7 +36,7 @@ public class AccountsApiSteps {
 
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() throws JsonProcessingException {
-        accountToSend.setName("cristian choque desde java");
+        accountToSend.setName("cristian choque from java");
         requestBuilder
                 .addToken(dotenv.get("TOKEN"))
                 .addBaseUri(dotenv.get("BASE_URL"))

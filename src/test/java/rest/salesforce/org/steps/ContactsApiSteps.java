@@ -15,7 +15,6 @@ import api.ApiRequestBuilder;
 import api.ApiResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entities.Account;
 import entities.Contact;
 import entities.responseobject.ResponseObject;
 import io.cucumber.java.After;

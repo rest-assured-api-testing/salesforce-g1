@@ -17,11 +17,7 @@ public class AssetTest extends AssetBaseTest{
                 .addMethod(ApiMethod.GET)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());
-//        Asset asset = apiResponse.getBody(Asset.class);
-//        System.out.println("------------ " + asset.getFirstName());
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
-//        System.out.println("++++++++++++" + apiResponse.getStatusCode());
-//        apiResponse.validateBodySchema("schemas/asset.json");
     }
 
     @Test(groups = {"createAsset", "deleteAsset"})
@@ -59,7 +55,6 @@ public class AssetTest extends AssetBaseTest{
                 .build();
         ApiResponse apiResponse = ApiManager.executeWithBody(requestBuilder.build());
         responseObject = apiResponse.getBody(ResponseObject.class);
-        System.out.println("----------------" + responseObject.getId());
         Assert.assertEquals(apiResponse.getStatusCode(), 201);
     }
 }

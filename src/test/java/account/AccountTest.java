@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AccountTest extends AccountBaseTest{
-
     @Test(groups = {"createAccount", "deleteAccount"})
     public void getAccountTest() {
         requestBuilder
@@ -17,11 +16,8 @@ public class AccountTest extends AccountBaseTest{
                 .addMethod(ApiMethod.GET)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());
-//        Account account = apiResponse.getBody(Account.class);
-//        System.out.println("------------ " + account.getName());
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
         System.out.println("++++++++++++" + apiResponse.getStatusCode());
-//        apiResponse.validateBodySchema("schemas/account.json");
     }
 
     @Test(groups = {"createAccount", "deleteAccount"})
@@ -46,11 +42,8 @@ public class AccountTest extends AccountBaseTest{
                 .addMethod(ApiMethod.DELETE)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());
-//        Account account = apiResponse.getBody(Account.class);
-//        System.out.println("------------ " + account.getName());
         Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
-
 
     @Test(groups = "deleteAccount")
     public void createAAccountTest() throws JsonProcessingException {
@@ -62,10 +55,6 @@ public class AccountTest extends AccountBaseTest{
                 .build();
         ApiResponse apiResponse = ApiManager.executeWithBody(requestBuilder.build());
         responseObject = apiResponse.getBody(ResponseObject.class);
-        System.out.println("----------------" + responseObject.getId());
         Assert.assertEquals(apiResponse.getStatusCode(), 201);
-//        Assert.assertEquals(account.getAttributes().getType(), "Account");
-//        apiResponse.validateBodySchema("schemas/account.json");
     }
-
 }

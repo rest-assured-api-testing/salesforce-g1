@@ -17,11 +17,7 @@ public class ContactTest extends ContactBaseTest{
                 .addMethod(ApiMethod.GET)
                 .build();
         apiResponse = ApiManager.execute(requestBuilder.build());
-//        Contact contact = apiResponse.getBody(Contact.class);
-//        System.out.println("------------ " + contact.getFirstName());
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
-//        System.out.println("++++++++++++" + apiResponse.getStatusCode());
-//        apiResponse.validateBodySchema("schemas/contact.json");
     }
 
     @Test(groups = {"createContact", "deleteContact"})
@@ -47,8 +43,7 @@ public class ContactTest extends ContactBaseTest{
         apiResponse = ApiManager.execute(requestBuilder.build());
         Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
-//
-//
+
     @Test(groups = "deleteContact")
     public void createAContactTest() throws JsonProcessingException {
         contactToSend.setFirstName("contact from java");
@@ -60,8 +55,6 @@ public class ContactTest extends ContactBaseTest{
                 .build();
         ApiResponse apiResponse = ApiManager.executeWithBody(requestBuilder.build());
         responseObject = apiResponse.getBody(ResponseObject.class);
-//        System.out.println("----------------" + responseObject.getId());
         Assert.assertEquals(apiResponse.getStatusCode(), 201);
     }
-
 }
