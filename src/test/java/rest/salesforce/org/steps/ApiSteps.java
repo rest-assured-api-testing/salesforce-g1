@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
 import api.ApiResponseObject;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,6 +23,31 @@ public class ApiSteps {
     ApiResponse apiResponse = new ApiResponse();
     Account accountToSend = new Account();
 
+    @Before("@CreateAndDeleteAccount")
+    public void createAnAccount() throws JsonProcessingException {
+        accountToSend.setName("Account used for testing");
+        requestBuilder
+                .clearPathParams()
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Account/")
+                .addBody(new ObjectMapper().writeValueAsString(accountToSend))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
+    }
+
+    @After("@CreateAndDeleteAccount")
+    public void deleteAnAccount() {
+        requestBuilder
+                .addEndpoint("/Account/{accountID}")
+                .addPathParams("accountID", apiResponseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
+    }
+
     @After("@DeleteAccount")
     public void deleteAccount() {
         requestBuilder
@@ -29,7 +55,7 @@ public class ApiSteps {
                 .addToken(dotenv.get("TOKEN"))
                 .addBaseUri(dotenv.get("BASE_URL"))
                 .addEndpoint("/Account/{accountID}")
-                .addPathParams("accountID", apiResponseObject.getId().toString())
+                .addPathParams("accountID", apiResponseObject.getId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build());
@@ -60,5 +86,9 @@ public class ApiSteps {
     @Then("The response status code should be {string}")
     public void theResponseStatusCodeShouldBe(final String statusCode) {
         Assert.assertEquals(apiResponse.getStatusCode(), ApiStatusCode.valueOf(statusCode).getValue());
+    }
+
+    @When("I execute the request on {string} endpoint and {string} param")
+    public void iExecuteTheRequestOnEndpointAndParam(final String endpoint, final String param) {
     }
 }

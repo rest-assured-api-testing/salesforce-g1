@@ -6,7 +6,7 @@ Feature: Accounts
 #    When I execute the get single Account request on "/Account/{AccountId}" endpoint
 #    Then The response status code should be "OK" on get single Account request
     Given I build a "GET" request
-    When I execute the request on "/Account/{AccountId}" endpoint
+    When I execute the request on "/Account/{AccountId}" endpoint and "AccountId" param
     Then The response status code should be "OK"
 
   @CreateAndDeleteAccount
