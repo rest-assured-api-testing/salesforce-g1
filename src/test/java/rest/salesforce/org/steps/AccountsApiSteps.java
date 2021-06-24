@@ -9,14 +9,27 @@
 
 package rest.salesforce.org.steps;
 
+import api.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import entities.Account;
+import entities.ResponseObject;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+
+import static configfile.Configuration.dotenv;
 
 public class AccountsApiSteps {
+    ResponseObject responseObject = new ResponseObject();
+    ApiResponse apiResponse = new ApiResponse();
+    ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
+    Account account = new Account();
+
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() {
     }
@@ -26,7 +39,18 @@ public class AccountsApiSteps {
     }
 
     @Before("@CreateAccount")
-    public void createAccount() {
+    public void createAccount() throws JsonProcessingException {
+        account.setName("account name to test");
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .clearPathParams()
+                .addEndpoint("/Account/")
+                .addBody(new ObjectMapper().writeValueAsString(account))
+                .addMethod(ApiMethod.POST)
+                .build();
+        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
+        responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
     @After("@DeleteAccount")
@@ -59,6 +83,9 @@ public class AccountsApiSteps {
 
     @Given("I build a {string} request for an Account")
     public void iBuildARequestForAnAccount(final String apiMethod) {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"));
     }
 
     @And("I execute the post Account request on {string} endpoint")
@@ -79,10 +106,17 @@ public class AccountsApiSteps {
 
     @When("I execute the delete Account request on {string} endpoint")
     public void iExecuteTheDeleteAccountRequestOnEndpoint(final String endpoint) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .addPathParams("AccountId", responseObject.getId().toString())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("The response status code should be {string} on delete Account request")
     public void theResponseStatusCodeShouldBeOnDeleteAccountRequest(final String statusCode) {
+        Assert.assertEquals(apiResponse.getStatusCode(), 204);
     }
 
     @When("I create Account body with name {string}")
