@@ -17,7 +17,7 @@ public class Contract {
     @JsonProperty("OwnerExpirationNotice")
     public String ownerExpirationNotice;
     @JsonProperty("StartDate")
-    public String startDate;
+    public Date startDate;
     @JsonProperty("EndDate")
     public String endDate;
     @JsonProperty("BillingStreet")
@@ -65,7 +65,7 @@ public class Contract {
     @JsonProperty("Description")
     public String description;
     @JsonProperty("IsDeleted")
-    public boolean isDeleted;
+    public Boolean isDeleted;
     @JsonProperty("ContractNumber")
     public String contractNumber;
     @JsonProperty("LastApprovedDate")
@@ -127,11 +127,11 @@ public class Contract {
         this.ownerExpirationNotice = ownerExpirationNotice;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -319,11 +319,11 @@ public class Contract {
         this.description = description;
     }
 
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
 

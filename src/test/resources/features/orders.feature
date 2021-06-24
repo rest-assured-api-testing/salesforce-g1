@@ -14,10 +14,19 @@ Feature: Orders
 
   @DeleteOrder
   Scenario: Post a Order
-    Given I build a "POST" request for a Order
-    When I create Order body with start date "29/06/2021"
-    And I execute the post Order request on "/Order" endpoint
-    Then The response status code should be "CREATED" on post Order request
+#    Given I build a "POST" request for a Order
+#    When I create Order body with start date "29/06/2021"
+#    And I execute the post Order request on "/Order" endpoint
+#    Then The response status code should be "CREATED" on post Order request
+    Given I build a "POST" request
+    When I create body with parameters
+      | object | Order |
+      | accountId | 0015e00000B0PtfAAF |
+      | status | Draft |
+      | effectiveDate | 01/07/2021 |
+      | contractId | 8005e000000cIKBAA2 |
+    And I execute the request on "/Order" endpoint
+    Then The response status code should be "CREATED"
 
   @CreateAndDeleteOrder
   Scenario: Patch a Order

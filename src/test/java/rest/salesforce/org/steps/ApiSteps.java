@@ -12,10 +12,8 @@ package rest.salesforce.org.steps;
 import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entities.Account;
+import entities.*;
 import api.ApiResponseObject;
-import entities.Asset;
-import entities.Contact;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -23,8 +21,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
-
 import static configfile.Configuration.dotenv;
 
 public class ApiSteps {
@@ -34,6 +33,8 @@ public class ApiSteps {
     Account accountToSend = new Account();
     Asset assetToSend = new Asset();
     Contact contactToSend = new Contact();
+    Contract contractToSend = new Contract();
+    Order orderToSend = new Order();
 
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() throws JsonProcessingException {
@@ -115,6 +116,32 @@ public class ApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
+    @After("@DeleteContract")
+    public void deleteContract() {
+        requestBuilder
+                .clearPathParams()
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Contract/{contractID}")
+                .addPathParams("contractID", apiResponseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
+    }
+
+    @After("@DeleteOrder")
+    public void deleteOrder() {
+        requestBuilder
+                .clearPathParams()
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Order/{orderID}")
+                .addPathParams("orderID", apiResponseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
+    }
+
     @Given("I build a {string} request")
     public void iBuildARequest(final String apiMethod) {
         requestBuilder.addToken(dotenv.get("TOKEN"))
@@ -123,7 +150,7 @@ public class ApiSteps {
     }
 
     @When("^I create body with parameters$")
-    public void iCreateBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException {
+    public void iCreateBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException, ParseException {
         if (entry.get("object").equals("Account")) {
             accountToSend.setName(entry.get("name"));
             requestBuilder.addBody(new ObjectMapper().writeValueAsString(accountToSend));
@@ -135,6 +162,18 @@ public class ApiSteps {
             contactToSend.setLastName(entry.get("lastName"));
             contactToSend.setAccountId(entry.get("accountId"));
             requestBuilder.addBody(new ObjectMapper().writeValueAsString(contactToSend));
+        } else if (entry.get("object").equals("Contract")) {
+            contractToSend.setAccountId(entry.get("accountId"));
+            contractToSend.setStatus(entry.get("status"));
+            contractToSend.setStartDate(new SimpleDateFormat("dd/MM/yyyy").parse(entry.get("startDate")));
+            contractToSend.setContractTerm(Integer.parseInt(entry.get("contractTerm")));
+            requestBuilder.addBody(new ObjectMapper().writeValueAsString(contractToSend));
+        } else if (entry.get("object").equals("Order")) {
+            orderToSend.setAccountId(entry.get("accountId"));
+            orderToSend.setStatus(entry.get("status"));
+            orderToSend.setEffectiveDate(new SimpleDateFormat("dd/MM/yyyy").parse(entry.get("effectiveDate")));
+            orderToSend.setContractId(entry.get("contractId"));
+            requestBuilder.addBody(new ObjectMapper().writeValueAsString(orderToSend));
         }
     }
 
