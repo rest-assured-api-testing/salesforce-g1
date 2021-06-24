@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Account;
 import entities.responseobject.ResponseObject;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,6 +31,8 @@ public class ApiSteps {
     public void createAccount() throws JsonProcessingException {
         accountToSend.setName("cristian choque desde java");
         requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
                 .clearPathParams()
                 .addEndpoint("/Account/")
                 .addBody(new ObjectMapper().writeValueAsString(accountToSend))
@@ -51,11 +54,26 @@ public class ApiSteps {
         requestBuilder.addEndpoint("/Account/{accountID}")
                 .addPathParams("accountID", responseObject.getId())
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @Then("the response status code should be {string}")
     public void theResponseStatusCodeShouldBe(String arg0) {
         Assert.assertEquals(apiResponse.getStatusCode(), 200);
+        apiResponse.getResponse().then().log().body();
     }
+
+    @After
+    public void deleteAccount() {
+        requestBuilder
+                .addToken(dotenv.get("TOKEN"))
+                .addBaseUri(dotenv.get("BASE_URL"))
+                .addEndpoint("/Account/{accountID}")
+                .addPathParams("accountID", responseObject.getId())
+                .addMethod(ApiMethod.DELETE)
+                .build();
+        ApiManager.execute(requestBuilder.build());
+    }
+
+
 }
