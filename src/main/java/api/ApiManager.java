@@ -20,9 +20,9 @@ public class ApiManager {
      * @param apiRequest
      * @return a ApiResponse after execution of request.
      */
-    public static Response execute(ApiRequest apiRequest) {
+    public static ApiResponse execute(ApiRequest apiRequest) {
         Response response = buildRequest(apiRequest).request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
-        return response;
+        return new ApiResponse(response);
     }
 
     /**

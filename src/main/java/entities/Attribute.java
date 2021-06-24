@@ -1,5 +1,8 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Attribute {
     private String type;
     private String url;

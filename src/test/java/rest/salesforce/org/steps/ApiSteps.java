@@ -205,7 +205,7 @@ public class ApiSteps {
                 .addEndpoint(endpoint)
                 .addPathParams(param, apiResponseObject.getId())
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @When("I execute the request on {string}")
@@ -213,7 +213,7 @@ public class ApiSteps {
         requestBuilder
                 .addEndpoint(endpoint)
                 .build();
-        apiResponse = new ApiResponse(ApiManager.execute(requestBuilder.build()));
+        apiResponse = ApiManager.execute(requestBuilder.build());
     }
 
     @And("I execute the request with body on {string} endpoint and {string} param")
