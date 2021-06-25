@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) 2021 Fundacion Jala.
+ *
+ * This software is the confidential and proprietary information of Fundacion Jala
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Fundacion Jala
+ */
+
 package api;
 
 public class RequestID {
@@ -48,6 +57,11 @@ public class RequestID {
         RequestID.idOrder = idOrder;
     }
 
+    /**
+     * Gets id of any feature
+     * @param param
+     * @return
+     */
     public static String getIdFeature(String param) {
         if ("AccountId" == param){
             idFeature = getIdAccount();
