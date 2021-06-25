@@ -9,6 +9,9 @@
 
 package api;
 
+/**
+ * This enum class is to determine the status code value
+ */
 public enum ApiStatusCode {
     OK("OK", 200),
     CREATED("CREATED",201),

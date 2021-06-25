@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Contract {
+public class Contract implements Features {
     public Attribute attributes;
     @JsonProperty("Id")
     public String id;
@@ -39,7 +39,7 @@ public class Contract {
     @JsonProperty("BillingAddress")
     public BillingAddress billingAddress;
     @JsonProperty("ContractTerm")
-    public int contractTerm;
+    public Integer contractTerm;
     @JsonProperty("OwnerId")
     public String ownerId;
     @JsonProperty("Status")
@@ -215,11 +215,11 @@ public class Contract {
         this.billingAddress = billingAddress;
     }
 
-    public int getContractTerm() {
+    public Integer getContractTerm() {
         return contractTerm;
     }
 
-    public void setContractTerm(int contractTerm) {
+    public void setContractTerm(Integer contractTerm) {
         this.contractTerm = contractTerm;
     }
 
