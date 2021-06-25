@@ -1,16 +1,22 @@
 Feature: Contacts
   Description
-  @CreateAndDeleteContact
+  @CreateContact @DeleteContact
   Scenario: Get a single Contact
-    Given I build a "GET" request for a single Contact
-    When I execute the get single Contact request on "/Contact/{ContactId}" endpoint
-    Then The response status code should be "OK" on get single Contact request
+#    Given I build a "GET" request for a single Contact
+#    When I execute the get single Contact request on "/Contact/{ContactId}" endpoint
+#    Then The response status code should be "OK" on get single Contact request
+    Given I build a "GET" request
+    When I execute the request on "/Contact/{ContactId}" endpoint and "ContactId" param
+    Then The response status code should be "OK"
 
-  @CreateAndDeleteContact
+  @CreateContact @DeleteContact
   Scenario: Get all Contacts
-    Given I build a "GET" request for all Contacts
-    When I execute the get all Contacts request on "/Contact" endpoint
-    Then The response status code should be "OK" on get all Contacts request
+#    Given I build a "GET" request for all Contacts
+#    When I execute the get all Contacts request on "/Contact" endpoint
+#    Then The response status code should be "OK" on get all Contacts request
+    Given I build a "GET" request
+    When I execute the request on "/Contact"
+    Then The response status code should be "OK"
 
   @DeleteContact
   Scenario: Post a Contact
@@ -35,6 +41,9 @@ Feature: Contacts
 
   @CreateContact
   Scenario: Delete a Contact
-    Given I build a "DELETE" request for a Contact
-    When I execute the delete Contact request on "/Contact/{ContactId}" endpoint
-    Then The response status code should be "NO CONTENT" on delete Contact request
+#    Given I build a "DELETE" request for a Contact
+#    When I execute the delete Contact request on "/Contact/{ContactId}" endpoint
+#    Then The response status code should be "NO CONTENT" on delete Contact request
+    Given I build a "DELETE" request
+    When I execute the request on "/Contact/{ContactId}" endpoint and "ContactId" param
+    Then The response status code should be "NO_CONTENT"

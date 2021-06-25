@@ -1,6 +1,6 @@
 Feature: Accounts
   Description
-  @CreateAndDeleteAccount
+  @CreateAccount @DeleteAccount
   Scenario: Get a single Account
 #    Given I build a "GET" request for a single Account
 #    When I execute the get single Account request on "/Account/{AccountId}" endpoint
@@ -9,7 +9,7 @@ Feature: Accounts
     When I execute the request on "/Account/{AccountId}" endpoint and "AccountId" param
     Then The response status code should be "OK"
 
-  @CreateAndDeleteAccount
+  @CreateAccount @DeleteAccount
   Scenario: Get all Accounts
 #    Given I build a "GET" request for all Accounts
 #    When I execute the get all Accounts request on "/Account" endpoint
@@ -31,7 +31,7 @@ Feature: Accounts
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAndDeleteAccount
+  @CreateAccount @DeleteAccount
   Scenario: Patch an Account
 #    Given I build a "PATCH" request for an Account
 #    When I create Account body with name "My Account with changed name"
@@ -45,7 +45,7 @@ Feature: Accounts
     Then The response status code should be "NO_CONTENT"
 
   @CreateAccount
-  Scenario: Delete an Account
+  Scenario: DeleteAccount an Account
 #    Given I build a "DELETE" request for an Account
 #    When I execute the delete Account request on "/Account/{AccountId}" endpoint
 #    Then The response status code should be "NO CONTENT" on delete Account request

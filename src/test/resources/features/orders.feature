@@ -1,16 +1,22 @@
 Feature: Orders
   Description
-  @CreateAndDeleteOrder
+  @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Get a single Order
-    Given I build a "GET" request for a single Order
-    When I execute the get single Order request on "/Order/{OrderId}" endpoint
-    Then The response status code should be "OK" on get single Order request
+#    Given I build a "GET" request for a single Order
+#    When I execute the get single Order request on "/Order/{OrderId}" endpoint
+#    Then The response status code should be "OK" on get single Order request
+    Given I build a "GET" request
+    When I execute the request on "/Order/{OrderId}" endpoint and "OrderId" param
+    Then The response status code should be "OK"
 
   @CreateAndDeleteOrder
   Scenario: Get all Orders
-    Given I build a "GET" request for all Orders
-    When I execute the get all Orders request on "/Order" endpoint
-    Then The response status code should be "OK" on get all Orders request
+#    Given I build a "GET" request for all Orders
+#    When I execute the get all Orders request on "/Order" endpoint
+#    Then The response status code should be "OK" on get all Orders request
+    Given I build a "GET" request
+    When I execute the request on "/Order"
+    Then The response status code should be "OK"
 
   @DeleteOrder
   Scenario: Post a Order
@@ -35,8 +41,11 @@ Feature: Orders
     And I execute the patch Order request on "/Order/{OrderId}" endpoint
     Then The response status code should be "NO CONTENT" on patch Order request
 
-  @CreateOrder
+  @CreateAccount @CreateContract @CreateOrder @DeleteContract @DeleteAccount
   Scenario: Delete a Order
-    Given I build a "DELETE" request for a Order
-    When I execute the delete Order request on "/Order/{OrderId}" endpoint
-    Then The response status code should be "NO CONTENT" on delete Order request
+#    Given I build a "DELETE" request for a Order
+#    When I execute the delete Order request on "/Order/{OrderId}" endpoint
+#    Then The response status code should be "NO CONTENT" on delete Order request
+    Given I build a "DELETE" request
+    When I execute the request on "/Order/{OrderId}" endpoint and "OrderId" param
+    Then The response status code should be "NO_CONTENT"

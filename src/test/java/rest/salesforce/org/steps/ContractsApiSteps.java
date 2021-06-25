@@ -68,7 +68,7 @@ public class ContractsApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
-    @Before("@CreateContract")
+    @Before("@CreateAAAContract")
     public void createContract() throws JsonProcessingException {
         account.setName("account name to test");
         requestBuilder
@@ -98,7 +98,7 @@ public class ContractsApiSteps {
         responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
-    @After("@CreateContract")
+    @After("@CreateAAAContract")
     public void deleteAssetAccount() {
         requestBuilder
                 .addEndpoint("/Account/{accountID}")
@@ -109,7 +109,7 @@ public class ContractsApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
-    @After("@DeleteContract")
+    @After("@DeleteAAAContract")
     public void deleteContract() {
     }
 

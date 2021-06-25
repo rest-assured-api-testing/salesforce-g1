@@ -61,7 +61,7 @@ public class ContactsApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
-    @Before("@CreateContact")
+    @Before("@CreateAAAContact")
     public void createContact() throws JsonProcessingException {
         contact.setFirstName("contact name to test");
         contact.setLastName("contact last name to test");
@@ -77,7 +77,7 @@ public class ContactsApiSteps {
         responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
-    @After("@DeleteContact")
+    @After("@DeleteAAAContact")
     public void deleteContact() {
     }
 
