@@ -28,6 +28,13 @@ public class ApiSteps {
     Account accountToSend = new Account();
     Features feature;
     FeatureFactory featureFactory = new FeatureFactory();
+//    public ApiSteps(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse) {
+//        this.requestBuilder = requestBuilder;
+//        this.apiResponseObject = apiResponseObject;
+//        this.apiResponse = apiResponse;
+//    }
+
+
 
     @Given("I build a {string} request")
     public void iBuildARequest(final String apiMethod) {

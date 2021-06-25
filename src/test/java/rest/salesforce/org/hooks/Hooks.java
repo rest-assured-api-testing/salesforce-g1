@@ -1,4 +1,4 @@
-package rest.salesforce.org.steps;
+package rest.salesforce.org.hooks;
 
 import api.ApiResponseObject;
 import api.ApiResponse;
@@ -11,10 +11,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import static configfile.Configuration.dotenv;
 
 public class Hooks {
+    private static final Logger LOGGER = LogManager.getRootLogger();
     ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
     ApiResponseObject apiResponseObject = new ApiResponseObject();
     ApiResponse apiResponse = new ApiResponse();
@@ -24,6 +27,12 @@ public class Hooks {
     Contract contractToSend = new Contract();
     Order orderToSend = new Order();
     String token;
+
+//    public Hooks(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse) {
+//        this.requestBuilder = requestBuilder;
+//        this.apiResponseObject = apiResponseObject;
+//        this.apiResponse = apiResponse;
+//    }
 
     @Before("@SetUpConfig")
     public void setUpConfig() throws JsonProcessingException {
