@@ -53,4 +53,8 @@ public class ApiResponse {
         response.then().log().body().assertThat().body(matchesJsonSchemaInClasspath(schema));
     }
 
+    public String getPath(String path) {
+        return response.getBody().jsonPath().getJsonObject(path);
+    }
+
 }
