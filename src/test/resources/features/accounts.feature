@@ -26,7 +26,7 @@ Feature: Accounts
 #    Then The response status code should be "CREATED" on post Account request
     Given I build a "POST" request
     When I create body with parameters
-      | object | Account |
+      | featureType | Account |
       | name | My Account for Testing |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
@@ -39,7 +39,7 @@ Feature: Accounts
 #    Then The response status code should be "NO CONTENT" on patch Account request
     Given I build a "PATCH" request
     When I set body with parameters
-      | object | Account |
+      | featureType | Account |
       | name | My Account with name changed |
     And I execute the request with body on "/Account/{AccountId}" endpoint and "AccountId" param
     Then The response status code should be "NO_CONTENT"

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Asset {
+public class Asset implements Features{
     public Attribute attributes;
     @JsonProperty("Id")
     public String id;

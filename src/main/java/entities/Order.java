@@ -2,11 +2,10 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Order {
+public class Order implements Features {
     public Attribute attributes;
     @JsonProperty("Id")
     public String id;

@@ -17,11 +17,7 @@ import api.ApiRequestBuilder;
 import api.ApiMethod;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entities.Account;
-import entities.Asset;
-import entities.Contact;
-import entities.Contract;
-import entities.Order;
+import entities.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -30,7 +26,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Map;
 import static configfile.Configuration.dotenv;
 
@@ -39,10 +34,8 @@ public class ApiSteps {
     ApiResponseObject apiResponseObject = new ApiResponseObject();
     ApiResponse apiResponse = new ApiResponse();
     Account accountToSend = new Account();
-    Asset assetToSend = new Asset();
-    Contact contactToSend = new Contact();
-    Contract contractToSend = new Contract();
-    Order orderToSend = new Order();
+    Features feature;
+    FeatureFactory featureFactory = new FeatureFactory();
 
     @Before("@CreateAndDeleteAccount")
     public void createAnAccount() throws JsonProcessingException {
@@ -158,31 +151,10 @@ public class ApiSteps {
     }
 
     @When("^I create body with parameters$")
-    public void iCreateBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException, ParseException {
-        if (entry.get("object").equals("Account")) {
-            accountToSend.setName(entry.get("name"));
-            requestBuilder.addBody(new ObjectMapper().writeValueAsString(accountToSend));
-        } else if (entry.get("object").equals("Asset")) {
-            assetToSend.setName(entry.get("name"));
-            assetToSend.setAccountId(entry.get("accountId"));
-            requestBuilder.addBody(new ObjectMapper().writeValueAsString(assetToSend));
-        } else if (entry.get("object").equals("Contact")) {
-            contactToSend.setLastName(entry.get("lastName"));
-            contactToSend.setAccountId(entry.get("accountId"));
-            requestBuilder.addBody(new ObjectMapper().writeValueAsString(contactToSend));
-        } else if (entry.get("object").equals("Contract")) {
-            contractToSend.setAccountId(entry.get("accountId"));
-            contractToSend.setStatus(entry.get("status"));
-            contractToSend.setStartDate(entry.get("startDate"));
-            contractToSend.setContractTerm(Integer.parseInt(entry.get("contractTerm")));
-            requestBuilder.addBody(new ObjectMapper().writeValueAsString(contractToSend));
-        } else if (entry.get("object").equals("Order")) {
-            orderToSend.setAccountId(entry.get("accountId"));
-            orderToSend.setStatus(entry.get("status"));
-            orderToSend.setEffectiveDate(entry.get("effectiveDate"));
-            orderToSend.setContractId(entry.get("contractId"));
-            requestBuilder.addBody(new ObjectMapper().writeValueAsString(orderToSend));
-        }
+    public void iCreateBodyWithParameters(final Map entry) throws JsonProcessingException, ParseException {
+        feature = featureFactory.getFeature((String) entry.get("featureType"));
+        feature.setAllFields(entry);
+        requestBuilder.addBody(new ObjectMapper().writeValueAsString(feature));
     }
 
     @And("I execute the request on {string} endpoint")
@@ -226,8 +198,9 @@ public class ApiSteps {
     }
 
     @When("^I set body with parameters$")
-    public void iSetBodyWithParameters(final Map<String, String> entry) throws JsonProcessingException {
-        accountToSend.setName(entry.get("name"));
-        requestBuilder.setBody(new ObjectMapper().writeValueAsString(accountToSend));
+    public void iSetBodyWithParameters(final Map entry) throws JsonProcessingException {
+        feature = featureFactory.getFeature((String) entry.get("featureType"));
+        feature.setAllFields(entry);
+        requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
     }
 }
