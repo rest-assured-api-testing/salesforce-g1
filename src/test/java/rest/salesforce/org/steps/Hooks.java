@@ -21,7 +21,7 @@ public class Hooks {
                 .addQueryParams("grant_type", "password")
                 .addQueryParams("client_id",dotenv.get("CLIENT_ID"))
                 .addQueryParams("client_secret",dotenv.get("CLIENT_SECRET"))
-                .addQueryParams("username",dotenv.get("USERNAME1"))
+                .addQueryParams("username",dotenv.get("SALESFORCE_USERNAME"))
                 .addQueryParams("password",dotenv.get("PASSWORD_TOKEN"))
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
