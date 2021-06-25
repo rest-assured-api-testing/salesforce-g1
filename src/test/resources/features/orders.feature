@@ -1,6 +1,6 @@
 Feature: Orders
   Description
-  @CreateAndDeleteOrder
+  @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Get a single Order
     Given I build a "GET" request
     When I execute the request on "/Order/{OrderId}" endpoint and "OrderId" param
@@ -33,7 +33,7 @@ Feature: Orders
     And I execute the request with body on "/Order/{OrderId}" endpoint and "OrderId" param
     Then The response status code should be "CREATED"
 
-  @CreateOrder
+  @CreateAccount @CreateContract @CreateOrder @DeleteContract @DeleteAccount
   Scenario: Delete a Order
     Given I build a "DELETE" request
     When I execute the request on "/Order/{OrderId}" endpoint and "OrderId" param

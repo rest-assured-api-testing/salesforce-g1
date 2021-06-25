@@ -1,12 +1,12 @@
 Feature: Accounts
   Description
-  @CreateAndDeleteAccount
+  @CreateAccount @DeleteAccount
   Scenario: Get a single Account
     Given I build a "GET" request
     When I execute the request on "/Account/{AccountId}" endpoint and "AccountId" param
     Then The response status code should be "OK"
 
-  @CreateAndDeleteAccount
+  @CreateAccount @DeleteAccount
   Scenario: Get all Accounts
     Given I build a "GET" request
     When I execute the request on "/Account"
@@ -21,7 +21,7 @@ Feature: Accounts
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAndDeleteAccount
+  @CreateAccount @DeleteAccount
   Scenario: Patch an Account
     Given I build a "PATCH" request
     When I set body with parameters

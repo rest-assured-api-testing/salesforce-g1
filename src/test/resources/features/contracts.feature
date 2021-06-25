@@ -1,12 +1,12 @@
 Feature: Contracts
   Description
-  @CreateAndDeleteContract
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Get a single Contract
     Given I build a "GET" request
     When I execute the request on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "OK"
 
-  @CreateAndDeleteContract
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Get all Contracts
     Given I build a "GET" request
     When I execute the request on "/Contract"
@@ -33,7 +33,7 @@ Feature: Contracts
     And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "NO_CONTENT"
 
-  @CreateContract
+  @CreateAccount @CreateContract @DeleteAccount
   Scenario: Delete a Contract
     Given I build a "DELETE" request
     When I execute the request on "/Contract/{ContractId}" endpoint and "ContractId" param

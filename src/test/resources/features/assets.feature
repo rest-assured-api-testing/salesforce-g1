@@ -1,12 +1,12 @@
 Feature:  Assets
   Description
-  @CreateAndDeleteAsset
+  @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Get a single Asset
     Given I build a "GET" request
     When I execute the request on "/Asset/{AssetId}" endpoint and "AssetId" param
     Then The response status code should be "OK"
 
-  @CreateAndDeleteAsset
+  @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Get all Assets
     Given I build a "GET" request
     When I execute the request on "/Asset"
@@ -22,7 +22,7 @@ Feature:  Assets
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAndDeleteAsset
+  @CreateAsset @DeleteAsset
   Scenario: Patch an Asset
     Given I build a "PATCH" request
     When I set body with parameters
@@ -31,8 +31,8 @@ Feature:  Assets
     And I execute the request with body on "/Asset/{AssetId}" endpoint and "AssetId" param
     Then The response status code should be "NO_CONTENT"
 
-  @CreateAsset
+  @CreateAccount @CreateAsset @DeleteAccount
   Scenario: Delete an Asset
     Given I build a "DELETE" request
-    When I execute the request on "/Account/{AccountId}" endpoint and "AccountId" param
+    When I execute the request on "/Asset/{AssetId}" endpoint and "AssetId" param
     Then The response status code should be "NO_CONTENT"

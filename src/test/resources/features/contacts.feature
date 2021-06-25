@@ -1,12 +1,12 @@
 Feature: Contacts
   Description
-  @CreateAndDeleteContact
+  @CreateContact @DeleteContact
   Scenario: Get a single Contact
     Given I build a "GET" request
     When I execute the request on "/Contact/{ContactId}" endpoint and "ContactId" param
     Then The response status code should be "OK"
 
-  @CreateAndDeleteContact
+  @CreateContact @DeleteContact
   Scenario: Get all Contacts
     Given I build a "GET" request
     When I execute the request on "/Contact"
