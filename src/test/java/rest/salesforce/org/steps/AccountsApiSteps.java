@@ -58,7 +58,7 @@ public class AccountsApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
-    @Before("@CreateAccount")
+    @Before("@CreateAAAAccount")
     public void createAccount() throws JsonProcessingException {
         account.setName("account name to test");
         requestBuilder
@@ -72,7 +72,7 @@ public class AccountsApiSteps {
         apiResponse = ApiManager.executeWithBody(requestBuilder.build());
         responseObject = apiResponse.getBody(ResponseObject.class);
     }
-    @After("@DeleteAccount")
+    @After("@DeleteAAAAccount")
     public void deleteAccount() {
     }
 

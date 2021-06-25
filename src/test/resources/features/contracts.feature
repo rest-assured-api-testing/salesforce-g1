@@ -1,16 +1,22 @@
 Feature: Contracts
   Description
-  @CreateAndDeleteContract
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Get a single Contract
-    Given I build a "GET" request for a single Contract
-    When I execute the get single Contract request on "/Contract/{ContractId}" endpoint
-    Then The response status code should be "OK" on get single Contract request
+#    Given I build a "GET" request for a single Contract
+#    When I execute the get single Contract request on "/Contract/{ContractId}" endpoint
+#    Then The response status code should be "OK" on get single Contract request
+    Given I build a "GET" request
+    When I execute the request on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "OK"
 
-  @CreateAndDeleteContract
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Get all Contracts
-    Given I build a "GET" request for all Contracts
-    When I execute the get all Contracts request on "/Contract" endpoint
-    Then The response status code should be "OK" on get all Contracts request
+#    Given I build a "GET" request for all Contracts
+#    When I execute the get all Contracts request on "/Contract" endpoint
+#    Then The response status code should be "OK" on get all Contracts request
+    Given I build a "GET" request
+    When I execute the request on "/Contract"
+    Then The response status code should be "OK"
 
   @DeleteContract
   Scenario: Post a Contract
@@ -35,8 +41,11 @@ Feature: Contracts
     And I execute the patch Contract request on "/Contract/{ContractId}" endpoint
     Then The response status code should be "NO CONTENT" on patch Contract request
 
-  @CreateContract
+  @CreateAccount @CreateContract @DeleteAccount
   Scenario: Delete a Contract
-    Given I build a "DELETE" request for a Contract
-    When I execute the delete Contract request on "/Contract/{ContractId}" endpoint
-    Then The response status code should be "NO CONTENT" on delete Contract request
+#    Given I build a "DELETE" request for a Contract
+#    When I execute the delete Contract request on "/Contract/{ContractId}" endpoint
+#    Then The response status code should be "NO CONTENT" on delete Contract request
+    Given I build a "DELETE" request
+    When I execute the request on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "NO_CONTENT"

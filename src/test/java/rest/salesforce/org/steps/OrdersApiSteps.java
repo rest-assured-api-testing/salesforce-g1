@@ -68,7 +68,7 @@ public class OrdersApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
-    @Before("@CreateOrder")
+    @Before("@CreateAAAOrder")
     public void createOrder() throws JsonProcessingException {
         account.setName("account name to test");
         requestBuilder
@@ -114,7 +114,7 @@ public class OrdersApiSteps {
         responseObject = apiResponse.getBody(ResponseObject.class);
     }
 
-    @After("@CreateOrder")
+    @After("@CreateAAAOrder")
     public void deleteAssetAccount() {
         requestBuilder
                 .addEndpoint("/Account/{accountID}")
@@ -133,7 +133,7 @@ public class OrdersApiSteps {
         ApiManager.execute(requestBuilder.build());
     }
 
-    @After("@DeleteOrder")
+    @After("@DeleteAAAOrder")
     public void deleteOrder() {
     }
 

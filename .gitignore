@@ -12,3 +12,4 @@ buildNumber.properties
 .idea
 salesforce-g1.iml
 .env
+src/main/resources/.env
