@@ -14,7 +14,6 @@ import entities.BillingAddress;
 import entities.MailingAddress;
 import entities.OtherAddress;
 import entities.ShippingAddress;
-
 import java.lang.reflect.Field;
 
 /**

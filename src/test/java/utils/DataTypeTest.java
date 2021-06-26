@@ -2,13 +2,11 @@ package utils;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.lang.reflect.Field;
-
-import static utils.DataType.*;
+import static utils.DataType.validateDataType;
+import static utils.DataType.convertStringToObject;
 
 public class DataTypeTest {
-
     @Test
     public void testValidateDataType() {
         Field a = null;
