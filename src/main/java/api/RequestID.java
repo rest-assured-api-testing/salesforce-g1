@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2021 Fundacion Jala.
- *
  * This software is the confidential and proprietary information of Fundacion Jala
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -65,50 +64,10 @@ public class RequestID {
         RequestID.idFeature = idFeature;
     }
 
-    //    public static String getIdAccount() {
-//        return idAccount;
-//    }
-//
-//    public static void setIdAccount(String idAccount) {
-//        RequestID.idAccount = idAccount;
-//    }
-//
-//    public static String getIdAsset() {
-//        return idAsset;
-//    }
-//
-//    public static void setIdAsset(String idAsset) {
-//        RequestID.idAsset = idAsset;
-//    }
-//
-//    public static String getIdContact() {
-//        return idContact;
-//    }
-//
-//    public static void setIdContact(String idContact) {
-//        RequestID.idContact = idContact;
-//    }
-//
-//    public static String getIdContract() {
-//        return idContract;
-//    }
-//
-//    public static void setIdContract(String idContract) {
-//        RequestID.idContract = idContract;
-//    }
-//
-//    public static String getIdOrder() {
-//        return idOrder;
-//    }
-//
-//    public static void setIdOrder(String idOrder) {
-//        RequestID.idOrder = idOrder;
-//    }
-
     /**
      * Gets id of any feature
      * @param param
-     * @return
+     * @return id of any Feature
      */
     public String getIdFeature(String param) {
         if (param.equals("AccountId")){

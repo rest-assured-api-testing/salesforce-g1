@@ -29,7 +29,7 @@ public class AssetBaseTest {
 //        requestBuilder.addToken(dotenv.get("TOKEN"))
 //                .addBaseUri(dotenv.get("BASE_URL"));
 //    }
-//
+////
 //    @BeforeMethod(onlyForGroups = {"createAsset", "createAccount"})
 //    public void createAccount() throws JsonProcessingException {
 //        accountToSend.setName("cristian choque prueba desde java");

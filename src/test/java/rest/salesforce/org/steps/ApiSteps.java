@@ -18,14 +18,10 @@ import static configfile.Configuration.dotenv;
 
 public class ApiSteps {
     public Logger LOGGER = Logger.getLogger(getClass());
-    ApiRequestBuilder requestBuilder;
     private ApiResponseObject apiResponseObject;
     public RequestID requestID;
+    ApiRequestBuilder requestBuilder;
     ApiResponse apiResponse;
-//    ApiRequestBuilder requestBuilder = new ApiRequestBuilder();
-//    ApiResponseObject apiResponseObject = new ApiResponseObject();
-//    ApiResponse apiResponse = new ApiResponse();
-    Account accountToSend = new Account();
     Features feature;
     FeatureFactory featureFactory = new FeatureFactory();
 
@@ -38,8 +34,7 @@ public class ApiSteps {
 
     @Given("I build a {string} request")
     public void iBuildARequest(final String apiMethod) {
-        requestBuilder.addToken(dotenv.get("TOKEN"))
-                .addBaseUri(dotenv.get("BASE_URL"))
+        requestBuilder
                 .addMethod(ApiMethod.valueOf(apiMethod));
     }
 
@@ -58,9 +53,6 @@ public class ApiSteps {
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
         requestID.setIdAccount(apiResponseObject.getId());
-//        ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
-//        apiResponseObject.setId(apiResponse.getBody(ApiResponseObject.class).getId());
-//        requestID.setIdAccount(apiResponseObject.getId());
     }
 
     @Then("The response status code should be {string}")
@@ -73,14 +65,9 @@ public class ApiSteps {
 
     @When("I execute the request on {string} endpoint and {string} param")
     public void iExecuteTheRequestOnEndpointAndParam(final String endpoint, final String param) {
-        System.out.println("para ejecutar--------------------=>" + requestID.getIdFeature(param));
-//        System.out.println("--------------------==>" + requestID.getIdAccount());
-//        System.out.println("--------------------==>" + requestID.toString());
-//        System.out.println("++++++++++++++++++++" + apiResponse.getBody(ApiResponseObject.class).getId());
         requestBuilder
                 .addEndpoint(endpoint)
                 .addPathParams(param, requestID.getIdFeature(param))
-//                .addPathParams(param, apiResponseObject.getId())
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
     }
@@ -100,12 +87,7 @@ public class ApiSteps {
                 .addEndpoint(endpoint)
                 .addPathParams(param, requestID.getIdFeature(param))
                 .build();
-//        apiResponse = ApiManager.executeWithBody(requestBuilder.build());
-//        ApiManager.execute(requestBuilder.build(), apiResponse);
-
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
-//        apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
-//        requestID.setIdAccount(apiResponseObject.getId());
     }
 
     @When("^I set body with parameters$")
