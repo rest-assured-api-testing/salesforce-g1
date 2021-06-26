@@ -52,9 +52,9 @@ public class Asset implements Features{
     @JsonProperty("Status")
     public String status;
     @JsonProperty("Price")
-    public double price;
+    public Double price;
     @JsonProperty("Quantity")
-    public double quantity;
+    public Double quantity;
     @JsonProperty("Description")
     public String description;
     @JsonProperty("OwnerId")
@@ -270,19 +270,19 @@ public class Asset implements Features{
         this.status = status;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public double getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 

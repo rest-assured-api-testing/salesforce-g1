@@ -131,7 +131,7 @@ public class Account implements Features{
     @JsonProperty("Active__c")
     public String active__c;
     @JsonProperty("NumberofLocations__c")
-    public double numberofLocations__c;
+    public Double numberofLocations__c;
     @JsonProperty("UpsellOpportunity__c")
     public String upsellOpportunity__c;
     @JsonProperty("SLASerialNumber__c")
@@ -643,11 +643,11 @@ public class Account implements Features{
         this.active__c = active__c;
     }
 
-    public double getNumberofLocations__c() {
+    public Double getNumberofLocations__c() {
         return numberofLocations__c;
     }
 
-    public void setNumberofLocations__c(double numberofLocations__c) {
+    public void setNumberofLocations__c(Double numberofLocations__c) {
         this.numberofLocations__c = numberofLocations__c;
     }
 

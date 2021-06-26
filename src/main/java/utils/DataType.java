@@ -11,6 +11,9 @@ package utils;
 
 import com.google.gson.Gson;
 import entities.BillingAddress;
+import entities.MailingAddress;
+import entities.OtherAddress;
+import entities.ShippingAddress;
 
 import java.lang.reflect.Field;
 
@@ -38,7 +41,7 @@ public class DataType {
      * @return the value with the required data type
      */
     public static Object convertStringToObject(String value, String dataType) {
-        System.out.println(dataType);
+        Gson gson = new Gson();
         if (dataType.equals("Integer")) {
             Integer integerObject = Integer.valueOf(value);
             return integerObject;
@@ -49,9 +52,17 @@ public class DataType {
             Double doubleObject = Double.valueOf(value);
             return doubleObject;
         } else if (dataType.equals("BillingAddress")) {
-            Gson gson = new Gson();
             BillingAddress billingAddressObject = gson.fromJson(value, BillingAddress.class);
             return billingAddressObject;
+        } else if (dataType.equals("MailingAddress")) {
+            MailingAddress mailingAddressObject = gson.fromJson(value, MailingAddress.class);
+            return mailingAddressObject;
+        } else if (dataType.equals("OtherAddress")) {
+            OtherAddress otherAddressObject = gson.fromJson(value, OtherAddress.class);
+            return otherAddressObject;
+        } else if (dataType.equals("ShippingAddress")) {
+            ShippingAddress shippingAddressObject = gson.fromJson(value, ShippingAddress.class);
+            return shippingAddressObject;
         }
         return null;
     }
