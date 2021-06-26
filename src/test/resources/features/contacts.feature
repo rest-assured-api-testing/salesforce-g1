@@ -15,8 +15,7 @@ Feature: Contacts
   @DeleteContact
   Scenario: Post a Contact
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Contact |
+    When I create "Contact" body with parameters
       | lastName | Perez |
       | accountId | 0015e00000B0PtfAAF |
     And I execute the request on "/Contact" endpoint

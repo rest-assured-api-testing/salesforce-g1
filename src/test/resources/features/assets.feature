@@ -15,8 +15,7 @@ Feature:  Assets
   @DeleteAsset
   Scenario: Post an Asset
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Asset |
+    When I create "Asset" body with parameters
       | name | My Asset for Testing |
       | accountId | 0015e00000B0PtfAAF |
     And I execute the request on "/Asset" endpoint

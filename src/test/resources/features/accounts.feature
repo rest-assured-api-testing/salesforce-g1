@@ -15,8 +15,7 @@ Feature: Accounts
   @DeleteAccount
   Scenario: Post an Account
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Account |
+    When I create "Account" body with parameters
       | name | My Account for Testing |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"

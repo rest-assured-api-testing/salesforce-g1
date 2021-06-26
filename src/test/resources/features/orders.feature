@@ -15,8 +15,7 @@ Feature: Orders
   @DeleteOrder
   Scenario: Post a Order
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Order |
+    When I create "Order" body with parameters
       | accountId | 0015e00000B0PtfAAF |
       | status | Draft |
       | effectiveDate | 2021-07-01 |

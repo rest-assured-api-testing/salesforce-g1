@@ -36,9 +36,9 @@ public class ApiSteps {
                 .addMethod(ApiMethod.valueOf(apiMethod));
     }
 
-    @When("^I create body with parameters$")
-    public void iCreateBodyWithParameters(final Map entry) throws JsonProcessingException, ParseException {
-        feature = featureFactory.getFeature((String) entry.get("featureType"));
+    @When("^I create \"(.*?)\" body with parameters$")
+    public void iCreateBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException, ParseException {
+        feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.addBody(new ObjectMapper().writeValueAsString(feature));
     }
