@@ -10,72 +10,120 @@
 package api;
 
 public class RequestID {
-    public static String idAccount;
-    public static String idAsset;
-    public static String idContact;
-    public static String idContract;
-    public static String idOrder;
+    public String idAccount;
+    public String idAsset;
+    public String idContact;
+    public String idContract;
+    public String idOrder;
     static String idFeature;
 
-    public static String getIdAccount() {
+    public String getIdAccount() {
         return idAccount;
     }
 
-    public static void setIdAccount(String idAccount) {
-        RequestID.idAccount = idAccount;
+    public void setIdAccount(String idAccount) {
+        this.idAccount = idAccount;
     }
 
-    public static String getIdAsset() {
+    public String getIdAsset() {
         return idAsset;
     }
 
-    public static void setIdAsset(String idAsset) {
-        RequestID.idAsset = idAsset;
+    public void setIdAsset(String idAsset) {
+        this.idAsset = idAsset;
     }
 
-    public static String getIdContact() {
+    public String getIdContact() {
         return idContact;
     }
 
-    public static void setIdContact(String idContact) {
-        RequestID.idContact = idContact;
+    public void setIdContact(String idContact) {
+        this.idContact = idContact;
     }
 
-    public static String getIdContract() {
+    public String getIdContract() {
         return idContract;
     }
 
-    public static void setIdContract(String idContract) {
-        RequestID.idContract = idContract;
+    public void setIdContract(String idContract) {
+        this.idContract = idContract;
     }
 
-    public static String getIdOrder() {
+    public String getIdOrder() {
         return idOrder;
     }
 
-    public static void setIdOrder(String idOrder) {
-        RequestID.idOrder = idOrder;
+    public void setIdOrder(String idOrder) {
+        this.idOrder = idOrder;
     }
+
+    public static String getIdFeature() {
+        return idFeature;
+    }
+
+    public static void setIdFeature(String idFeature) {
+        RequestID.idFeature = idFeature;
+    }
+
+    //    public static String getIdAccount() {
+//        return idAccount;
+//    }
+//
+//    public static void setIdAccount(String idAccount) {
+//        RequestID.idAccount = idAccount;
+//    }
+//
+//    public static String getIdAsset() {
+//        return idAsset;
+//    }
+//
+//    public static void setIdAsset(String idAsset) {
+//        RequestID.idAsset = idAsset;
+//    }
+//
+//    public static String getIdContact() {
+//        return idContact;
+//    }
+//
+//    public static void setIdContact(String idContact) {
+//        RequestID.idContact = idContact;
+//    }
+//
+//    public static String getIdContract() {
+//        return idContract;
+//    }
+//
+//    public static void setIdContract(String idContract) {
+//        RequestID.idContract = idContract;
+//    }
+//
+//    public static String getIdOrder() {
+//        return idOrder;
+//    }
+//
+//    public static void setIdOrder(String idOrder) {
+//        RequestID.idOrder = idOrder;
+//    }
 
     /**
      * Gets id of any feature
      * @param param
      * @return
      */
-    public static String getIdFeature(String param) {
-        if ("AccountId" == param){
-            idFeature = getIdAccount();
+    public String getIdFeature(String param) {
+        if (param.equals("AccountId")){
+            idFeature = idAccount;
         }
-        if ("AssetId" == param){
+        if (param.equals("AssetId")){
             idFeature = getIdAsset();
         }
-        if ("ContactId" == param){
+        if (param.equals("ContactId")){
             idFeature = getIdContact();
         }
-        if ("ContractId" == param){
+        if (param.equals("ContractId")){
             idFeature = getIdContract();
         }
-        if ("OrderId" == param){
+        if (param.equals("OrderId")){
             idFeature = getIdOrder();
         }
         return idFeature;
