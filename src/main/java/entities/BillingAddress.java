@@ -76,4 +76,18 @@ public class BillingAddress {
     public void setStreet(String street) {
         this.street = street;
     }
+
+    @Override
+    public String toString() {
+        return "BillingAddress{" +
+                "city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", geocodeAccuracy=" + geocodeAccuracy +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", postalCode='" + postalCode + '\'' +
+                ", state='" + state + '\'' +
+                ", street='" + street + '\'' +
+                '}';
+    }
 }

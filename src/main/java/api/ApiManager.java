@@ -20,7 +20,7 @@ public class ApiManager {
      * @param apiRequest
      * @return a ApiResponse after execution of request.
      */
-    public static ApiResponse execute(ApiRequest apiRequest) {
+    public static ApiResponse execute(final ApiRequest apiRequest) {
         Response response = buildRequest(apiRequest).request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
         return new ApiResponse(response);
     }
@@ -30,7 +30,7 @@ public class ApiManager {
      * @param apiRequest
      * @return RequestSpecification.
      */
-    private static RequestSpecification buildRequest(ApiRequest apiRequest) {
+    private static RequestSpecification buildRequest(final ApiRequest apiRequest) {
         return given()
                 .headers(apiRequest.getHeaders())
                 .queryParams(apiRequest.getQueryParams())
@@ -48,11 +48,10 @@ public class ApiManager {
      * @param apiRequest
      * @return a ApiResponse after execution of request.
      */
-    public static ApiResponse executeWithBody(ApiRequest apiRequest){
+    public static ApiResponse executeWithBody(final ApiRequest apiRequest){
         Response response = buildRequest(apiRequest)
                 .body(apiRequest.getBody())
                 .request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
         return new ApiResponse(response);
     }
-
 }
