@@ -23,7 +23,7 @@ Feature: Contracts
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAndDeleteContract
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Patch a Contract
     Given I build a "PATCH" request
     When I set body with parameters

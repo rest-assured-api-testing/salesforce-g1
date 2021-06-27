@@ -6,7 +6,7 @@ Feature: Orders
     When I execute the request on "/Order/{OrderId}" endpoint and "OrderId" param
     Then The response status code should be "OK"
 
-  @CreateAndDeleteOrder
+  @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Get all Orders
     Given I build a "GET" request
     When I execute the request on "/Order"
@@ -23,12 +23,12 @@ Feature: Orders
     And I execute the request on "/Order" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAndDeleteOrder
+  @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Patch a Order
     Given I build a "PATCH" request
     When I create body with parameters
       | featureType | Order |
-      | effectiveDate | 2021-07-02 |
+      | effectiveDate | 2021-07-29 |
     And I execute the request with body on "/Order/{OrderId}" endpoint and "OrderId" param
     Then The response status code should be "CREATED"
 

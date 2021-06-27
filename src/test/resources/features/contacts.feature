@@ -17,11 +17,10 @@ Feature: Contacts
     Given I build a "POST" request
     When I create "Contact" body with parameters
       | lastName | Perez |
-      | accountId | 0015e00000B0PtfAAF |
     And I execute the request on "/Contact" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAndDeleteContact
+  @CreateContact @DeleteContact
   Scenario: Patch a Contact
     Given I build a "PATCH" request
     When I set body with parameters

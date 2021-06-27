@@ -27,6 +27,10 @@ public class ApiResponse {
         return response;
     }
 
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
     /**
      * Gets the status of the code
      * @return

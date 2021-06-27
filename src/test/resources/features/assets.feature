@@ -12,7 +12,7 @@ Feature:  Assets
     When I execute the request on "/Asset"
     Then The response status code should be "OK"
 
-  @DeleteAsset
+  @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset
     Given I build a "POST" request
     When I create "Asset" body with parameters
@@ -21,7 +21,7 @@ Feature:  Assets
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
 
-  @CreateAsset @DeleteAsset
+  @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset
     Given I build a "PATCH" request
     When I set body with parameters
