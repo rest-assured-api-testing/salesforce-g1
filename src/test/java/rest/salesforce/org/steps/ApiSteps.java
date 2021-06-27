@@ -8,13 +8,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import java.text.ParseException;
 import java.util.Map;
 
 public class ApiSteps {
-    public Logger LOGGER = Logger.getLogger(getClass());
     private ApiResponseObject apiResponseObject;
     public RequestID requestID;
     ApiRequestBuilder requestBuilder;
@@ -54,8 +52,6 @@ public class ApiSteps {
 
     @Then("The response status code should be {string}")
     public void theResponseStatusCodeShouldBe(final String statusCode) {
-        System.out.println("status expected " + ApiStatusCode.valueOf(statusCode).getValue());
-        System.out.println("status actual" + apiResponse.getStatusCode());
         Assert.assertEquals(apiResponse.getStatusCode(), ApiStatusCode.valueOf(statusCode).getValue());
         apiResponse.getResponse().then().log().body();
     }
@@ -79,7 +75,6 @@ public class ApiSteps {
 
     @And("I execute the request with body on {string} endpoint and {string} param")
     public void iExecuteTheRequestWithBodyOnEndpointAndParam(final String endpoint, final String param) {
-        System.out.println("========account para actualizar " + requestID.getIdFeature(param));
         requestBuilder
                 .addEndpoint(endpoint)
                 .addPathParams(param, requestID.getIdFeature(param))
