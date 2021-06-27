@@ -10,10 +10,8 @@
 package utils;
 
 import com.google.gson.Gson;
-import entities.BillingAddress;
-import entities.MailingAddress;
-import entities.OtherAddress;
-import entities.ShippingAddress;
+import entities.*;
+
 import java.lang.reflect.Field;
 
 /**
@@ -62,6 +60,9 @@ public class DataType {
         } else if (dataType.equals("ShippingAddress")) {
             ShippingAddress shippingAddressObject = gson.fromJson(value, ShippingAddress.class);
             return shippingAddressObject;
+        } else if (dataType.equals("Attribute")) {
+            Attribute attribute = gson.fromJson(value, Attribute.class);
+            return attribute;
         }
         return null;
     }
