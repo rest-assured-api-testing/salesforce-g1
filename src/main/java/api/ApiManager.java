@@ -18,10 +18,22 @@ public class ApiManager {
     /**
      * Executes a ApiRequest without body.
      * @param apiRequest
+     * @param apiResponse
      * @return a ApiResponse after execution of request.
      */
     public static void execute(ApiRequest apiRequest, ApiResponse apiResponse) {
         Response response = buildRequest(apiRequest).request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
+        apiResponse.setResponse(response);
+    }
+
+    /**
+     * Executes a ApiRequest without body without log..
+     * @param apiRequest
+     * @param apiResponse
+     * @return a ApiResponse after execution of request without log.
+     */
+    public static void executeWithoutLog(ApiRequest apiRequest, ApiResponse apiResponse) {
+        Response response = buildRequestWithoutLog(apiRequest).request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
         apiResponse.setResponse(response);
     }
 
@@ -37,10 +49,22 @@ public class ApiManager {
                 .pathParams(apiRequest.getPathParams())
                 .baseUri(apiRequest.getBaseUri())
                 .contentType(ContentType.JSON)
-//                .auth()
-//                .oauth2(apiRequest.getToken())
                 .log()
                 .all();
+    }
+
+    /**
+     * Builds a RequestSpecification without log.
+     * @param apiRequest
+     * @return RequestSpecification without log.
+     */
+    private static RequestSpecification buildRequestWithoutLog(final ApiRequest apiRequest) {
+        return given()
+                .headers(apiRequest.getHeaders())
+                .queryParams(apiRequest.getQueryParams())
+                .pathParams(apiRequest.getPathParams())
+                .baseUri(apiRequest.getBaseUri())
+                .contentType(ContentType.JSON);
     }
 
     /**

@@ -55,10 +55,9 @@ public class Hooks {
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .addMethod(ApiMethod.POST);
-        ApiManager.execute(apiRequestBuilder.build(), tokenApiResponse);
+        ApiManager.executeWithoutLog(apiRequestBuilder.build(), tokenApiResponse);
         token = tokenApiResponse.getPath("token_type") + " " + tokenApiResponse.getPath("access_token");
         LOGGER.info("********************* TOKEN *********************");
-        System.out.println(token);
     }
 
     @Before(order = 1)
