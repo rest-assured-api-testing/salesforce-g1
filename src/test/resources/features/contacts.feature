@@ -15,8 +15,7 @@ Feature: Contacts
   @DeleteContact
   Scenario: Post a Contact
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Contact |
+    When I create "Contact" body with parameters
       | lastName | Perez |
     And I execute the request on "/Contact" endpoint
     Then The response status code should be "CREATED"
@@ -24,8 +23,7 @@ Feature: Contacts
   @CreateContact @DeleteContact
   Scenario: Patch a Contact
     Given I build a "PATCH" request
-    When I set body with parameters
-      | featureType | Contact |
+    When I set "Contact" body with parameters
       | lastName | My Contact with name changed |
     And I execute the request with body on "/Contact/{ContactId}" endpoint and "ContactId" param
     Then The response status code should be "NO_CONTENT"

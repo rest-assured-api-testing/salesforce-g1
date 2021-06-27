@@ -15,8 +15,7 @@ Feature: Orders
   @DeleteOrder
   Scenario: Post a Order
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Order |
+    When I create "Order" body with parameters
       | accountId | 0015e00000B0PtfAAF |
       | status | Draft |
       | effectiveDate | 2021-07-01 |
@@ -27,8 +26,7 @@ Feature: Orders
   @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Patch a Order
     Given I build a "PATCH" request
-    When I create body with parameters
-      | featureType | Order |
+    When I create "Order" body with parameters
       | effectiveDate | 2021-07-29 |
     And I execute the request with body on "/Order/{OrderId}" endpoint and "OrderId" param
     Then The response status code should be "CREATED"

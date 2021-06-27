@@ -30,7 +30,7 @@ public class ApiManager {
      * @param apiRequest
      * @return RequestSpecification.
      */
-    private static RequestSpecification buildRequest(ApiRequest apiRequest) {
+    private static RequestSpecification buildRequest(final ApiRequest apiRequest) {
         return given()
                 .headers(apiRequest.getHeaders())
                 .queryParams(apiRequest.getQueryParams())
@@ -54,5 +54,4 @@ public class ApiManager {
                 .request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
         apiResponse.setResponse(response);
     }
-
 }

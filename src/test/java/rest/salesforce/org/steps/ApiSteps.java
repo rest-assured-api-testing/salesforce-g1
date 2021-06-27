@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2021 Fundacion Jala.
+ * This software is the confidential and proprietary information of Fundacion Jala
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Fundacion Jala
+ */
+
 package rest.salesforce.org.steps;
 
 import api.*;
@@ -8,16 +16,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
-
 import java.text.ParseException;
 import java.util.Map;
 
-import static configfile.Configuration.dotenv;
-
 public class ApiSteps {
-    public Logger LOGGER = Logger.getLogger(getClass());
     private ApiResponseObject apiResponseObject;
     public RequestID requestID;
     ApiRequestBuilder requestBuilder;
@@ -38,9 +41,9 @@ public class ApiSteps {
                 .addMethod(ApiMethod.valueOf(apiMethod));
     }
 
-    @When("^I create body with parameters$")
-    public void iCreateBodyWithParameters(final Map entry) throws JsonProcessingException, ParseException {
-        feature = featureFactory.getFeature((String) entry.get("featureType"));
+    @When("^I create \"(.*?)\" body with parameters$")
+    public void iCreateBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException, ParseException {
+        feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.addBody(new ObjectMapper().writeValueAsString(feature));
     }
@@ -57,8 +60,6 @@ public class ApiSteps {
 
     @Then("The response status code should be {string}")
     public void theResponseStatusCodeShouldBe(final String statusCode) {
-        System.out.println("status expected " + ApiStatusCode.valueOf(statusCode).getValue());
-        System.out.println("status actual" + apiResponse.getStatusCode());
         Assert.assertEquals(apiResponse.getStatusCode(), ApiStatusCode.valueOf(statusCode).getValue());
         apiResponse.getResponse().then().log().body();
     }
@@ -82,7 +83,6 @@ public class ApiSteps {
 
     @And("I execute the request with body on {string} endpoint and {string} param")
     public void iExecuteTheRequestWithBodyOnEndpointAndParam(final String endpoint, final String param) {
-        System.out.println("========account para actualizar " + requestID.getIdFeature(param));
         requestBuilder
                 .addEndpoint(endpoint)
                 .addPathParams(param, requestID.getIdFeature(param))
@@ -90,9 +90,9 @@ public class ApiSteps {
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
     }
 
-    @When("^I set body with parameters$")
-    public void iSetBodyWithParameters(final Map entry) throws JsonProcessingException {
-        feature = featureFactory.getFeature((String) entry.get("featureType"));
+    @When("^I set \"(.*?)\" body with parameters$")
+    public void iSetBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException {
+        feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
     }

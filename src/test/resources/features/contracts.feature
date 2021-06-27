@@ -15,8 +15,7 @@ Feature: Contracts
   @DeleteContract
   Scenario: Post a Contract
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Contract |
+    When I create "Contract" body with parameters
       | accountId | 0015e00000B0PtfAAF |
       | status | Draft |
       | startDate | 2021-06-28 |
@@ -27,8 +26,7 @@ Feature: Contracts
   @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Patch a Contract
     Given I build a "PATCH" request
-    When I set body with parameters
-      | featureType | Contract |
+    When I set "Contract" body with parameters
       | contractTerm | 7 |
     And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "NO_CONTENT"

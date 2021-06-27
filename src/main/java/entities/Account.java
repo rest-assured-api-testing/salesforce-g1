@@ -77,9 +77,9 @@ public class Account implements Features{
     @JsonProperty("Industry")
     public String industry;
     @JsonProperty("AnnualRevenue")
-    public double annualRevenue;
+    public Double annualRevenue;
     @JsonProperty("NumberOfEmployees")
-    public int numberOfEmployees;
+    public Integer numberOfEmployees;
     @JsonProperty("Ownership")
     public String ownership;
     @JsonProperty("TickerSymbol")
@@ -139,7 +139,7 @@ public class Account implements Features{
     @JsonProperty("Active__c")
     public String active__c;
     @JsonProperty("NumberofLocations__c")
-    public double numberofLocations__c;
+    public Double numberofLocations__c;
     @JsonProperty("UpsellOpportunity__c")
     public String upsellOpportunity__c;
     @JsonProperty("SLASerialNumber__c")
@@ -163,11 +163,11 @@ public class Account implements Features{
         this.id = id;
     }
 
-    public Boolean isDeleted() {
+    public Boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setIsDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
 
@@ -403,19 +403,19 @@ public class Account implements Features{
         this.industry = industry;
     }
 
-    public double getAnnualRevenue() {
+    public Double getAnnualRevenue() {
         return annualRevenue;
     }
 
-    public void setAnnualRevenue(double annualRevenue) {
+    public void setAnnualRevenue(Double annualRevenue) {
         this.annualRevenue = annualRevenue;
     }
 
-    public int getNumberOfEmployees() {
+    public Integer getNumberOfEmployees() {
         return numberOfEmployees;
     }
 
-    public void setNumberOfEmployees(int numberOfEmployees) {
+    public void setNumberOfEmployees(Integer numberOfEmployees) {
         this.numberOfEmployees = numberOfEmployees;
     }
 
@@ -651,11 +651,11 @@ public class Account implements Features{
         this.active__c = active__c;
     }
 
-    public double getNumberofLocations__c() {
+    public Double getNumberofLocations__c() {
         return numberofLocations__c;
     }
 
-    public void setNumberofLocations__c(double numberofLocations__c) {
+    public void setNumberofLocations__c(Double numberofLocations__c) {
         this.numberofLocations__c = numberofLocations__c;
     }
 

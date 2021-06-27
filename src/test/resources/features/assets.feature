@@ -15,8 +15,7 @@ Feature:  Assets
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset
     Given I build a "POST" request
-    When I create body with parameters
-      | featureType | Asset |
+    When I create "Asset" body with parameters
       | name | My Asset for Testing |
       | accountId | 0015e00000B0PtfAAF |
     And I execute the request on "/Asset" endpoint
@@ -25,8 +24,7 @@ Feature:  Assets
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset
     Given I build a "PATCH" request
-    When I set body with parameters
-      | featureType | Asset |
+    When I set "Asset" body with parameters
       | name | My Asset with name changed |
     And I execute the request with body on "/Asset/{AssetId}" endpoint and "AssetId" param
     Then The response status code should be "NO_CONTENT"
