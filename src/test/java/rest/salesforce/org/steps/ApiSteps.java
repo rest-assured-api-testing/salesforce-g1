@@ -17,6 +17,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+
+import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.Map;
 
@@ -49,13 +51,14 @@ public class ApiSteps {
     }
 
     @And("I execute the request on {string} endpoint")
-    public void iExecuteTheRequestOnEndpoint(final String endpoint) {
+    public void iExecuteTheRequestOnEndpoint(final String endpoint) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         requestBuilder
                 .addEndpoint(endpoint)
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
-        requestID.setIdAccount(apiResponseObject.getId());
+        requestID.setField(requestID.nameConverter(endpoint), apiResponseObject.getId());
+//        requestID.setAccountId(apiResponseObject.getId());
     }
 
     @Then("The response status code should be {string}")
@@ -65,10 +68,10 @@ public class ApiSteps {
     }
 
     @When("I execute the request on {string} endpoint and {string} param")
-    public void iExecuteTheRequestOnEndpointAndParam(final String endpoint, final String param) {
+    public void iExecuteTheRequestOnEndpointAndParam(final String endpoint, final String param) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         requestBuilder
                 .addEndpoint(endpoint)
-                .addPathParams(param, requestID.getIdFeature(param))
+                .addPathParams(param, requestID.getField(requestID.nameConverter(param)))
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
     }
@@ -82,10 +85,10 @@ public class ApiSteps {
     }
 
     @And("I execute the request with body on {string} endpoint and {string} param")
-    public void iExecuteTheRequestWithBodyOnEndpointAndParam(final String endpoint, final String param) {
+    public void iExecuteTheRequestWithBodyOnEndpointAndParam(final String endpoint, final String param) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         requestBuilder
                 .addEndpoint(endpoint)
-                .addPathParams(param, requestID.getIdFeature(param))
+                .addPathParams(param, requestID.getField(requestID.nameConverter(param)))
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
     }

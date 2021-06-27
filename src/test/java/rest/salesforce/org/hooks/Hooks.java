@@ -31,7 +31,8 @@ public class Hooks {
     Order orderToSend = new Order();
     String token;
 
-    public Hooks(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse, RequestID requestID, ApiResponse tokenApiResponse) {
+    public Hooks(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse,
+                 RequestID requestID, ApiResponse tokenApiResponse) {
         this.requestBuilder = requestBuilder;
         this.apiResponseObject = apiResponseObject;
         this.apiResponse = apiResponse;
@@ -80,7 +81,7 @@ public class Hooks {
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject.setId(apiResponse.getBody(ApiResponseObject.class).getId());
-        requestID.setIdAccount(apiResponseObject.getId());
+        requestID.setAccountId(apiResponseObject.getId());
     }
 
     @After(value = "@DeleteAccount")
@@ -89,7 +90,7 @@ public class Hooks {
         requestBuilder
                 .clearPathParams()
                 .addEndpoint("/Account/{accountID}")
-                .addPathParams("accountID", requestID.getIdAccount())
+                .addPathParams("accountID", requestID.getAccountId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -99,7 +100,7 @@ public class Hooks {
     public void createAnAsset() throws JsonProcessingException {
         LOGGER.info("********************* Create Asset *********************");
         assetToSend.setName("asset name from java");
-        assetToSend.setAccountId(requestID.getIdAccount());
+        assetToSend.setAccountId(requestID.getAccountId());
         requestBuilder
                 .clearPathParams()
                 .addEndpoint("/Asset/")
@@ -108,7 +109,7 @@ public class Hooks {
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject.setId(apiResponse.getBody(ApiResponseObject.class).getId());
-        requestID.setIdAsset(apiResponseObject.getId());
+        requestID.setAssetId(apiResponseObject.getId());
     }
 
     @After("@DeleteAsset")
@@ -117,7 +118,7 @@ public class Hooks {
         requestBuilder
                 .clearPathParams()
                 .addEndpoint("/Asset/{assetID}")
-                .addPathParams("assetID", requestID.getIdAsset())
+                .addPathParams("assetID", requestID.getAssetId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -136,7 +137,7 @@ public class Hooks {
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject.setId(apiResponse.getBody(ApiResponseObject.class).getId());
-        requestID.setIdContact(apiResponseObject.getId());
+        requestID.setContactId(apiResponseObject.getId());
     }
 
     @After("@DeleteContact")
@@ -145,7 +146,7 @@ public class Hooks {
         requestBuilder
                 .clearPathParams()
                 .addEndpoint("/Contact/{contactID}")
-                .addPathParams("contactID", requestID.getIdContact())
+                .addPathParams("contactID", requestID.getContactId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -155,7 +156,7 @@ public class Hooks {
     public void createAContract() throws JsonProcessingException {
         LOGGER.info("********************* Create Contract *********************");
         contractToSend.setStatus("Draft");
-        contractToSend.setAccountId(requestID.getIdAccount());
+        contractToSend.setAccountId(requestID.getAccountId());
         contractToSend.setStartDate("2021-06-27");
         contractToSend.setContractTerm(8);
         requestBuilder
@@ -166,7 +167,7 @@ public class Hooks {
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject.setId(apiResponse.getBody(ApiResponseObject.class).getId());
-        requestID.setIdContract(apiResponseObject.getId());
+        requestID.setContractId(apiResponseObject.getId());
     }
 
     @After("@DeleteContract")
@@ -175,7 +176,7 @@ public class Hooks {
         requestBuilder
                 .clearPathParams()
                 .addEndpoint("/Contract/{contractID}")
-                .addPathParams("contractID", requestID.getIdContract())
+                .addPathParams("contractID", requestID.getContractId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -185,8 +186,8 @@ public class Hooks {
     public void createAnOrder() throws JsonProcessingException {
         LOGGER.info("********************* Create Order *********************");
         orderToSend.setStatus("Draft");
-        orderToSend.setAccountId(requestID.getIdAccount());
-        orderToSend.setContractId(requestID.getIdContract());
+        orderToSend.setAccountId(requestID.getAccountId());
+        orderToSend.setContractId(requestID.getContractId());
         orderToSend.setEffectiveDate("2021-07-28");
         requestBuilder
                 .clearPathParams()
@@ -196,7 +197,7 @@ public class Hooks {
                 .build();
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject.setId(apiResponse.getBody(ApiResponseObject.class).getId());
-        requestID.setIdOrder(apiResponseObject.getId());
+        requestID.setOrderId(apiResponseObject.getId());
     }
 
     @After("@DeleteOrder")
@@ -205,7 +206,7 @@ public class Hooks {
         requestBuilder
                 .clearPathParams()
                 .addEndpoint("/Order/{orderID}")
-                .addPathParams("orderID", requestID.getIdOrder())
+                .addPathParams("orderID", requestID.getOrderId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
