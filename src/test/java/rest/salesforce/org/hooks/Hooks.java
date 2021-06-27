@@ -15,7 +15,6 @@ import entities.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.apache.log4j.Logger;
-
 import static configfile.Configuration.dotenv;
 
 public class Hooks {

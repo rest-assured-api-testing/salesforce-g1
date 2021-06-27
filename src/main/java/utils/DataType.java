@@ -11,7 +11,6 @@ package utils;
 
 import com.google.gson.Gson;
 import entities.*;
-
 import java.lang.reflect.Field;
 
 /**
@@ -24,7 +23,7 @@ public class DataType {
      * @param secondObject the second object to match
      * @return a boolean with the result
      */
-    public static boolean validateDataType(Field firstObject, Object secondObject) {
+    public static boolean validateDataType(final Field firstObject, final Object secondObject) {
         if (firstObject.getType().equals(secondObject.getClass())) {
             return true;
         }
@@ -37,7 +36,7 @@ public class DataType {
      * @param dataType a String with the type to convert
      * @return the value with the required data type
      */
-    public static Object convertStringToObject(String value, String dataType) {
+    public static Object convertStringToObject(final String value, final String dataType) {
         Gson gson = new Gson();
         if (dataType.equals("Integer")) {
             Integer integerObject = Integer.valueOf(value);

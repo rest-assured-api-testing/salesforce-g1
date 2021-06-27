@@ -11,9 +11,7 @@ package entities;
 import org.apache.commons.beanutils.PropertyUtils;
 import java.lang.reflect.Field;
 import java.util.Map;
-
 import static utils.DataType.convertStringToObject;
-import static utils.DataType.validateDataType;
 
 /**
  * This interface implements all features
