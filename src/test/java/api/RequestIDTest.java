@@ -25,6 +25,8 @@ public class RequestIDTest {
         System.out.println(requestID.nameConverter("AccountId"));
         System.out.println(requestID.nameConverter("/Asset"));
         System.out.println(requestID.nameConverter("AssetId"));
+        System.out.println(requestID.nameConverter("/Contract"));
+        System.out.println(requestID.nameConverter("ContractId"));
     }
 
     @Test

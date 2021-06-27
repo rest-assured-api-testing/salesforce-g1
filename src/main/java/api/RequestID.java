@@ -69,7 +69,7 @@ public class RequestID {
      * @throws IllegalAccessException when illegal access found
      * @throws NoSuchMethodException when method not found
      */
-    public void setField(String fieldName, String fieldValue) throws InvocationTargetException, IllegalAccessException,
+    public void setField(final String fieldName, final String fieldValue) throws InvocationTargetException, IllegalAccessException,
             NoSuchMethodException {
         Field[] attributes = this.getClass().getDeclaredFields();
         for (Field attribute : attributes) {
@@ -86,7 +86,7 @@ public class RequestID {
      * @throws IllegalAccessException when illegal access found
      * @throws NoSuchMethodException when method not found
      */
-    public String getField(String fieldName) throws InvocationTargetException, IllegalAccessException,
+    public String getField(final String fieldName) throws InvocationTargetException, IllegalAccessException,
             NoSuchMethodException {
         Field[] attributes = this.getClass().getDeclaredFields();
         for (Field attribute : attributes) {
@@ -103,18 +103,26 @@ public class RequestID {
      * @param name a String with the name of the endpoint or the param
      * @return a String with the field's name
      */
-    public String nameConverter(String name) {
-        char firstChar = name.charAt(0);
+    public String nameConverter(final String name) {
+        String newName = name;
+        char firstChar = newName.charAt(0);
         char myChar = "/".charAt(0);
         if (firstChar == myChar) {
-            name = name.substring(1) + "Id";
+            newName = newName.substring(1) + "Id";
         }
-        char c[] = name.toCharArray();
+        char c[] = newName.toCharArray();
         c[0] = Character.toLowerCase(c[0]);
-        String newName = new String(c);
+        newName = new String(c);
         return newName;
     }
 
+    /**
+     * Creates a map with all the request's fields
+     * @return a Map with the fields
+     * @throws InvocationTargetException when target not found
+     * @throws IllegalAccessException when illegal access found
+     * @throws NoSuchMethodException when method not found
+     */
     public Map createMapFields() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Map mapFields = new HashMap();
         Field[] attributes = this.getClass().getDeclaredFields();

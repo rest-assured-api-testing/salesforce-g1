@@ -12,7 +12,7 @@ Feature: Contracts
     When I execute the request on "/Contract"
     Then The response status code should be "OK"
 
-  @DeleteContract
+  @CreateAccount @DeleteContract @DeleteAccount
   Scenario: Post a Contract
     Given I build a "POST" request
     When I create "Contract" body with parameters
