@@ -20,6 +20,7 @@ import org.testng.Assert;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ApiSteps {
@@ -44,9 +45,12 @@ public class ApiSteps {
     }
 
     @When("^I create \"(.*?)\" body with parameters$")
-    public void iCreateBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException, ParseException {
+    public void iCreateBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException, ParseException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         feature = featureFactory.getFeature(featureType);
-        feature.setAllFields(entry);
+        Map fieldIdMap = requestID.createMapFields();
+        Map completeFields = new HashMap(fieldIdMap);
+        completeFields.putAll(entry);
+        feature.setAllFields(completeFields);
         requestBuilder.addBody(new ObjectMapper().writeValueAsString(feature));
     }
 
@@ -58,7 +62,6 @@ public class ApiSteps {
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
         apiResponseObject = apiResponse.getBody(ApiResponseObject.class);
         requestID.setField(requestID.nameConverter(endpoint), apiResponseObject.getId());
-//        requestID.setAccountId(apiResponseObject.getId());
     }
 
     @Then("The response status code should be {string}")

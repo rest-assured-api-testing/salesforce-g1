@@ -16,7 +16,6 @@ Feature: Contracts
   Scenario: Post a Contract
     Given I build a "POST" request
     When I create "Contract" body with parameters
-      | accountId | 0015e00000B0PtfAAF |
       | status | Draft |
       | startDate | 2021-06-28 |
       | contractTerm | 7 |

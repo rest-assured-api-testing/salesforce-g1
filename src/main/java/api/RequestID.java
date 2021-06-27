@@ -11,6 +11,8 @@ package api;
 import org.apache.commons.beanutils.PropertyUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RequestID {
     public String accountId;
@@ -111,5 +113,16 @@ public class RequestID {
         c[0] = Character.toLowerCase(c[0]);
         String newName = new String(c);
         return newName;
+    }
+
+    public Map createMapFields() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Map mapFields = new HashMap();
+        Field[] attributes = this.getClass().getDeclaredFields();
+        for (Field attribute : attributes) {
+            if (PropertyUtils.getSimpleProperty(this, attribute.getName()) != null) {
+                mapFields.put(attribute.getName(), PropertyUtils.getSimpleProperty(this, attribute.getName()).toString());
+            }
+        }
+        return mapFields;
     }
 }

@@ -2,6 +2,8 @@ package api;
 
 import org.testng.annotations.Test;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RequestIDTest {
 
@@ -23,5 +25,20 @@ public class RequestIDTest {
         System.out.println(requestID.nameConverter("AccountId"));
         System.out.println(requestID.nameConverter("/Asset"));
         System.out.println(requestID.nameConverter("AssetId"));
+    }
+
+    @Test
+    public void testCreateMapFields() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        RequestID requestID = new RequestID();
+        requestID.setField("accountId", "hola");
+        requestID.setField("assetId", "AssetAsset");
+        requestID.setField("contactId", "Contacto123");
+        Map myMap = requestID.createMapFields();
+        System.out.println(myMap);
+        Map map2 = new HashMap();
+        map2.put("CrisMotin", true);
+        Map map3 = new HashMap(myMap);
+        map3.putAll(map2);
+        System.out.println(map3);
     }
 }

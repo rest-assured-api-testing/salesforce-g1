@@ -17,7 +17,6 @@ Feature:  Assets
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | My Asset for Testing |
-      | accountId | 0015e00000B0PtfAAF |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
 
