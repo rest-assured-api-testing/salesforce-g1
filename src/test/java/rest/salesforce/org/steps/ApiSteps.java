@@ -10,11 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-
 import java.text.ParseException;
 import java.util.Map;
-
-import static configfile.Configuration.dotenv;
 
 public class ApiSteps {
     public Logger LOGGER = Logger.getLogger(getClass());
@@ -90,9 +87,9 @@ public class ApiSteps {
         ApiManager.executeWithBody(requestBuilder.build(), apiResponse);
     }
 
-    @When("^I set body with parameters$")
-    public void iSetBodyWithParameters(final Map entry) throws JsonProcessingException {
-        feature = featureFactory.getFeature((String) entry.get("featureType"));
+    @When("^I set \"(.*?)\" body with parameters$")
+    public void iSetBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException {
+        feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
     }

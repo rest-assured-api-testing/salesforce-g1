@@ -24,8 +24,7 @@ Feature:  Assets
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset
     Given I build a "PATCH" request
-    When I set body with parameters
-      | featureType | Asset |
+    When I set "Asset" body with parameters
       | name | My Asset with name changed |
     And I execute the request with body on "/Asset/{AssetId}" endpoint and "AssetId" param
     Then The response status code should be "NO_CONTENT"

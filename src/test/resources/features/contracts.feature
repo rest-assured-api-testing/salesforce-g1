@@ -26,8 +26,7 @@ Feature: Contracts
   @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Patch a Contract
     Given I build a "PATCH" request
-    When I set body with parameters
-      | featureType | Contract |
+    When I set "Contract" body with parameters
       | contractTerm | 7 |
     And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "NO_CONTENT"
