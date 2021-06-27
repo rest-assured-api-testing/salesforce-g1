@@ -23,6 +23,7 @@ public class Hooks {
     private ApiResponseObject apiResponseObject;
     private ApiResponse apiResponse;
     private RequestID requestID;
+    private ApiResponse tokenApiResponse;
     Account accountToSend = new Account();
     Asset assetToSend = new Asset();
     Contact contactToSend = new Contact();
@@ -30,42 +31,40 @@ public class Hooks {
     Order orderToSend = new Order();
     String token;
 
-    public Hooks(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse, RequestID requestID) {
+    public Hooks(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse, RequestID requestID, ApiResponse tokenApiResponse) {
         this.requestBuilder = requestBuilder;
         this.apiResponseObject = apiResponseObject;
         this.apiResponse = apiResponse;
         this.requestID = requestID;
+        this.tokenApiResponse = tokenApiResponse;
     }
 
-//    @Before(value = "@CreateAccount", order = 1)
-//    public void setUpConfig() throws JsonProcessingException {
-//        LOGGER.info("********************* TOKEN *********************");
-//        ApiRequestBuilder apiRequestBuilder = new ApiRequestBuilder();
-//        apiRequestBuilder
-//                .addBaseUri(dotenv.get("AUTH_URL"))
-//                .addEndpoint("/services/oauth2/token")
-//                .addQueryParams("grant_type", "password")
-//                .addQueryParams("client_id",dotenv.get("CLIENT_ID"))
-//                .addQueryParams("client_secret",dotenv.get("CLIENT_SECRET"))
-//                .addQueryParams("username",dotenv.get("SALESFORCE_USERNAME"))
-//                .addQueryParams("password",dotenv.get("PASSWORD_TOKEN"))
-//                .addHeader("Accept", "application/json")
-//                .addHeader("Content-Type", "application/x-www-form-urlencoded")
-//                .addMethod(ApiMethod.POST);
-//        ApiManager.execute(requestBuilder.build(), apiResponse);
-//        token = apiResponse.getPath("token_type") + " " + apiResponse.getPath("access_token");
-////        token = apiResponse.getPath("token_type") + " " + apiResponse.getPath("access_token");
-////        ApiResponse apiResponseToken = ApiManager.execute(apiRequestBuilder.build(), apiResponse);
-////        token = apiResponseToken.getPath("token_type") + " " + apiResponseToken.getPath("access_token");
-//        LOGGER.info("********************* TOKEN *********************");
-//        System.out.println(token);
-//    }
-
     @Before(order = 0)
+    public void setUpConfig() throws JsonProcessingException {
+        LOGGER.info("********************* TOKEN *********************");
+        ApiRequestBuilder apiRequestBuilder = new ApiRequestBuilder();
+        apiRequestBuilder
+                .addBaseUri(dotenv.get("AUTH_URL"))
+                .addEndpoint("/services/oauth2/token")
+                .addQueryParams("grant_type", "password")
+                .addQueryParams("client_id",dotenv.get("CLIENT_ID"))
+                .addQueryParams("client_secret",dotenv.get("CLIENT_SECRET"))
+                .addQueryParams("username",dotenv.get("SALESFORCE_USERNAME"))
+                .addQueryParams("password",dotenv.get("PASSWORD_TOKEN"))
+                .addHeader("Accept", "application/json")
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addMethod(ApiMethod.POST);
+        ApiManager.execute(apiRequestBuilder.build(), tokenApiResponse);
+        token = tokenApiResponse.getPath("token_type") + " " + tokenApiResponse.getPath("access_token");
+        LOGGER.info("********************* TOKEN *********************");
+        System.out.println(token);
+    }
+
+    @Before(order = 1)
     public void setUp() {
         LOGGER.info("********************* Setup *********************");
         requestBuilder
-                .addToken(dotenv.get("TOKEN"))
+                .addHeader("Authorization",token)
                 .addBaseUri(dotenv.get("BASE_URL"));
     }
 
