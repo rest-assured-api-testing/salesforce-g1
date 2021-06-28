@@ -12,6 +12,7 @@ import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.*;
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -101,5 +102,20 @@ public class ApiSteps {
         feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
+    }
+
+    @When("I execute the request on {string} endpoint and {string} param with {string} value")
+    public void iExecuteTheRequestOnEndpointAndParamWithParam(final String endpoint, final String param,
+                                                              final String paramValue) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .addPathParams(param, paramValue)
+                .build();
+        ApiManager.execute(requestBuilder.build(), apiResponse);
+    }
+
+    @DataTableType(replaceWithEmptyString = "[blank]")
+    public String stringType(final String cell) {
+        return cell;
     }
 }
