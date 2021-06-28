@@ -18,15 +18,15 @@ public class FeatureFactory {
      * @return the corresponding feature
      */
     public Features getFeature(String featureType) {
-        if (featureType.equalsIgnoreCase("Account")) {
+        if (featureType.equalsIgnoreCase(FeaturesNames.Account.getName())) {
             return new Account();
-        } else if (featureType.equalsIgnoreCase("Asset")) {
+        } else if (featureType.equalsIgnoreCase(FeaturesNames.Asset.getName())) {
             return new Asset();
-        } else if (featureType.equalsIgnoreCase("Contact")) {
+        } else if (featureType.equalsIgnoreCase(FeaturesNames.Contact.getName())) {
             return new Contact();
-        } else if (featureType.equalsIgnoreCase("Contract")) {
+        } else if (featureType.equalsIgnoreCase(FeaturesNames.Contract.getName())) {
             return new Contract();
-        } else if (featureType.equalsIgnoreCase("Order")) {
+        } else if (featureType.equalsIgnoreCase(FeaturesNames.Order.getName())) {
             return new Order();
         }
         return null;

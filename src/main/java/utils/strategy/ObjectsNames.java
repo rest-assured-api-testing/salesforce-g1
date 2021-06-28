@@ -25,7 +25,7 @@ public enum ObjectsNames {
     String name;
     StringToObjectConverter stringToObjectConverter;
 
-    ObjectsNames(String name, StringToObjectConverter stringToObjectConverter) {
+    ObjectsNames(final String name, final StringToObjectConverter stringToObjectConverter) {
         this.name = name;
         this.stringToObjectConverter = stringToObjectConverter;
     }
