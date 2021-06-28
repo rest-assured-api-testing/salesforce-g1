@@ -6,7 +6,7 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package api;
+package rest.salesforce.org;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import java.lang.reflect.Field;
