@@ -9,8 +9,7 @@
 
 package utils;
 
-import com.google.gson.Gson;
-import entities.*;
+import utils.strategy.ObjectsNames;
 import java.lang.reflect.Field;
 
 /**
@@ -37,32 +36,9 @@ public class DataType {
      * @return the value with the required data type
      */
     public static Object convertStringToObject(final String value, final String dataType) {
-        Gson gson = new Gson();
-        if (dataType.equals("Integer")) {
-            Integer integerObject = Integer.valueOf(value);
-            return integerObject;
-        } else if (dataType.equals("Boolean")) {
-            Boolean booleanObject = Boolean.valueOf(value);
-            return booleanObject;
-        } else if (dataType.equals("Double")) {
-            Double doubleObject = Double.valueOf(value);
-            return doubleObject;
-        } else if (dataType.equals("BillingAddress")) {
-            BillingAddress billingAddressObject = gson.fromJson(value, BillingAddress.class);
-            return billingAddressObject;
-        } else if (dataType.equals("MailingAddress")) {
-            MailingAddress mailingAddressObject = gson.fromJson(value, MailingAddress.class);
-            return mailingAddressObject;
-        } else if (dataType.equals("OtherAddress")) {
-            OtherAddress otherAddressObject = gson.fromJson(value, OtherAddress.class);
-            return otherAddressObject;
-        } else if (dataType.equals("ShippingAddress")) {
-            ShippingAddress shippingAddressObject = gson.fromJson(value, ShippingAddress.class);
-            return shippingAddressObject;
-        } else if (dataType.equals("Attribute")) {
-            Attribute attribute = gson.fromJson(value, Attribute.class);
-            return attribute;
+        if (value == null) {
+            return null;
         }
-        return null;
+        return ObjectsNames.valueOf(dataType).getStringToObjectConverter().convertStringToObject(value);
     }
 }
