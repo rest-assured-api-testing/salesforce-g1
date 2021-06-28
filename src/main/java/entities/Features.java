@@ -27,7 +27,9 @@ public interface Features {
             for (Field attribute : attributes) {
                 if (key.equals(attribute.getName())) {
                     try {
-                        if (attribute.getType().equals(map.get(key).getClass())) {
+                        if (map.get(key) == null) {
+                            PropertyUtils.setSimpleProperty(this, attribute.getName(), map.get(key));
+                        } else if (attribute.getType().equals(map.get(key).getClass())) {
                             PropertyUtils.setSimpleProperty(this, attribute.getName(), map.get(key));
                         } else {
                             PropertyUtils.setSimpleProperty(this, attribute.getName(), convertStringToObject((String) map.get(key), attribute.getType().getSimpleName()));

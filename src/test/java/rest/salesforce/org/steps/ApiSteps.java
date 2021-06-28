@@ -12,12 +12,12 @@ import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.*;
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -45,7 +45,7 @@ public class ApiSteps {
     }
 
     @When("^I create \"(.*?)\" body with parameters$")
-    public void iCreateBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException, ParseException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void iCreateBodyWithParameters(final String featureType, final Map<String, String> entry) throws JsonProcessingException, ParseException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         feature = featureFactory.getFeature(featureType);
         Map fieldIdMap = requestID.createMapFields();
         Map completeFields = new HashMap(fieldIdMap);
@@ -97,9 +97,24 @@ public class ApiSteps {
     }
 
     @When("^I set \"(.*?)\" body with parameters$")
-    public void iSetBodyWithParameters(final String featureType, final Map entry) throws JsonProcessingException {
+    public void iSetBodyWithParameters(final String featureType, final Map<String, String> entry) throws JsonProcessingException {
         feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
+    }
+
+    @When("I execute the request on {string} endpoint and {string} param with {string} value")
+    public void iExecuteTheRequestOnEndpointAndParamWithParam(final String endpoint, final String param,
+                                                              final String paramValue) {
+        requestBuilder
+                .addEndpoint(endpoint)
+                .addPathParams(param, paramValue)
+                .build();
+        ApiManager.execute(requestBuilder.build(), apiResponse);
+    }
+
+    @DataTableType(replaceWithEmptyString = "[blank]")
+    public String stringType(final String cell) {
+        return cell;
     }
 }
