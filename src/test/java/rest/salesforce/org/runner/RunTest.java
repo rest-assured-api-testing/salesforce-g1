@@ -15,8 +15,9 @@ import org.testng.annotations.BeforeTest;
 import org.apache.log4j.Logger;
 
 @CucumberOptions(
-        glue = {"rest.salesforce.org"},
-        features = {"src/test/resources/features"}
+        features = {"src/test/resources/features"},
+        plugin = {"html:target/site/cucumber-pretty.html", "json:target/cucumber.json"},
+        glue = {"rest.salesforce.org"}
 )
 public class RunTest extends AbstractTestNGCucumberTests {
     public Logger LOGGER = Logger.getLogger(getClass());
