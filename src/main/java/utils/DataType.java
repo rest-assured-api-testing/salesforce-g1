@@ -9,27 +9,12 @@
 
 package utils;
 
-import com.google.gson.Gson;
-import entities.*;
-import java.lang.reflect.Field;
+import utils.strategy.ObjectsNames;
 
 /**
  * This class provides methods to compare and convert data types
  */
 public class DataType {
-    /**
-     * Checks if the data types matches between objects
-     * @param firstObject the first object to check
-     * @param secondObject the second object to match
-     * @return a boolean with the result
-     */
-    public static boolean validateDataType(final Field firstObject, final Object secondObject) {
-        if (firstObject.getType().equals(secondObject.getClass())) {
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Converts an object type to another
      * @param value a String with the value to convert
@@ -37,32 +22,9 @@ public class DataType {
      * @return the value with the required data type
      */
     public static Object convertStringToObject(final String value, final String dataType) {
-        Gson gson = new Gson();
-        if (dataType.equals("Integer")) {
-            Integer integerObject = Integer.valueOf(value);
-            return integerObject;
-        } else if (dataType.equals("Boolean")) {
-            Boolean booleanObject = Boolean.valueOf(value);
-            return booleanObject;
-        } else if (dataType.equals("Double")) {
-            Double doubleObject = Double.valueOf(value);
-            return doubleObject;
-        } else if (dataType.equals("BillingAddress")) {
-            BillingAddress billingAddressObject = gson.fromJson(value, BillingAddress.class);
-            return billingAddressObject;
-        } else if (dataType.equals("MailingAddress")) {
-            MailingAddress mailingAddressObject = gson.fromJson(value, MailingAddress.class);
-            return mailingAddressObject;
-        } else if (dataType.equals("OtherAddress")) {
-            OtherAddress otherAddressObject = gson.fromJson(value, OtherAddress.class);
-            return otherAddressObject;
-        } else if (dataType.equals("ShippingAddress")) {
-            ShippingAddress shippingAddressObject = gson.fromJson(value, ShippingAddress.class);
-            return shippingAddressObject;
-        } else if (dataType.equals("Attribute")) {
-            Attribute attribute = gson.fromJson(value, Attribute.class);
-            return attribute;
+        if (value == null) {
+            return null;
         }
-        return null;
+        return ObjectsNames.valueOf(dataType).getStringToObjectConverter().convertStringToObject(value);
     }
 }

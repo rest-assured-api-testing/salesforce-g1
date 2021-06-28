@@ -91,13 +91,18 @@ Feature: Accounts
     Then The response status code should be "BAD_REQUEST"
 
   @DeleteAccount
-  Scenario: Post an Account with rating Hot
+  Scenario Outline: Post an Account with valid ratings
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | rating | Hot                  |
+      | name | <name> |
+      | rating | <rating> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    Examples:
+      | name | rating |
+      | My Account to test | Hot |
+      | My Account to test | Warm |
+      | My Account to test | Cold |
 
   @DeleteAccount
   Scenario: Post an Account with invalid rating value
@@ -109,13 +114,22 @@ Feature: Accounts
     Then The response status code should be "BAD_REQUEST"
 
   @DeleteAccount
-  Scenario: Post an Account with type Prospect
+  Scenario Outline: Post an Account with valid type
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | type | Prospect                 |
+      | name | <name> |
+      | type | <type> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    Examples:
+      | name | type |
+      | My Account to test | Prospect |
+      | My Account to test | Customer - Direct |
+      | My Account to test | Customer - Channel |
+      | My Account to test | Channel Partner / Reseller |
+      | My Account to test | Installation Partner |
+      | My Account to test | Technology Partner |
+      | My Account to test | Other |
 
   @DeleteAccount
   Scenario: Post an Account with industry Agriculture
