@@ -10,6 +10,9 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+/**
+ * This class creates a BillingAddress object.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillingAddress {
     public String city;

@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
+/**
+ * This class creates an Order object.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Order implements Features {
     public Attribute attributes;

@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2021 Fundacion Jala.
- *
  * This software is the confidential and proprietary information of Fundacion Jala
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -10,11 +9,12 @@
 package utils.strategy;
 
 /**
- * This interface implements a method to convert a String to an Object
+ * This interface implements a method to convert a String to an Object.
  */
 public interface StringToObjectConverter {
     /**
-     * Converts a String to an Object
+     * Converts a String to an Object.
+     *
      * @param string to convert
      * @return an Object
      */

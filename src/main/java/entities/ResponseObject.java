@@ -10,6 +10,9 @@ package entities;
 
 import java.util.List;
 
+/**
+ * This class creates a ResponseObject object.
+ */
 public class ResponseObject {
     public String id;
     public boolean success;

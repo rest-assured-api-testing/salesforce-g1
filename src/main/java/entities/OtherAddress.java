@@ -10,6 +10,9 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+/**
+ * This class creates an OtherAddress object.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OtherAddress {
     public String city;
