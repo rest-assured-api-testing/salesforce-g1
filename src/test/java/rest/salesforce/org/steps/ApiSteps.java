@@ -99,7 +99,7 @@ public class ApiSteps {
     }
 
     @When("^I set \"(.*?)\" body with parameters$")
-    public void iSetBodyWithParameters(final String featureType, final Map<String, String> entry) throws JsonProcessingException {
+    public void iSetBodyWithParameters(final String featureType, final Map<String, String> entry) throws JsonProcessingException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         feature = featureFactory.getFeature(featureType);
         feature.setAllFields(entry);
         requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
