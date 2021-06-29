@@ -5,20 +5,23 @@ Feature: Accounts
     Given I build a "GET" request
     When I execute the request on "/Account/{AccountId}" endpoint and "AccountId" param
     Then The response status code should be "OK"
+    And The response schema matches "schemas/getAccount.json" schema
 
   @CreateAccount @DeleteAccount
   Scenario: Get all Accounts
     Given I build a "GET" request
     When I execute the request on "/Account"
     Then The response status code should be "OK"
+    And The response schema matches "schemas/getAllAccounts.json" schema
 
   @DeleteAccount
   Scenario: Post an Account
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
+      | name | My Account to test |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postAccount.json" schema
 
   @CreateAccount @DeleteAccount
   Scenario: Patch an Account
@@ -46,8 +49,8 @@ Feature: Accounts
   Scenario: Post an Account with negative number of employees
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | employees | -1                |
+      | name | My Account to test |
+      | employees | -1 |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "BAD_REQUEST"
 
@@ -55,10 +58,11 @@ Feature: Accounts
   Scenario: Post an Account with 10 employees
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | employees | 10                |
+      | name | My Account to test |
+      | employees | 10 |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postAccount.json" schema
 
   @CreateAccount @DeleteAccount
   Scenario: Get a single Account with invalid Id
@@ -70,9 +74,10 @@ Feature: Accounts
   Scenario: Post an Account with duplicated name
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | New Account used for testing |
+      | name | My Account to test |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postAccount.json" schema
 
 #  @DeleteAccount
 #  Scenario: Post an Account with empty name
@@ -98,6 +103,7 @@ Feature: Accounts
       | rating | <rating> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postAccount.json" schema
     Examples:
       | name | rating |
       | My Account to test | Hot |
@@ -108,8 +114,8 @@ Feature: Accounts
   Scenario: Post an Account with invalid rating value
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | rating | Invalid Value        |
+      | name | My Account to test |
+      | rating | Invalid Value |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "BAD_REQUEST"
 
@@ -121,6 +127,7 @@ Feature: Accounts
       | type | <type> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postAccount.json" schema
     Examples:
       | name | type |
       | My Account to test | Prospect |
@@ -132,29 +139,64 @@ Feature: Accounts
       | My Account to test | Other |
 
   @DeleteAccount
-  Scenario: Post an Account with industry Agriculture
+  Scenario: Post an Account with invalid type value
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | industry | Agriculture        |
+      | name | My Account to test |
+      | type | Invalid Value |
+    And I execute the request on "/Account" endpoint
+    Then The response status code should be "BAD_REQUEST"
+
+  @DeleteAccount
+  Scenario Outline: Post an Account with industry Agriculture
+    Given I build a "POST" request
+    When I create "Account" body with parameters
+      | name | <name> |
+      | industry | <industry> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postAccount.json" schema
+    Examples:
+      | name | industry |
+      | My Account to test | Agriculture |
+      | My Account to test | Apparel |
+      | My Account to test | Banking |
+      | My Account to test | Biotechnology |
+      | My Account to test | Chemicals |
+      | My Account to test | Communications |
+      | My Account to test | Construction |
+      | My Account to test | Consulting |
+      | My Account to test | Education |
+      | My Account to test | Electronics |
+      | My Account to test | Energy |
+      | My Account to test | Engineering |
+      | My Account to test | Entertainment |
+      | My Account to test | Environmental |
+      | My Account to test | Finance |
+      | My Account to test | Food & Beverage |
+      | My Account to test | Government |
+      | My Account to test | Healthcare |
+      | My Account to test | Hospitality |
+      | My Account to test | Insurance |
+      | My Account to test | Machinery |
+      | My Account to test | Manufacturing |
+      | My Account to test | Media |
+      | My Account to test | Not For Profit |
+      | My Account to test | Recreation |
+      | My Account to test | Retail |
+      | My Account to test | Shipping |
+      | My Account to test | Technology |
+      | My Account to test | Telecommunications |
+      | My Account to test | Transportation |
+      | My Account to test | Utilities |
+      | My Account to test | Other |
 
   @DeleteAccount
   Scenario: Post an Account with invalid industry value
     Given I build a "POST" request
     When I create "Account" body with parameters
-      | name | My Account for Testing |
+      | name | My Account to test |
       | industry | Invalid Value      |
-    And I execute the request on "/Account" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @DeleteAccount
-  Scenario: Post an Account with invalid type value
-    Given I build a "POST" request
-    When I create "Account" body with parameters
-      | name | My Account for Testing |
-      | type | Invalid Value          |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "BAD_REQUEST"
 
