@@ -11,6 +11,7 @@ import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
+
 import static io.restassured.RestAssured.baseURI;
 
 public class ExampleTest {
