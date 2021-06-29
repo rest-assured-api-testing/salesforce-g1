@@ -29,15 +29,23 @@ Feature: Contracts
     Then The response status code should be "CREATED"
 
   @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with valid owner expiration notice
+  Scenario Outline: Post a Contract with valid owner expiration notice
     Given I build a "POST" request
     When I create "Contract" body with parameters
-      | status | Draft |
-      | startDate | 2021-06-28 |
-      | contractTerm | 7 |
-      | ownerExpirationNotice | 15 |
+      | status | <status> |
+      | startDate | <startDate> |
+      | contractTerm | <contractTerm> |
+      | ownerExpirationNotice | <ownerExpirationNotice> |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "CREATED"
+    Examples:
+      | status | startDate | contractTerm | ownerExpirationNotice |
+      | Draft  | 2021-06-28 | 5           | 15                    |
+      | Draft  | 2021-06-28 | 5           | 30                    |
+      | Draft  | 2021-06-28 | 5           | 45                    |
+      | Draft  | 2021-06-28 | 5           | 60                    |
+      | Draft  | 2021-06-28 | 5           | 90                    |
+      | Draft  | 2021-06-28 | 5           | 120                    |
 
   @CreateAccount @DeleteContract @DeleteAccount
   Scenario: Post a Contract with invalid owner expiration notice
@@ -47,6 +55,25 @@ Feature: Contracts
       | startDate | 2021-06-28 |
       | contractTerm | 7 |
       | ownerExpirationNotice | 16 |
+    And I execute the request on "/Contract" endpoint
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @DeleteContract @DeleteAccount
+  Scenario: Post a Contract with invalid status
+    Given I build a "POST" request
+    When I create "Contract" body with parameters
+      | status | invalid |
+      | startDate | 2021-06-28 |
+      | contractTerm | 7 |
+    And I execute the request on "/Contract" endpoint
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @DeleteContract @DeleteAccount
+  Scenario: Post a Contract without status
+    Given I build a "POST" request
+    When I create "Contract" body with parameters
+      | startDate | 2021-06-28 |
+      | contractTerm | 7 |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "BAD_REQUEST"
 
@@ -134,6 +161,22 @@ Feature: Contracts
     Then The response status code should be "BAD_REQUEST"
 
   @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract contract number is not possible
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | contractNumber | 7 |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract owner id is not possible
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | ownerId | 7 |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Patch a Contract's id
     Given I build a "PATCH" request
     When I set "Contract" body with parameters
@@ -150,18 +193,86 @@ Feature: Contracts
     Then The response status code should be "BAD_REQUEST"
 
   @CreateAccount @CreateContract @DeleteContract @DeleteAccount
-  Scenario: Patch a Contract with valid status
+  Scenario Outline: Patch a Contract with valid status
     Given I build a "PATCH" request
     When I set "Contract" body with parameters
-      | status | Activated |
+      | status | <status> |
     And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "NO_CONTENT"
+    Examples:
+      | status |
+      | Activated |
+      | Draft     |
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario Outline: Patch a Contract with valid owner expiration notice
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | ownerExpirationNotice | <ownerExpirationNotice> |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "NO_CONTENT"
+    Examples:
+      | ownerExpirationNotice |
+      | 15                    |
+      | 30                    |
+      | 45                    |
+      | 60                    |
+      | 90                    |
+      | 120                   |
 
   @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Patch a Contract with invalid status
     Given I build a "PATCH" request
     When I set "Contract" body with parameters
       | status | abcd |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract with billing postal code with max length
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | billingPostalCode | 00000000000000000000 |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "NO_CONTENT"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract with billing postal code with more than max length = 20
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | billingPostalCode | 000000000000000000000 |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract with billing city code with max length
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | billingCity | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "NO_CONTENT"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract with billing city code with more than max length = 40
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | billingCity | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract with billing state code with max length
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | billingState | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+    And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
+    Then The response status code should be "NO_CONTENT"
+
+  @CreateAccount @CreateContract @DeleteContract @DeleteAccount
+  Scenario: Patch a Contract with billing state code with more than max length = 80
+    Given I build a "PATCH" request
+    When I set "Contract" body with parameters
+      | billingState | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
     And I execute the request with body on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "BAD_REQUEST"
 
