@@ -21,7 +21,7 @@ Feature: Accounts
       | name | My Account to test |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
-    And The response schema matches "schemas/postAccount.json" schema
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @DeleteAccount
   Scenario: Patch an Account
@@ -62,7 +62,7 @@ Feature: Accounts
       | employees | 10 |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
-    And The response schema matches "schemas/postAccount.json" schema
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @DeleteAccount
   Scenario: Get a single Account with invalid Id
@@ -77,7 +77,7 @@ Feature: Accounts
       | name | My Account to test |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
-    And The response schema matches "schemas/postAccount.json" schema
+    And The response schema matches "schemas/postRequest.json" schema
 
 #  @DeleteAccount
 #  Scenario: Post an Account with empty name
@@ -103,7 +103,7 @@ Feature: Accounts
       | rating | <rating> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
-    And The response schema matches "schemas/postAccount.json" schema
+    And The response schema matches "schemas/postRequest.json" schema
     Examples:
       | name | rating |
       | My Account to test | Hot |
@@ -127,7 +127,7 @@ Feature: Accounts
       | type | <type> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
-    And The response schema matches "schemas/postAccount.json" schema
+    And The response schema matches "schemas/postRequest.json" schema
     Examples:
       | name | type |
       | My Account to test | Prospect |
@@ -155,7 +155,7 @@ Feature: Accounts
       | industry | <industry> |
     And I execute the request on "/Account" endpoint
     Then The response status code should be "CREATED"
-    And The response schema matches "schemas/postAccount.json" schema
+    And The response schema matches "schemas/postRequest.json" schema
     Examples:
       | name | industry |
       | My Account to test | Agriculture |
