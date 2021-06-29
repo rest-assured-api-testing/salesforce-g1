@@ -158,11 +158,11 @@ public class Asset implements Features{
         this.productCode = productCode;
     }
 
-    public Boolean isCompetitorProduct() {
+    public Boolean getIsCompetitorProduct() {
         return isCompetitorProduct;
     }
 
-    public void setCompetitorProduct(Boolean competitorProduct) {
+    public void setIsCompetitorProduct(Boolean competitorProduct) {
         isCompetitorProduct = competitorProduct;
     }
 

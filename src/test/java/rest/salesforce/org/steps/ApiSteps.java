@@ -119,4 +119,9 @@ public class ApiSteps {
     public String stringType(final String cell) {
         return cell;
     }
+
+    @And("The response schema matches {string} schema")
+    public void theResponseSchemaMatchesSchema(final String schemaPath) {
+        apiResponse.validateBodySchema(schemaPath);
+    }
 }
