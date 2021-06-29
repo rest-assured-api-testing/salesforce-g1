@@ -21,7 +21,7 @@
       "type": "string"
     },
     "ContactId": {
-      "type": "string"
+      "type": "null"
     },
     "AccountId": {
       "type": "string"
@@ -33,7 +33,7 @@
       "type": "string"
     },
     "Product2Id": {
-      "type": "string"
+      "type": "null"
     },
     "ProductCode": {
       "type": "null"
@@ -63,16 +63,16 @@
       "type": "string"
     },
     "SerialNumber": {
-      "type": "string"
+      "type": "null"
     },
     "InstallDate": {
-      "type": "string"
+      "type": "null"
     },
     "PurchaseDate": {
-      "type": "string"
+      "type": "null"
     },
     "UsageEndDate": {
-      "type": "string"
+      "type": "null"
     },
     "LifecycleStartDate": {
       "type": "null"
@@ -81,16 +81,16 @@
       "type": "null"
     },
     "Status": {
-      "type": "string"
+      "type": "null"
     },
     "Price": {
-      "type": "number"
+      "type": "null"
     },
     "Quantity": {
-      "type": "number"
+      "type": "null"
     },
     "Description": {
-      "type": "string"
+      "type": "null"
     },
     "OwnerId": {
       "type": "string"
@@ -129,10 +129,10 @@
       "type": "null"
     },
     "LastViewedDate": {
-      "type": "string"
+      "type": "null"
     },
     "LastReferencedDate": {
-      "type": "string"
+      "type": "null"
     }
   },
   "required": [

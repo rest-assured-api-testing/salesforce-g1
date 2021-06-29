@@ -5,6 +5,7 @@ Feature:  Assets
     Given I build a "GET" request
     When I execute the request on "/Asset/{AssetId}" endpoint and "AssetId" param
     Then The response status code should be "OK"
+    And The response schema matches "schemas/asset.json" schema
 
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Get all Assets
@@ -19,6 +20,7 @@ Feature:  Assets
       | name | My Asset for Testing |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset
@@ -79,6 +81,7 @@ Feature:  Assets
       | name | asset name from java |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset with empty name
@@ -105,6 +108,7 @@ Feature:  Assets
       | quantity | 10 |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset with negative price
@@ -123,15 +127,24 @@ Feature:  Assets
       | price | 10 |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset with Shipped status
+  Scenario Outline: Post an Asset with valid status
     Given I build a "POST" request
     When I create "Asset" body with parameters
-      | name | My Asset for Testing |
-      | status | Shipped |
+      | name | <name> |
+      | status | <status> |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
+    Examples:
+      | name | status |
+      | My Asset for Testing | Shipped |
+      | My Asset for Testing | Installed |
+      | My Asset for Testing | Registered |
+      | My Asset for Testing | Obsolete |
+      | My Asset for Testing | Purchased |
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset with invalid status value
@@ -143,19 +156,72 @@ Feature:  Assets
     Then The response status code should be "BAD_REQUEST"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset with 2021-06-28 install date
+  Scenario: Post an Asset with valid install date
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | My Asset for Testing |
       | installDate | 2021-06-28 |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset with invalid install date 2021-06-31
+  Scenario: Post an Asset with invalid install date
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | My Asset for Testing |
       | installDate | 2021-06-31 |
     And I execute the request on "/Asset" endpoint
     Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @DeleteAsset @DeleteAccount
+  Scenario: Post an Asset with valid purchase date
+    Given I build a "POST" request
+    When I create "Asset" body with parameters
+      | name | My Asset for Testing |
+      | purchaseDate | 2021-06-28 |
+    And I execute the request on "/Asset" endpoint
+    Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
+
+  @CreateAccount @DeleteAsset @DeleteAccount
+  Scenario: Post an Asset with invalid purchase date
+    Given I build a "POST" request
+    When I create "Asset" body with parameters
+      | name | My Asset for Testing |
+      | purchaseDate | 2021-13-28 |
+    And I execute the request on "/Asset" endpoint
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @DeleteAsset @DeleteAccount
+  Scenario: Post an Asset with valid usage end date
+    Given I build a "POST" request
+    When I create "Asset" body with parameters
+      | name | My Asset for Testing |
+      | usageEndDate | 2021-06-28 |
+    And I execute the request on "/Asset" endpoint
+    Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
+
+  @CreateAccount @DeleteAsset @DeleteAccount
+  Scenario: Post an Asset with invalid usage end date
+    Given I build a "POST" request
+    When I create "Asset" body with parameters
+      | name | My Asset for Testing |
+      | usageEndDate | 2021-13-35 |
+    And I execute the request on "/Asset" endpoint
+    Then The response status code should be "BAD_REQUEST"
+
+  @CreateAccount @DeleteAsset @DeleteAccount
+  Scenario Outline: Post an Asset with competitor asset status
+    Given I build a "POST" request
+    When I create "Asset" body with parameters
+      | name | <name> |
+      | isCompetitorProduct | <isCompetitorProduct> |
+    And I execute the request on "/Asset" endpoint
+    Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postRequest.json" schema
+    Examples:
+      | name | isCompetitorProduct |
+      | My Asset for Testing | true |
+      | My Asset for Testing | false |
