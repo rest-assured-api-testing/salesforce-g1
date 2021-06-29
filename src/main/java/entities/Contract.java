@@ -329,11 +329,11 @@ public class Contract implements Features {
         this.description = description;
     }
 
-    public Boolean isDeleted() {
+    public Boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setIsDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
 

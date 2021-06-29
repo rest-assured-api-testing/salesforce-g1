@@ -138,7 +138,7 @@ public class OtherAddress {
      * @return a String with the state
      */
     public String getState() {
-        return street;
+        return state;
     }
 
     /**
