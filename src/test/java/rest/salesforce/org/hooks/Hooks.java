@@ -11,11 +11,14 @@ package rest.salesforce.org.hooks;
 import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import configfile.EndPoints;
+import configfile.Params;
+import configfile.Setup;
 import entities.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.apache.log4j.Logger;
-import static configfile.Configuration.dotenv;
+import rest.salesforce.org.RequestID;
 
 public class Hooks {
     public Logger LOGGER = Logger.getLogger(getClass());
@@ -29,6 +32,14 @@ public class Hooks {
     Contact contactToSend = new Contact();
     Contract contractToSend = new Contract();
     Order orderToSend = new Order();
+    final String accountName = "New Account used for testing";
+    final String assetName = "asset name from java";
+    final String firstNameContact = "Juan Pablo";
+    final String lastNameContact = "Gonzales";
+    final String contractStatus = "Draft";
+    final String contractStartDate = "2021-06-27";
+    final String orderStatus = "Draft";
+    final String orderEffectiveDate = "2021-07-28";
     String token;
 
     public Hooks(ApiRequestBuilder requestBuilder, ApiResponseObject apiResponseObject, ApiResponse apiResponse,
@@ -45,18 +56,18 @@ public class Hooks {
         LOGGER.info("********************* TOKEN *********************");
         ApiRequestBuilder apiRequestBuilder = new ApiRequestBuilder();
         apiRequestBuilder
-                .addBaseUri(dotenv.get("AUTH_URL"))
-                .addEndpoint("/services/oauth2/token")
-                .addQueryParams("grant_type", "password")
-                .addQueryParams("client_id",dotenv.get("CLIENT_ID"))
-                .addQueryParams("client_secret",dotenv.get("CLIENT_SECRET"))
-                .addQueryParams("username",dotenv.get("SALESFORCE_USERNAME"))
-                .addQueryParams("password",dotenv.get("PASSWORD_TOKEN"))
-                .addHeader("Accept", "application/json")
-                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addBaseUri(Setup.AUTH_URL.toName())
+                .addEndpoint(Setup.SETUP_OAUTH_TOKEN.toName())
+                .addQueryParams(Setup.GRANT_TYPE.toName(), Setup.PASSWORD.toName())
+                .addQueryParams(Setup.SETUP_CLIENT_ID.toName(), Setup.CLIENT_ID.toName())
+                .addQueryParams(Setup.SETUP_CLIENT_SECRET.toName(), Setup.CLIENT_SECRET.toName())
+                .addQueryParams(Setup.SETUP_USERNAME.toName(), Setup.SALESFORCE_USERNAME.toName())
+                .addQueryParams(Setup.SETUP_PASSWORD.toName(), Setup.PASSWORD_TOKEN.toName())
+                .addHeader(Setup.ACCEPT.toName(), Setup.APPLICATION_JSON.toName())
+                .addHeader(Setup.CONTENT_TYPE.toName(), Setup.APPLICATION_WWW_FORM.toName())
                 .addMethod(ApiMethod.POST);
         ApiManager.executeWithoutLog(apiRequestBuilder.build(), tokenApiResponse);
-        token = tokenApiResponse.getPath("token_type") + " " + tokenApiResponse.getPath("access_token");
+        token = tokenApiResponse.getPath(Setup.TOKEN_TYPE.toName()) + " " + tokenApiResponse.getPath(Setup.ACCESS_TOKEN.toName());
         LOGGER.info("********************* TOKEN *********************");
     }
 
@@ -64,17 +75,17 @@ public class Hooks {
     public void setUp() {
         LOGGER.info("********************* Setup *********************");
         requestBuilder
-                .addHeader("Authorization",token)
-                .addBaseUri(dotenv.get("BASE_URL"));
+                .addHeader(Setup.SETUP_AUTHORIZATION.toName(),token)
+                .addBaseUri(Setup.BASE_URL.toName());
     }
 
     @Before(value = "@CreateAccount", order = 2)
     public void createAnAccount() throws JsonProcessingException {
         LOGGER.info("********************* Create Account *********************");
-        accountToSend.setName("New Account used for testing");
+        accountToSend.setName(accountName);
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Account/")
+                .addEndpoint(EndPoints.ENDPOINT_ACCOUNTS.toName())
                 .addBody(new ObjectMapper().writeValueAsString(accountToSend))
                 .addMethod(ApiMethod.POST)
                 .build();
@@ -88,8 +99,8 @@ public class Hooks {
         LOGGER.info("********************* Delete Account *********************");
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Account/{accountID}")
-                .addPathParams("accountID", requestID.getAccountId())
+                .addEndpoint(EndPoints.ENDPOINT_ACCOUNT.toName())
+                .addPathParams(Params.PARAM_ACCOUNT_ID.toName(), requestID.getAccountId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -98,11 +109,11 @@ public class Hooks {
     @Before(value = "@CreateAsset", order = 3)
     public void createAnAsset() throws JsonProcessingException {
         LOGGER.info("********************* Create Asset *********************");
-        assetToSend.setName("asset name from java");
+        assetToSend.setName(assetName);
         assetToSend.setAccountId(requestID.getAccountId());
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Asset/")
+                .addEndpoint(EndPoints.ENDPOINT_ASSETS.toName())
                 .addBody(new ObjectMapper().writeValueAsString(assetToSend))
                 .addMethod(ApiMethod.POST)
                 .build();
@@ -116,8 +127,8 @@ public class Hooks {
         LOGGER.info("********************* Delete Asset *********************");
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Asset/{assetID}")
-                .addPathParams("assetID", requestID.getAssetId())
+                .addEndpoint(EndPoints.ENDPOINT_ASSET.toName())
+                .addPathParams(Params.PARAM_ASSET_ID.toName(), requestID.getAssetId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -126,11 +137,11 @@ public class Hooks {
     @Before("@CreateContact")
     public void createAContact() throws JsonProcessingException {
         LOGGER.info("********************* Create Contact *********************");
-        contactToSend.setFirstName("contact from java");
-        contactToSend.setLastName("last name from java");
+        contactToSend.setFirstName(firstNameContact);
+        contactToSend.setLastName(lastNameContact);
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Contact/")
+                .addEndpoint(EndPoints.ENDPOINT_CONTACTS.toName())
                 .addBody(new ObjectMapper().writeValueAsString(contactToSend))
                 .addMethod(ApiMethod.POST)
                 .build();
@@ -144,8 +155,8 @@ public class Hooks {
         LOGGER.info("********************* Delete Contact *********************");
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Contact/{contactID}")
-                .addPathParams("contactID", requestID.getContactId())
+                .addEndpoint(EndPoints.ENDPOINT_CONTACT.toName())
+                .addPathParams(Params.PARAM_CONTACT_ID.toName(), requestID.getContactId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -154,13 +165,13 @@ public class Hooks {
     @Before(value = "@CreateContract", order = 4)
     public void createAContract() throws JsonProcessingException {
         LOGGER.info("********************* Create Contract *********************");
-        contractToSend.setStatus("Draft");
+        contractToSend.setStatus(contractStatus);
         contractToSend.setAccountId(requestID.getAccountId());
-        contractToSend.setStartDate("2021-06-27");
+        contractToSend.setStartDate(contractStartDate);
         contractToSend.setContractTerm(8);
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Contract/")
+                .addEndpoint(EndPoints.ENDPOINT_CONTRACTS.toName())
                 .addBody(new ObjectMapper().writeValueAsString(contractToSend))
                 .addMethod(ApiMethod.POST)
                 .build();
@@ -174,8 +185,8 @@ public class Hooks {
         LOGGER.info("********************* Delete Contract *********************");
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Contract/{contractID}")
-                .addPathParams("contractID", requestID.getContractId())
+                .addEndpoint(EndPoints.ENDPOINT_CONTRACT.toName())
+                .addPathParams(Params.PARAM_CONTRACT_ID.toName(), requestID.getContractId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
@@ -184,13 +195,13 @@ public class Hooks {
     @Before(value = "@CreateOrder", order = 5)
     public void createAnOrder() throws JsonProcessingException {
         LOGGER.info("********************* Create Order *********************");
-        orderToSend.setStatus("Draft");
+        orderToSend.setStatus(orderStatus);
         orderToSend.setAccountId(requestID.getAccountId());
         orderToSend.setContractId(requestID.getContractId());
-        orderToSend.setEffectiveDate("2021-07-28");
+        orderToSend.setEffectiveDate(orderEffectiveDate);
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Order/")
+                .addEndpoint(EndPoints.ENDPOINT_ORDERS.toName())
                 .addBody(new ObjectMapper().writeValueAsString(orderToSend))
                 .addMethod(ApiMethod.POST)
                 .build();
@@ -204,8 +215,8 @@ public class Hooks {
         LOGGER.info("********************* Delete Order *********************");
         requestBuilder
                 .clearPathParams()
-                .addEndpoint("/Order/{orderID}")
-                .addPathParams("orderID", requestID.getOrderId())
+                .addEndpoint(EndPoints.ENDPOINT_ORDER.toName())
+                .addPathParams(Params.PARAM_ORDER_ID.toName(), requestID.getOrderId())
                 .addMethod(ApiMethod.DELETE)
                 .build();
         ApiManager.execute(requestBuilder.build(), apiResponse);
