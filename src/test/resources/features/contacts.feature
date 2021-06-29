@@ -159,3 +159,122 @@ Feature: Contacts
       | level__c | Invalid value         |
     And I execute the request on "/Contact" endpoint
     Then The response status code should be "BAD_REQUEST"
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "CREATED"
+    Examples:
+      | firstName                                 | lastName |
+      | example name                              | lastname |
+      | 0123456789012345678901234567890123456789  | lastname |
+      | first name first name first name first n  | lastname |
+      | example name | 0123456789012345678901234567890123456789 |
+      | example name | first name first name first name first n |
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with long firstname and lastname
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "CREATED"
+    Examples:
+      | firstName     | lastName          |
+      |               | example last name |
+      | example name  | !#$%%             |
+
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname and birthdate values
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+      | birthdate | <birthdate> |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "BAD_REQUEST"
+    Examples:
+      | firstName    | lastName          | birthdate  |
+      | example name | example last name | 1999-33-01 |
+      | example name | example last name | 1999-01-33 |
+      | example name | example last name |            |
+      | example name | example last name | 1900-01-01 |
+
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname and birthdate values corrects
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+      | birthdate | <birthdate> |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "CREATED"
+    Examples:
+      | firstName    | lastName          | birthdate  |
+      | example name | example last name | 1999-01-01 |
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname and phone incorrect
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+      | phone     | <phone> |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "BAD_REQUEST"
+    Examples:
+      | firstName    | lastName          | phone                |
+      | example name | example last name | 12345678901234567890 |
+      | example name | example last name | anytext              |
+      | example name | example last name | !^#$%^               |
+      | example name | example last name |                      |
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname and phone correct
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+      | phone     | <phone> |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "CREATED"
+    Examples:
+      | firstName    | lastName          | phone                |
+      | example name | example last name | 44444444             |
+      | example name | example last name | 123456789012345      |
+      | example name | example last name | 1234567890123456789  |
+      | example name | example last name | null                 |
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname and email correct
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+      | email     | <email> |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "CREATED"
+    Examples:
+      | firstName | lastName | email          |
+      | firstname | lastname | email@mail.com |
+
+
+  @DeleteContact
+  Scenario Outline: Post a Contact with firstname and lastname and email incorrect
+    Given I build a "POST" request
+    When I create "Contact" body with parameters
+      | firstName | <firstName> |
+      | lastName  | <lastName>  |
+      | email     | <email> |
+    And I execute the request on "/Contact" endpoint
+    Then The response status code should be "BAD_REQUEST"
+    Examples:
+      | firstName | lastName | email                       |
+      | firstname | lastname |                             |
