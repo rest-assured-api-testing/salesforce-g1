@@ -8,6 +8,9 @@
 
 package api;
 
+/**
+ * Gives request types.
+ */
 public enum ApiMethod {
     GET("GET"),
     POST("POST"),

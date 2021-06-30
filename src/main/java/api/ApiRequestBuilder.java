@@ -14,8 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public  class ApiRequestBuilder implements IBuilder {
-
+/**
+ * Helps to build an ApiRequest entity.
+ */
+public  class ApiRequestBuilder implements IBuilder{
     private String baseUri;
     private String endpoint;
     private String body;
@@ -34,8 +36,8 @@ public  class ApiRequestBuilder implements IBuilder {
     /**
      * Adds Base uri in the request builder.
      *
-     * @param baseUri
-     * @return Request builder with base uri
+     * @param baseUri Base of url.
+     * @return Request builder with base uri.
      */
     public ApiRequestBuilder addBaseUri(String baseUri) {
         this.baseUri = baseUri;
@@ -45,8 +47,8 @@ public  class ApiRequestBuilder implements IBuilder {
     /**
      * Adds End point in the request builder.
      *
-     * @param endpoint
-     * @return Request builder with end point
+     * @param endpoint end point of the feature.
+     * @return Request builder with end point.
      */
     public ApiRequestBuilder addEndpoint(String endpoint) {
         this.endpoint = endpoint;
@@ -56,8 +58,8 @@ public  class ApiRequestBuilder implements IBuilder {
     /**
      * Adds Body in the request builder.
      *
-     * @param body
-     * @return Request builder with body
+     * @param body body of the dates.
+     * @return Request builder with body.
      */
     public ApiRequestBuilder addBody(String body) {
         this.body = body;
