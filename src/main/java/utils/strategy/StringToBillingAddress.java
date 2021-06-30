@@ -23,7 +23,6 @@ public class StringToBillingAddress implements StringToObjectConverter {
      */
     @Override
     public Object convertStringToObject(final String string) {
-        Gson gson = new Gson();
-        return gson.fromJson(string, BillingAddress.class);
+        return new Gson().fromJson(string, BillingAddress.class);
     }
 }

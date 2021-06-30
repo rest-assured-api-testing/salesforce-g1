@@ -23,7 +23,6 @@ public class StringToOtherAddress implements StringToObjectConverter {
      */
     @Override
     public Object convertStringToObject(final String string) {
-        Gson gson = new Gson();
-        return gson.fromJson(string, OtherAddress.class);
+        return new Gson().fromJson(string, OtherAddress.class);
     }
 }

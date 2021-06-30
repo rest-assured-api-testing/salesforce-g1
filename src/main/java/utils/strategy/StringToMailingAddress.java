@@ -23,7 +23,6 @@ public class StringToMailingAddress implements StringToObjectConverter {
      */
     @Override
     public Object convertStringToObject(final String string) {
-        Gson gson = new Gson();
-        return gson.fromJson(string, MailingAddress.class);
+        return new Gson().fromJson(string, MailingAddress.class);
     }
 }
