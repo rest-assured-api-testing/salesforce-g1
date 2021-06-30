@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2021 Fundacion Jala.
- *
  * This software is the confidential and proprietary information of Fundacion Jala
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -13,11 +12,12 @@ import com.google.gson.Gson;
 import entities.MailingAddress;
 
 /**
- * This class converts a string to a MailingAddress object
+ * This class converts a string to a MailingAddress object.
  */
 public class StringToMailingAddress implements StringToObjectConverter {
     /**
-     * Converts a String to an object of type MailingAddress
+     * Converts a String to an object of type MailingAddress.
+     *
      * @param string with the value to convert
      * @return an object of type MailingAddress
      */
