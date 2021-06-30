@@ -79,14 +79,6 @@ Feature: Accounts
     Then The response status code should be "CREATED"
     And The response schema matches "schemas/postRequest.json" schema
 
-#  @DeleteAccount
-#  Scenario: Post an Account with empty name
-#    Given I build a "POST" request
-#    When I create "Account" body with parameters
-#      | name | [blank] |
-#    And I execute the request on "/Account" endpoint
-#    Then The response status code should be "BAD_REQUEST"
-
   @CreateAccount @DeleteAccount
   Scenario: Patch an Account with empty name
     Given I build a "PATCH" request

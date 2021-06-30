@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Keeps all data that are required to construct the request.
+ */
 public class ApiRequest {
     private String baseUri;
     private String endpoint;

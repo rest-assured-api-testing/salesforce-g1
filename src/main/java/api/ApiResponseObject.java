@@ -10,6 +10,9 @@ package api;
 
 import java.util.List;
 
+/**
+ * Gets response of the feature.
+ */
 public class ApiResponseObject {
     public String id;
     public boolean success;

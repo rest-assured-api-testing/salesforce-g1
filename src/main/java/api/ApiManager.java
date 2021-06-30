@@ -13,12 +13,15 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
+/**
+ * Manages the creation of RequestSpecification and execution of an ApiRequest salesforce.entities.
+ */
 public class ApiManager {
 
     /**
      * Executes a ApiRequest without body.
-     * @param apiRequest
-     * @param apiResponse
+     * @param apiRequest Contains all data of request.
+     * @param apiResponse after execution of request.
      * @return a ApiResponse after execution of request.
      */
     public static void execute(ApiRequest apiRequest, ApiResponse apiResponse) {
@@ -27,9 +30,9 @@ public class ApiManager {
     }
 
     /**
-     * Executes a ApiRequest without body without log..
-     * @param apiRequest
-     * @param apiResponse
+     * Executes a ApiRequest without body without log.
+     * @param apiRequest Contains all data of request.
+     * @param apiResponse after execution of request.
      * @return a ApiResponse after execution of request without log.
      */
     public static void executeWithoutLog(ApiRequest apiRequest, ApiResponse apiResponse) {
@@ -39,7 +42,7 @@ public class ApiManager {
 
     /**
      * Builds a RequestSpecification.
-     * @param apiRequest
+     * @param apiRequest Contains all data of request.
      * @return RequestSpecification.
      */
     private static RequestSpecification buildRequest(final ApiRequest apiRequest) {
@@ -55,7 +58,7 @@ public class ApiManager {
 
     /**
      * Builds a RequestSpecification without log.
-     * @param apiRequest
+     * @param apiRequest Contains all data of request.
      * @return RequestSpecification without log.
      */
     private static RequestSpecification buildRequestWithoutLog(final ApiRequest apiRequest) {
@@ -69,7 +72,7 @@ public class ApiManager {
 
     /**
      * Executes a ApiRequest with body.
-     * @param apiRequest
+     * @param apiRequest Contains all data of request.
      * @return a ApiResponse after execution of request.
      */
     public static void executeWithBody(ApiRequest apiRequest, ApiResponse apiResponse){
