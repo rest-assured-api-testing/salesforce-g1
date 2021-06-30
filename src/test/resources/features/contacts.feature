@@ -147,7 +147,7 @@ Feature: Contacts
     Given I build a "POST" request
     When I create "Contact" body with parameters
       | lastName | My contact lastname for testing |
-      | level__c | Primary         |
+      | levelC | Primary         |
     And I execute the request on "/Contact" endpoint
     Then The response status code should be "CREATED"
 
@@ -156,7 +156,7 @@ Feature: Contacts
     Given I build a "POST" request
     When I create "Contact" body with parameters
       | lastName | My contact lastname for testing |
-      | level__c | Invalid value         |
+      | levelC | Invalid value         |
     And I execute the request on "/Contact" endpoint
     Then The response status code should be "BAD_REQUEST"
 
