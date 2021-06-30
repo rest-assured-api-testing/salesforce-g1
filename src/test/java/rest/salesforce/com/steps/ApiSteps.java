@@ -57,8 +57,8 @@ public class ApiSteps {
         requestBuilder.addBody(new ObjectMapper().writeValueAsString(feature));
     }
 
-    @And("I execute the request on {string} endpoint")
-    public void iExecuteTheRequestOnEndpoint(final String endpoint) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    @And("I execute request on {string}")
+    public void iExecuteRequestOn(final String endpoint) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         requestBuilder
                 .addEndpoint(endpoint)
                 .build();
@@ -67,14 +67,14 @@ public class ApiSteps {
         featuresID.setField(featuresID.nameConverter(endpoint), salesforceApiResponse.getId());
     }
 
-    @Then("The response status code should be {string}")
-    public void theResponseStatusCodeShouldBe(final String statusCode) {
+    @Then("The response status should be {string}")
+    public void theResponseStatusShouldBe(final String statusCode) {
         Assert.assertEquals(apiResponse.getStatusCode(), ApiStatusCode.valueOf(statusCode).getValue());
         apiResponse.getResponse().then().log().body();
     }
 
-    @When("I execute the request on {string} endpoint and {string} param")
-    public void iExecuteTheRequestOnEndpointAndParam(final String endpoint, final String param) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    @When("I execute request on {string} with {string}")
+    public void iExecuteRequestOnWith(final String endpoint, final String param) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         requestBuilder
                 .addEndpoint(endpoint)
                 .addPathParams(param, featuresID.getField(featuresID.nameConverter(param)))
@@ -90,8 +90,8 @@ public class ApiSteps {
         ApiManager.execute(requestBuilder.build(), apiResponse);
     }
 
-    @And("I execute the request with body on {string} endpoint and {string} param")
-    public void iExecuteTheRequestWithBodyOnEndpointAndParam(final String endpoint, final String param) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    @And("I execute request on {string} with {string} and body")
+    public void iExecuteRequestOnWithAndBody(final String endpoint, final String param) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         requestBuilder
                 .addEndpoint(endpoint)
                 .addPathParams(param, featuresID.getField(featuresID.nameConverter(param)))
@@ -106,8 +106,8 @@ public class ApiSteps {
         requestBuilder.setBody(new ObjectMapper().writeValueAsString(feature));
     }
 
-    @When("I execute the request on {string} endpoint and {string} param with {string} value")
-    public void iExecuteTheRequestOnEndpointAndParamWithParam(final String endpoint, final String param,
+    @When("I execute request on {string} with {string} as {string}")
+    public void iExecuteRequestOnWithAs(final String endpoint, final String param,
                                                               final String paramValue) {
         requestBuilder
                 .addEndpoint(endpoint)
@@ -121,8 +121,8 @@ public class ApiSteps {
         return cell;
     }
 
-    @And("The response schema matches {string} schema")
-    public void theResponseSchemaMatchesSchema(final String schemaPath) {
+    @And("The response schema matches {string}")
+    public void theResponseSchemaMatches(final String schemaPath) {
         apiResponse.validateBodySchema(schemaPath);
     }
 }
