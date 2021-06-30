@@ -6,13 +6,17 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package configfile;
-
-import io.github.cdimascio.dotenv.Dotenv;
+package salesforce.strategy;
 
 /**
- * This class loads the file to dotenv.
+ * This interface implements a method to convert a String to an Object.
  */
-public class Configuration {
-    public static Dotenv dotenv = Dotenv.configure().load();
+public interface StringToObjectConverter {
+    /**
+     * Converts a String to an Object.
+     *
+     * @param string to convert
+     * @return an Object
+     */
+    Object convertStringToObject(final String string);
 }

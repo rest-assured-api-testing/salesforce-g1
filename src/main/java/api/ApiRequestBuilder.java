@@ -18,7 +18,6 @@ import java.util.Map;
  * Helps to build an ApiRequest entity.
  */
 public  class ApiRequestBuilder implements IBuilder{
-
     private String baseUri;
     private String endpoint;
     private String body;
@@ -36,6 +35,7 @@ public  class ApiRequestBuilder implements IBuilder{
 
     /**
      * Adds Base uri in the request builder.
+     *
      * @param baseUri Base of url.
      * @return Request builder with base uri.
      */
@@ -46,6 +46,7 @@ public  class ApiRequestBuilder implements IBuilder{
 
     /**
      * Adds End point in the request builder.
+     *
      * @param endpoint end point of the feature.
      * @return Request builder with end point.
      */
@@ -56,6 +57,7 @@ public  class ApiRequestBuilder implements IBuilder{
 
     /**
      * Adds Body in the request builder.
+     *
      * @param body body of the dates.
      * @return Request builder with body.
      */
@@ -65,7 +67,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Adds Token in the request builder
+     * Adds Token in the request builder.
+     *
      * @param token
      * @return Request builder with token
      */
@@ -75,7 +78,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Adds Method in the request builder
+     * Adds Method in the request builder.
+     *
      * @param method
      * @return Request builder with Method
      */
@@ -85,7 +89,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Adds Header in the request builder
+     * Adds Header in the request builder.
+     *
      * @param header
      * @param value
      * @return Request builder with Header
@@ -96,7 +101,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Adds Query params in the request builder
+     * Adds Query params in the request builder.
+     *
      * @param param
      * @param value
      * @return Request builder with Query params
@@ -107,7 +113,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Adds Path params in the request builder
+     * Adds Path params in the request builder.
+     *
      * @param param
      * @param value
      * @return Request builder with Path params
@@ -118,7 +125,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Clears Path Params
+     * Clears Path Params.
+     *
      * @return path params empty
      */
     public ApiRequestBuilder clearPathParams() {
@@ -127,7 +135,8 @@ public  class ApiRequestBuilder implements IBuilder{
     }
 
     /**
-     * Sets the body
+     * Sets the body.
+     *
      * @param newBody a String with the new body
      */
     public void setBody(final String newBody) {
