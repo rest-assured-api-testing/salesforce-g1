@@ -20,7 +20,6 @@ public class StringToBoolean implements StringToObjectConverter {
      */
     @Override
     public Object convertStringToObject(final String string) {
-        Boolean booleanObject = Boolean.valueOf(string);
-        return booleanObject;
+        return Boolean.valueOf(string);
     }
 }

@@ -24,7 +24,6 @@ public class StringToMailingAddress implements StringToObjectConverter {
     @Override
     public Object convertStringToObject(final String string) {
         Gson gson = new Gson();
-        MailingAddress mailingAddressObject = gson.fromJson(string, MailingAddress.class);
-        return mailingAddressObject;
+        return gson.fromJson(string, MailingAddress.class);
     }
 }

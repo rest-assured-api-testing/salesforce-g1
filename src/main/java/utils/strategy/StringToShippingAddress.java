@@ -24,7 +24,6 @@ public class StringToShippingAddress implements StringToObjectConverter {
     @Override
     public Object convertStringToObject(final String string) {
         Gson gson = new Gson();
-        ShippingAddress shippingAddressObject = gson.fromJson(string, ShippingAddress.class);
-        return shippingAddressObject;
+        return gson.fromJson(string, ShippingAddress.class);
     }
 }

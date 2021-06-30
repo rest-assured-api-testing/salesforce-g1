@@ -24,7 +24,6 @@ public class StringToAttribute implements StringToObjectConverter {
     @Override
     public Object convertStringToObject(final String string) {
         Gson gson = new Gson();
-        Attribute attribute = gson.fromJson(string, Attribute.class);
-        return attribute;
+        return gson.fromJson(string, Attribute.class);
     }
 }

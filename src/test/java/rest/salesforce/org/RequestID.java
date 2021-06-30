@@ -91,8 +91,7 @@ public class RequestID {
         Field[] attributes = this.getClass().getDeclaredFields();
         for (Field attribute : attributes) {
             if (attribute.getName().equals(fieldName)) {
-                String field = PropertyUtils.getSimpleProperty(this, fieldName).toString();
-                return field;
+                return PropertyUtils.getSimpleProperty(this, fieldName).toString();
             }
         }
         return null;
@@ -110,9 +109,9 @@ public class RequestID {
         if (firstChar == myChar) {
             newName = newName.substring(1) + "Id";
         }
-        char c[] = newName.toCharArray();
-        c[0] = Character.toLowerCase(c[0]);
-        newName = new String(c);
+        char chars[] = newName.toCharArray();
+        chars[0] = Character.toLowerCase(chars[0]);
+        newName = new String(chars);
         return newName;
     }
 

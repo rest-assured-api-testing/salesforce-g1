@@ -20,7 +20,6 @@ public class StringToDouble implements StringToObjectConverter {
      */
     @Override
     public Object convertStringToObject(final String string) {
-        Double doubleObject = Double.valueOf(string);
-        return doubleObject;
+        return Double.valueOf(string);
     }
 }

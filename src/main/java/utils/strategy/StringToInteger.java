@@ -20,7 +20,6 @@ public class StringToInteger implements StringToObjectConverter {
      */
     @Override
     public Object convertStringToObject(final String string) {
-        Integer integerObject = Integer.valueOf(string);
-        return integerObject;
+        return Integer.valueOf(string);
     }
 }
