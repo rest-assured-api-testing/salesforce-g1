@@ -8,7 +8,7 @@
 
 package utils;
 
-import utils.strategy.ObjectsNames;
+import salesforce.strategy.ObjectsNames;
 
 /**
  * This class provides methods to compare and convert data types.
