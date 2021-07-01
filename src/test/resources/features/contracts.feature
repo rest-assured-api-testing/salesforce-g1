@@ -5,6 +5,7 @@ Feature: Contracts
     Given I build a "GET" request
     When I execute the request on "/Contract/{ContractId}" endpoint and "ContractId" param
     Then The response status code should be "OK"
+    And The response schema matches "schemas/getContract.json" schema
 
   @CreateAccount @CreateContract @DeleteContract @DeleteAccount
   Scenario: Get a single Contract with invalid Id
@@ -17,6 +18,7 @@ Feature: Contracts
     Given I build a "GET" request
     When I execute the request on "/Contract"
     Then The response status code should be "OK"
+    And The response schema matches "schemas/getAllContract.json" schema
 
   @CreateAccount @DeleteContract @DeleteAccount
   Scenario: Post a Contract
@@ -27,6 +29,7 @@ Feature: Contracts
       | contractTerm | 7 |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json" schema
 
   @CreateAccount @DeleteContract @DeleteAccount
   Scenario Outline: Post a Contract with valid owner expiration notice
@@ -38,6 +41,7 @@ Feature: Contracts
       | ownerExpirationNotice | <ownerExpirationNotice> |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json" schema
     Examples:
       | status | startDate | contractTerm | ownerExpirationNotice |
       | Draft  | 2021-06-28 | 5           | 15                    |
@@ -48,52 +52,10 @@ Feature: Contracts
       | Draft  | 2021-06-28 | 5           | 120                    |
 
   @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with invalid owner expiration notice
-    Given I build a "POST" request
-    When I create "Contract" body with parameters
-      | status | Draft |
-      | startDate | 2021-06-28 |
-      | contractTerm | 7 |
-      | ownerExpirationNotice | 16 |
-    And I execute the request on "/Contract" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with invalid status
-    Given I build a "POST" request
-    When I create "Contract" body with parameters
-      | status | invalid |
-      | startDate | 2021-06-28 |
-      | contractTerm | 7 |
-    And I execute the request on "/Contract" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @CreateAccount @DeleteContract @DeleteAccount
   Scenario: Post a Contract without status
     Given I build a "POST" request
     When I create "Contract" body with parameters
       | startDate | 2021-06-28 |
-      | contractTerm | 7 |
-    And I execute the request on "/Contract" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with negative owner expiration notice
-    Given I build a "POST" request
-    When I create "Contract" body with parameters
-      | status | Draft |
-      | startDate | 2021-06-28 |
-      | contractTerm | 7 |
-      | ownerExpirationNotice | -15 |
-    And I execute the request on "/Contract" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with invalid start date
-    Given I build a "POST" request
-    When I create "Contract" body with parameters
-      | status | Draft |
-      | startDate | date |
       | contractTerm | 7 |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "BAD_REQUEST"
@@ -121,26 +83,6 @@ Feature: Contracts
     Given I build a "POST" request
     When I create "Contract" body with parameters
       | status | Draft |
-    And I execute the request on "/Contract" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with empty star date
-    Given I build a "POST" request
-    When I create "Contract" body with parameters
-      | status | Draft |
-      | startDate | [blank] |
-      | contractTerm | 7 |
-    And I execute the request on "/Contract" endpoint
-    Then The response status code should be "BAD_REQUEST"
-
-  @CreateAccount @DeleteContract @DeleteAccount
-  Scenario: Post a Contract with negative contract term
-    Given I build a "POST" request
-    When I create "Contract" body with parameters
-      | status | Draft |
-      | startDate | 2021-06-28 |
-      | contractTerm | -7 |
     And I execute the request on "/Contract" endpoint
     Then The response status code should be "BAD_REQUEST"
 
