@@ -6,7 +6,7 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
+package salesforce.converter;
 
 /**
  * This enum is to create corresponding object according to its type.

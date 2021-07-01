@@ -6,23 +6,20 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
-
-import com.google.gson.Gson;
-import salesforce.entities.BillingAddress;
+package salesforce.converter;
 
 /**
- * This class converts a string to a BillingAddress object.
+ * This class converts a string to a Boolean object.
  */
-public class StringToBillingAddress implements StringToObjectConverter {
+public class StringToBoolean implements StringToObjectConverter {
     /**
-     * Converts a String to an object of type BillingAddress.
+     * Converts a String to an object of type Boolean.
      *
      * @param string with the value to convert
-     * @return an object of type BillingAddress
+     * @return an object of type Boolean
      */
     @Override
     public Object convertStringToObject(final String string) {
-        return new Gson().fromJson(string, BillingAddress.class);
+        return Boolean.valueOf(string);
     }
 }

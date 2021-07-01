@@ -203,14 +203,15 @@ Feature: Contacts
 
 
   @DeleteContact
-  Scenario Outline: Post a Contact with firstname and lastname and birthdate values
+  Scenario Outline: Post a Contact with firstname and lastname without saving invalid birthdate
     Given I build a "POST" request
     When I create "Contact" body with parameters
       | firstName | <firstName> |
       | lastName  | <lastName>  |
       | birthdate | <birthdate> |
     And I execute request on "/Contact"
-    Then The response status should be "BAD_REQUEST"
+    Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | firstName    | lastName          | birthdate  |
       | example name | example last name | 1999-33-01 |

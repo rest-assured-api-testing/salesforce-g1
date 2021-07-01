@@ -182,13 +182,14 @@ Feature:  Assets
     And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario Outline: Post an Asset with invalid install date
+  Scenario Outline: Post an Asset without saving invalid install date
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | <name> |
       | installDate | <installDate> |
     And I execute request on "/Asset"
-    Then The response status should be "BAD_REQUEST"
+    Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | installDate |
       | My Asset for Testing | 2021-13-12 |
@@ -207,13 +208,14 @@ Feature:  Assets
     And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario Outline: Post an Asset with invalid purchase date
+  Scenario Outline: Post an Asset without saving invalid purchase date
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | <name> |
       | purchaseDate | <purchaseDate> |
     And I execute request on "/Asset"
-    Then The response status should be "BAD_REQUEST"
+    Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | purchaseDate |
       | My Asset for Testing | 2021-13-12 |
@@ -232,13 +234,14 @@ Feature:  Assets
     And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario Outline: Post an Asset with invalid usage end date
+  Scenario Outline: Post an Asset without saving invalid usage end date
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | <name> |
       | usageEndDate | <usageEndDate> |
     And I execute request on "/Asset"
-    Then The response status should be "BAD_REQUEST"
+    Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | usageEndDate |
       | My Asset for Testing | 2021-13-12 |
