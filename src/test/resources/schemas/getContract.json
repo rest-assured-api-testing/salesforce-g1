@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "url"
+      ]
+    },
+    "Id": {
+      "type": "string"
+    },
+    "AccountId": {
+      "type": "string"
+    },
+    "Pricebook2Id": {
+      "type": "null"
+    },
+    "OwnerExpirationNotice": {
+      "type": "null"
+    },
+    "StartDate": {
+      "type": "string"
+    },
+    "EndDate": {
+      "type": "string"
+    },
+    "BillingStreet": {
+      "type": "null"
+    },
+    "BillingCity": {
+      "type": "null"
+    },
+    "BillingState": {
+      "type": "null"
+    },
+    "BillingPostalCode": {
+      "type": "null"
+    },
+    "BillingCountry": {
+      "type": "null"
+    },
+    "BillingLatitude": {
+      "type": "null"
+    },
+    "BillingLongitude": {
+      "type": "null"
+    },
+    "BillingGeocodeAccuracy": {
+      "type": "null"
+    },
+    "BillingAddress": {
+      "type": "null"
+    },
+    "ContractTerm": {
+      "type": "integer"
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string"
+    },
+    "CompanySignedId": {
+      "type": "null"
+    },
+    "CompanySignedDate": {
+      "type": "null"
+    },
+    "CustomerSignedId": {
+      "type": "null"
+    },
+    "CustomerSignedTitle": {
+      "type": "null"
+    },
+    "CustomerSignedDate": {
+      "type": "null"
+    },
+    "SpecialTerms": {
+      "type": "null"
+    },
+    "ActivatedById": {
+      "type": "null"
+    },
+    "ActivatedDate": {
+      "type": "null"
+    },
+    "StatusCode": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "null"
+    },
+    "IsDeleted": {
+      "type": "boolean"
+    },
+    "ContractNumber": {
+      "type": "string"
+    },
+    "LastApprovedDate": {
+      "type": "null"
+    },
+    "CreatedDate": {
+      "type": "string"
+    },
+    "CreatedById": {
+      "type": "string"
+    },
+    "LastModifiedDate": {
+      "type": "string"
+    },
+    "LastModifiedById": {
+      "type": "string"
+    },
+    "SystemModstamp": {
+      "type": "string"
+    },
+    "LastActivityDate": {
+      "type": "null"
+    },
+    "LastViewedDate": {
+      "type": "string"
+    },
+    "LastReferencedDate": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "attributes",
+    "Id",
+    "AccountId",
+    "Pricebook2Id",
+    "OwnerExpirationNotice",
+    "StartDate",
+    "EndDate",
+    "BillingStreet",
+    "BillingCity",
+    "BillingState",
+    "BillingPostalCode",
+    "BillingCountry",
+    "BillingLatitude",
+    "BillingLongitude",
+    "BillingGeocodeAccuracy",
+    "BillingAddress",
+    "ContractTerm",
+    "OwnerId",
+    "Status",
+    "CompanySignedId",
+    "CompanySignedDate",
+    "CustomerSignedId",
+    "CustomerSignedTitle",
+    "CustomerSignedDate",
+    "SpecialTerms",
+    "ActivatedById",
+    "ActivatedDate",
+    "StatusCode",
+    "Description",
+    "IsDeleted",
+    "ContractNumber",
+    "LastApprovedDate",
+    "CreatedDate",
+    "CreatedById",
+    "LastModifiedDate",
+    "LastModifiedById",
+    "SystemModstamp",
+    "LastActivityDate",
+    "LastViewedDate",
+    "LastReferencedDate"
+  ]
+}
