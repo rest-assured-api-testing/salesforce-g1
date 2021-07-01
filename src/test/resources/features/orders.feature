@@ -5,6 +5,7 @@ Feature: Orders
     Given I build a "GET" request
     When I execute request on "/Order/{OrderId}" with "OrderId"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getOrder.json"
 
   @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Get a single Order with invalid id
@@ -17,6 +18,7 @@ Feature: Orders
     Given I build a "GET" request
     When I execute the request on "/Order"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getAllOrders.json"
 
   @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Post an Order
@@ -26,6 +28,7 @@ Feature: Orders
       | effectiveDate | 2021-07-01 |
     And I execute request on "/Order"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
   Scenario Outline: Post an Order with valid status
@@ -35,70 +38,10 @@ Feature: Orders
       | status                 | <status>            |
     And I execute request on "/Order"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | effectiveDate | status |
       | 2021-07-01    | Draft  |
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order with status Activated is not possible
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | status | Activated |
-      | effectiveDate | 2021-07-01 |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order with invalid status
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | status | invalid |
-      | effectiveDate | 2021-07-01 |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order without status
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | effectiveDate | 2021-07-01 |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order without effective date
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | status | Draft |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order with invalid effective date
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | status | Draft |
-      | effectiveDate | date |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order with empty effective date
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | status | Draft |
-      | effectiveDate | [blank] |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
-
-  @CreateAccount @CreateContract @DeleteOrder @DeleteContract @DeleteAccount
-  Scenario: Post an Order with empty status
-    Given I build a "POST" request
-    When I create "Order" body with parameters
-      | status | [blank] |
-      | effectiveDate | 2021-07-01 |
-    And I execute request on "/Order"
-    Then The response status should be "BAD_REQUEST"
 
   @CreateAccount @CreateContract @CreateOrder @DeleteOrder @DeleteContract @DeleteAccount
   Scenario: Patch an Order
