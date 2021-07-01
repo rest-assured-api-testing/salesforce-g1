@@ -6,23 +6,20 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
-
-import com.google.gson.Gson;
-import salesforce.entities.OtherAddress;
+package salesforce.converter;
 
 /**
- * This class converts a string to an OtherAddress object.
+ * This class converts a string to a Double object.
  */
-public class StringToOtherAddress implements StringToObjectConverter {
+public class StringToDouble implements StringToObjectConverter {
     /**
-     * Converts a String to an object of type OtherAddress.
+     * Converts a String to an object of type Double.
      *
      * @param string with the value to convert
-     * @return an object of type OtherAddress
+     * @return an object of type Double
      */
     @Override
     public Object convertStringToObject(final String string) {
-        return new Gson().fromJson(string, OtherAddress.class);
+        return Double.valueOf(string);
     }
 }

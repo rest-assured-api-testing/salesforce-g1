@@ -6,7 +6,7 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
+package salesforce.converter;
 
 import com.google.gson.Gson;
 import salesforce.entities.MailingAddress;

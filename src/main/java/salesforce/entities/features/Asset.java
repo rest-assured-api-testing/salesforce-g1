@@ -6,10 +6,12 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.entities;
+package salesforce.entities.features;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import salesforce.entities.Attribute;
+
 import java.util.Date;
 
 /**

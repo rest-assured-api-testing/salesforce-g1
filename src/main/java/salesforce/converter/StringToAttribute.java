@@ -6,23 +6,23 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
+package salesforce.converter;
 
 import com.google.gson.Gson;
-import salesforce.entities.ShippingAddress;
+import salesforce.entities.Attribute;
 
 /**
- * This class converts a string to a ShippingAddress object.
+ * This class converts a string to an Attribute object.
  */
-public class StringToShippingAddress implements StringToObjectConverter {
+public class StringToAttribute implements StringToObjectConverter {
     /**
-     * Converts a String to an object of type ShippingAddress.
+     * Converts a String to an object of type Attribute.
      *
      * @param string with the value to convert
-     * @return an object of type ShippingAddress
+     * @return an object of type Attribute
      */
     @Override
     public Object convertStringToObject(final String string) {
-        return new Gson().fromJson(string, ShippingAddress.class);
+        return new Gson().fromJson(string, Attribute.class);
     }
 }

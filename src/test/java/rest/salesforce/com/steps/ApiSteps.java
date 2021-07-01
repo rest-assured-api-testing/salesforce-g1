@@ -11,7 +11,6 @@ package rest.salesforce.com.steps;
 import api.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import salesforce.entities.*;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -20,6 +19,8 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import salesforce.FeaturesId;
 import salesforce.SalesforceApiResponse;
+import salesforce.entities.features.FeatureFactory;
+import salesforce.entities.features.Features;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;

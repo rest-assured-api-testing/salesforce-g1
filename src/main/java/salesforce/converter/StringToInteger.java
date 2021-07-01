@@ -6,20 +6,20 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
+package salesforce.converter;
 
 /**
- * This class converts a string to a Boolean object.
+ * This class converts a string to an Integer object.
  */
-public class StringToBoolean implements StringToObjectConverter {
+public class StringToInteger implements StringToObjectConverter {
     /**
-     * Converts a String to an object of type Boolean.
+     * Converts a String to an object of type Integer.
      *
      * @param string with the value to convert
-     * @return an object of type Boolean
+     * @return an object of type Integer
      */
     @Override
     public Object convertStringToObject(final String string) {
-        return Boolean.valueOf(string);
+        return Integer.valueOf(string);
     }
 }

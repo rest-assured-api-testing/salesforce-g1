@@ -14,11 +14,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import salesforce.utils.EndPoints;
 import salesforce.utils.Params;
 import salesforce.utils.Setup;
-import salesforce.entities.Account;
-import salesforce.entities.Asset;
-import salesforce.entities.Contact;
-import salesforce.entities.Contract;
-import salesforce.entities.Order;
+import salesforce.entities.features.Account;
+import salesforce.entities.features.Asset;
+import salesforce.entities.features.Contact;
+import salesforce.entities.features.Contract;
+import salesforce.entities.features.Order;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.apache.log4j.Logger;
@@ -57,7 +57,7 @@ public class Hooks {
     }
 
     @Before(order = 0)
-    public void setUpConfig() throws JsonProcessingException {
+    public void generateToken() throws JsonProcessingException {
         LOGGER.info("********************* TOKEN *********************");
         ApiRequestBuilder apiRequestBuilder = new ApiRequestBuilder();
         apiRequestBuilder

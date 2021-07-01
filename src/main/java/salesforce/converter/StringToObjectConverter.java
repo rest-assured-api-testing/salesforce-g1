@@ -6,7 +6,7 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.strategy;
+package salesforce.converter;
 
 /**
  * This interface implements a method to convert a String to an Object.

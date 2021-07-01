@@ -6,7 +6,7 @@
  * license agreement you entered into with Fundacion Jala
  */
 
-package salesforce.entities;
+package salesforce.entities.features;
 
 import static utils.DataType.convertStringToObject;
 
