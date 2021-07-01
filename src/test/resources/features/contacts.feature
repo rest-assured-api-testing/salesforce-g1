@@ -5,12 +5,14 @@ Feature: Contacts
     Given I build a "GET" request
     When I execute request on "/Contact/{ContactId}" with "ContactId"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getContact.json"
 
   @CreateContact @DeleteContact
   Scenario: Get all Contacts
     Given I build a "GET" request
     When I execute the request on "/Contact"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getAllContacts.json"
 
   @DeleteContact
   Scenario: Post a Contact
@@ -19,7 +21,7 @@ Feature: Contacts
       | lastName | My contact lastname for testing |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateContact @DeleteContact
   Scenario: Patch a Contact
@@ -40,12 +42,14 @@ Feature: Contacts
     Given I build a "GET" request
     When I execute the request on "/Contact/describe/compactLayouts"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getContactCompactLayout.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get Contact's approval layouts
     Given I build a "GET" request
     When I execute the request on "/Contact/describe/approvalLayouts"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getContactApprovalLayout.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get Contact's layouts
@@ -80,6 +84,7 @@ Feature: Contacts
       | lastName | last name from java |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateContact @DeleteContact
   Scenario: Patch a Contact with empty name
@@ -97,6 +102,7 @@ Feature: Contacts
       | salutation | Mr.               |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
 
   @DeleteContact
   Scenario: Post a Contact with invalid value in salutation
@@ -115,6 +121,7 @@ Feature: Contacts
       | leadSource | Web               |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
 
   @DeleteContact
   Scenario: Post a Contact with invalid value in lead source
@@ -133,6 +140,7 @@ Feature: Contacts
       | birthdate | 1989-06-28         |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
 
   @DeleteContact
   Scenario: Post a Contact with invalid birthdate 2021-06-31
@@ -151,6 +159,7 @@ Feature: Contacts
       | levelC | Primary         |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
 
   @DeleteContact
   Scenario: Post a Contact with invalid language level
@@ -169,6 +178,7 @@ Feature: Contacts
       | lastName  | <lastName>  |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | firstName                                 | lastName |
       | example name                              | lastname |
@@ -185,6 +195,7 @@ Feature: Contacts
       | lastName  | <lastName>  |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | firstName     | lastName          |
       |               | example last name |
@@ -217,6 +228,7 @@ Feature: Contacts
       | birthdate | <birthdate> |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | firstName    | lastName          | birthdate  |
       | example name | example last name | 1999-01-01 |
@@ -246,6 +258,7 @@ Feature: Contacts
       | phone     | <phone> |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | firstName    | lastName          | phone                |
       | example name | example last name | 44444444             |
@@ -262,6 +275,7 @@ Feature: Contacts
       | email     | <email> |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | firstName | lastName | email          |
       | firstname | lastname | email@mail.com |
