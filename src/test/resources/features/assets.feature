@@ -14,13 +14,27 @@ Feature:  Assets
     Then The response status should be "OK"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset
+  Scenario Outline: Post an Asset with regular name and one with special characters
+    Given I build a "POST" request
+    When I create "Asset" body with parameters
+      | name | <name> |
+    And I execute request on "/Asset"
+    Then The response status should be "CREATED"
+    And The response schema matches "schemas/postSuccess.json"
+    Examples:
+      | name |
+      | My Asset for Testing |
+      | ~`!@#$%^&*()-_+={}[]\/:;"'<>,.? |
+
+  @CreateAccount @DeleteAsset @DeleteAccount
+  Scenario: Post an Asset with a description that contains special characters
     Given I build a "POST" request
     When I create "Asset" body with parameters
       | name | My Asset for Testing |
+      | description | ~`!@#$%^&*()-_+={}[]\/:;"'<>,.? |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset
@@ -41,12 +55,14 @@ Feature:  Assets
     Given I build a "GET" request
     When I execute the request on "/Asset/describe/compactLayouts"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getAssetCompactLayout.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get Asset's approval layouts
     Given I build a "GET" request
     When I execute the request on "/Asset/describe/approvalLayouts"
     Then The response status should be "OK"
+    And The response schema matches "schemas/approvalLayout.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get Asset's layouts
@@ -81,7 +97,7 @@ Feature:  Assets
       | name | asset name from java |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @CreateAsset @DeleteAsset @DeleteAccount
   Scenario: Patch an Asset with empty name
@@ -108,7 +124,7 @@ Feature:  Assets
       | quantity | 10 |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset with negative price
@@ -127,7 +143,7 @@ Feature:  Assets
       | price | 10 |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario Outline: Post an Asset with valid status
@@ -137,7 +153,7 @@ Feature:  Assets
       | status | <status> |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | status |
       | My Asset for Testing | Shipped |
@@ -163,16 +179,22 @@ Feature:  Assets
       | installDate | 2021-06-28 |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset with invalid install date
+  Scenario Outline: Post an Asset with invalid install date
     Given I build a "POST" request
     When I create "Asset" body with parameters
-      | name | My Asset for Testing |
-      | installDate | 2021-06-31 |
+      | name | <name> |
+      | installDate | <installDate> |
     And I execute request on "/Asset"
     Then The response status should be "BAD_REQUEST"
+    Examples:
+      | name | installDate |
+      | My Asset for Testing | 2021-13-12 |
+      | My Asset for Testing | 2021-07-35 |
+      | My Asset for Testing | 3021-07-01 |
+      | My Asset for Testing | 2021-02-29 |
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset with valid purchase date
@@ -182,16 +204,22 @@ Feature:  Assets
       | purchaseDate | 2021-06-28 |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset with invalid purchase date
+  Scenario Outline: Post an Asset with invalid purchase date
     Given I build a "POST" request
     When I create "Asset" body with parameters
-      | name | My Asset for Testing |
-      | purchaseDate | 2021-13-28 |
+      | name | <name> |
+      | purchaseDate | <purchaseDate> |
     And I execute request on "/Asset"
     Then The response status should be "BAD_REQUEST"
+    Examples:
+      | name | purchaseDate |
+      | My Asset for Testing | 2021-13-12 |
+      | My Asset for Testing | 2021-07-35 |
+      | My Asset for Testing | 3021-07-01 |
+      | My Asset for Testing | 2021-02-29 |
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario: Post an Asset with valid usage end date
@@ -201,16 +229,22 @@ Feature:  Assets
       | usageEndDate | 2021-06-28 |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAsset @DeleteAccount
-  Scenario: Post an Asset with invalid usage end date
+  Scenario Outline: Post an Asset with invalid usage end date
     Given I build a "POST" request
     When I create "Asset" body with parameters
-      | name | My Asset for Testing |
-      | usageEndDate | 2021-13-35 |
+      | name | <name> |
+      | usageEndDate | <usageEndDate> |
     And I execute request on "/Asset"
     Then The response status should be "BAD_REQUEST"
+    Examples:
+      | name | usageEndDate |
+      | My Asset for Testing | 2021-13-12 |
+      | My Asset for Testing | 2021-07-35 |
+      | My Asset for Testing | 3021-07-01 |
+      | My Asset for Testing | 2021-02-29 |
 
   @CreateAccount @DeleteAsset @DeleteAccount
   Scenario Outline: Post an Asset with competitor asset status
@@ -220,7 +254,7 @@ Feature:  Assets
       | isCompetitorProduct | <isCompetitorProduct> |
     And I execute request on "/Asset"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | isCompetitorProduct |
       | My Asset for Testing | true |

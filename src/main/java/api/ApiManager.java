@@ -8,10 +8,11 @@
 
 package api;
 
+import static io.restassured.RestAssured.given;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import static io.restassured.RestAssured.given;
 
 /**
  * Manages the creation of RequestSpecification and execution of an ApiRequest salesforce.entities.
@@ -20,28 +21,31 @@ public class ApiManager {
 
     /**
      * Executes a ApiRequest without body.
+     *
      * @param apiRequest Contains all data of request.
      * @param apiResponse after execution of request.
-     * @return a ApiResponse after execution of request.
      */
     public static void execute(ApiRequest apiRequest, ApiResponse apiResponse) {
-        Response response = buildRequest(apiRequest).request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
+        Response response = buildRequest(apiRequest).request(apiRequest.getMethod().name(),
+                apiRequest.getEndpoint());
         apiResponse.setResponse(response);
     }
 
     /**
      * Executes a ApiRequest without body without log.
+     *
      * @param apiRequest Contains all data of request.
      * @param apiResponse after execution of request.
-     * @return a ApiResponse after execution of request without log.
      */
     public static void executeWithoutLog(ApiRequest apiRequest, ApiResponse apiResponse) {
-        Response response = buildRequestWithoutLog(apiRequest).request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
+        Response response = buildRequestWithoutLog(apiRequest)
+                .request(apiRequest.getMethod().name(), apiRequest.getEndpoint());
         apiResponse.setResponse(response);
     }
 
     /**
      * Builds a RequestSpecification.
+     *
      * @param apiRequest Contains all data of request.
      * @return RequestSpecification.
      */
@@ -58,6 +62,7 @@ public class ApiManager {
 
     /**
      * Builds a RequestSpecification without log.
+     *
      * @param apiRequest Contains all data of request.
      * @return RequestSpecification without log.
      */
@@ -72,10 +77,10 @@ public class ApiManager {
 
     /**
      * Executes a ApiRequest with body.
+     *
      * @param apiRequest Contains all data of request.
-     * @return a ApiResponse after execution of request.
      */
-    public static void executeWithBody(ApiRequest apiRequest, ApiResponse apiResponse){
+    public static void executeWithBody(ApiRequest apiRequest, ApiResponse apiResponse) {
         Response response = buildRequest(apiRequest)
                 .body(apiRequest.getBody())
                 .request(apiRequest.getMethod().name(), apiRequest.getEndpoint());

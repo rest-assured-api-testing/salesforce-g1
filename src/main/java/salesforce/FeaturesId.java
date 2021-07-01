@@ -24,42 +24,92 @@ public class FeaturesId {
     public String contractId;
     public String orderId;
 
+    /**
+     * Gets the account's id.
+     *
+     * @return a String with the id
+     */
     public String getAccountId() {
         return accountId;
     }
 
+    /**
+     * Sets the account's id.
+     *
+     * @param accountId a String with the value to set
+     */
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
+    /**
+     * Gets the asset's id.
+     *
+     * @return a String with the id
+     */
     public String getAssetId() {
         return assetId;
     }
 
+    /**
+     * Sets the asset's id.
+     *
+     * @param assetId a String with the value to set
+     */
     public void setAssetId(String assetId) {
         this.assetId = assetId;
     }
 
+    /**
+     * Gets the contact's id.
+     *
+     * @return a String with the id
+     */
     public String getContactId() {
         return contactId;
     }
 
+    /**
+     * Sets the contact's id.
+     *
+     * @param contactId a String with the value to set
+     */
     public void setContactId(String contactId) {
         this.contactId = contactId;
     }
 
+    /**
+     * Gets the contract's id.
+     *
+     * @return a String with the id
+     */
     public String getContractId() {
         return contractId;
     }
 
+    /**
+     * Sets the contract's id.
+     *
+     * @param contractId a String with the value to set
+     */
     public void setContractId(String contractId) {
         this.contractId = contractId;
     }
 
+    /**
+     * Gets the order's id.
+     *
+     * @return a String with the id
+     */
     public String getOrderId() {
         return orderId;
     }
 
+    /**
+     * Sets the order's id.
+     *
+     * @param orderId a String with the value to set
+     */
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }

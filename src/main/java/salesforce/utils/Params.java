@@ -2,6 +2,9 @@ package salesforce.utils;
 
 import static configfile.Configuration.dotenv;
 
+/**
+ * This class sets the params names from the dotenv file.
+ */
 public enum Params {
     PARAM_ACCOUNT_ID(dotenv.get("PARAM_ACCOUNT_ID")),
     PARAM_ASSET_ID(dotenv.get("PARAM_ASSET_ID")),
@@ -15,6 +18,11 @@ public enum Params {
         this.name =  name;
     }
 
+    /**
+     * Gets the param's name.
+     *
+     * @return a String with the name
+     */
     public String toName() {
         return name;
     }

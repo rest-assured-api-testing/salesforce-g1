@@ -24,6 +24,11 @@ public enum ApiMethod {
         this.name =  name;
     }
 
+    /**
+     * Gets enum's name.
+     *
+     * @return a String with the name
+     */
     public String toName() {
         return name;
     }

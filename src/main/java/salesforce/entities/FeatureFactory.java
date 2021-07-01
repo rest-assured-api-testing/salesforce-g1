@@ -9,11 +9,12 @@
 package salesforce.entities;
 
 /**
- * This class creates the corresponding feature
+ * This class creates the corresponding feature.
  */
 public class FeatureFactory {
     /**
-     * Creates a feature given a type
+     * Creates a feature given a type.
+     *
      * @param featureType a String with the required feature type
      * @return the corresponding feature
      */

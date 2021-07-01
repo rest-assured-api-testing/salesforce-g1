@@ -1,0 +1,1296 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "compactLayouts": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "actions": {
+              "type": "null"
+            },
+            "fieldItems": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "editableForNew": {
+                      "type": "boolean"
+                    },
+                    "editableForUpdate": {
+                      "type": "boolean"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "layoutComponents": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "details": {
+                              "type": "object",
+                              "properties": {
+                                "aggregatable": {
+                                  "type": "boolean"
+                                },
+                                "aiPredictionField": {
+                                  "type": "boolean"
+                                },
+                                "autoNumber": {
+                                  "type": "boolean"
+                                },
+                                "byteLength": {
+                                  "type": "integer"
+                                },
+                                "calculated": {
+                                  "type": "boolean"
+                                },
+                                "calculatedFormula": {
+                                  "type": "null"
+                                },
+                                "cascadeDelete": {
+                                  "type": "boolean"
+                                },
+                                "caseSensitive": {
+                                  "type": "boolean"
+                                },
+                                "compoundFieldName": {
+                                  "type": "null"
+                                },
+                                "controllerName": {
+                                  "type": "null"
+                                },
+                                "createable": {
+                                  "type": "boolean"
+                                },
+                                "custom": {
+                                  "type": "boolean"
+                                },
+                                "defaultValue": {
+                                  "type": "null"
+                                },
+                                "defaultValueFormula": {
+                                  "type": "null"
+                                },
+                                "defaultedOnCreate": {
+                                  "type": "boolean"
+                                },
+                                "dependentPicklist": {
+                                  "type": "boolean"
+                                },
+                                "deprecatedAndHidden": {
+                                  "type": "boolean"
+                                },
+                                "digits": {
+                                  "type": "integer"
+                                },
+                                "displayLocationInDecimal": {
+                                  "type": "boolean"
+                                },
+                                "encrypted": {
+                                  "type": "boolean"
+                                },
+                                "externalId": {
+                                  "type": "boolean"
+                                },
+                                "extraTypeInfo": {
+                                  "type": "null"
+                                },
+                                "filterable": {
+                                  "type": "boolean"
+                                },
+                                "filteredLookupInfo": {
+                                  "type": "null"
+                                },
+                                "formulaTreatNullNumberAsZero": {
+                                  "type": "boolean"
+                                },
+                                "groupable": {
+                                  "type": "boolean"
+                                },
+                                "highScaleNumber": {
+                                  "type": "boolean"
+                                },
+                                "htmlFormatted": {
+                                  "type": "boolean"
+                                },
+                                "idLookup": {
+                                  "type": "boolean"
+                                },
+                                "inlineHelpText": {
+                                  "type": "null"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "length": {
+                                  "type": "integer"
+                                },
+                                "mask": {
+                                  "type": "null"
+                                },
+                                "maskType": {
+                                  "type": "null"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "nameField": {
+                                  "type": "boolean"
+                                },
+                                "namePointing": {
+                                  "type": "boolean"
+                                },
+                                "nillable": {
+                                  "type": "boolean"
+                                },
+                                "permissionable": {
+                                  "type": "boolean"
+                                },
+                                "picklistValues": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "polymorphicForeignKey": {
+                                  "type": "boolean"
+                                },
+                                "precision": {
+                                  "type": "integer"
+                                },
+                                "queryByDistance": {
+                                  "type": "boolean"
+                                },
+                                "referenceTargetField": {
+                                  "type": "null"
+                                },
+                                "referenceTo": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "relationshipName": {
+                                  "type": "null"
+                                },
+                                "relationshipOrder": {
+                                  "type": "null"
+                                },
+                                "restrictedDelete": {
+                                  "type": "boolean"
+                                },
+                                "restrictedPicklist": {
+                                  "type": "boolean"
+                                },
+                                "scale": {
+                                  "type": "integer"
+                                },
+                                "searchPrefilterable": {
+                                  "type": "boolean"
+                                },
+                                "soapType": {
+                                  "type": "string"
+                                },
+                                "sortable": {
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "unique": {
+                                  "type": "boolean"
+                                },
+                                "updateable": {
+                                  "type": "boolean"
+                                },
+                                "writeRequiresMasterRead": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "aggregatable",
+                                "aiPredictionField",
+                                "autoNumber",
+                                "byteLength",
+                                "calculated",
+                                "calculatedFormula",
+                                "cascadeDelete",
+                                "caseSensitive",
+                                "compoundFieldName",
+                                "controllerName",
+                                "createable",
+                                "custom",
+                                "defaultValue",
+                                "defaultValueFormula",
+                                "defaultedOnCreate",
+                                "dependentPicklist",
+                                "deprecatedAndHidden",
+                                "digits",
+                                "displayLocationInDecimal",
+                                "encrypted",
+                                "externalId",
+                                "extraTypeInfo",
+                                "filterable",
+                                "filteredLookupInfo",
+                                "formulaTreatNullNumberAsZero",
+                                "groupable",
+                                "highScaleNumber",
+                                "htmlFormatted",
+                                "idLookup",
+                                "inlineHelpText",
+                                "label",
+                                "length",
+                                "mask",
+                                "maskType",
+                                "name",
+                                "nameField",
+                                "namePointing",
+                                "nillable",
+                                "permissionable",
+                                "picklistValues",
+                                "polymorphicForeignKey",
+                                "precision",
+                                "queryByDistance",
+                                "referenceTargetField",
+                                "referenceTo",
+                                "relationshipName",
+                                "relationshipOrder",
+                                "restrictedDelete",
+                                "restrictedPicklist",
+                                "scale",
+                                "searchPrefilterable",
+                                "soapType",
+                                "sortable",
+                                "type",
+                                "unique",
+                                "updateable",
+                                "writeRequiresMasterRead"
+                              ]
+                            },
+                            "displayLines": {
+                              "type": "integer"
+                            },
+                            "tabOrder": {
+                              "type": "integer"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "details",
+                            "displayLines",
+                            "tabOrder",
+                            "type",
+                            "value"
+                          ]
+                        }
+                      ]
+                    },
+                    "placeholder": {
+                      "type": "boolean"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "editableForNew",
+                    "editableForUpdate",
+                    "label",
+                    "layoutComponents",
+                    "placeholder",
+                    "required"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "editableForNew": {
+                      "type": "boolean"
+                    },
+                    "editableForUpdate": {
+                      "type": "boolean"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "layoutComponents": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "details": {
+                              "type": "object",
+                              "properties": {
+                                "aggregatable": {
+                                  "type": "boolean"
+                                },
+                                "aiPredictionField": {
+                                  "type": "boolean"
+                                },
+                                "autoNumber": {
+                                  "type": "boolean"
+                                },
+                                "byteLength": {
+                                  "type": "integer"
+                                },
+                                "calculated": {
+                                  "type": "boolean"
+                                },
+                                "calculatedFormula": {
+                                  "type": "null"
+                                },
+                                "cascadeDelete": {
+                                  "type": "boolean"
+                                },
+                                "caseSensitive": {
+                                  "type": "boolean"
+                                },
+                                "compoundFieldName": {
+                                  "type": "null"
+                                },
+                                "controllerName": {
+                                  "type": "null"
+                                },
+                                "createable": {
+                                  "type": "boolean"
+                                },
+                                "custom": {
+                                  "type": "boolean"
+                                },
+                                "defaultValue": {
+                                  "type": "null"
+                                },
+                                "defaultValueFormula": {
+                                  "type": "null"
+                                },
+                                "defaultedOnCreate": {
+                                  "type": "boolean"
+                                },
+                                "dependentPicklist": {
+                                  "type": "boolean"
+                                },
+                                "deprecatedAndHidden": {
+                                  "type": "boolean"
+                                },
+                                "digits": {
+                                  "type": "integer"
+                                },
+                                "displayLocationInDecimal": {
+                                  "type": "boolean"
+                                },
+                                "encrypted": {
+                                  "type": "boolean"
+                                },
+                                "externalId": {
+                                  "type": "boolean"
+                                },
+                                "extraTypeInfo": {
+                                  "type": "null"
+                                },
+                                "filterable": {
+                                  "type": "boolean"
+                                },
+                                "filteredLookupInfo": {
+                                  "type": "null"
+                                },
+                                "formulaTreatNullNumberAsZero": {
+                                  "type": "boolean"
+                                },
+                                "groupable": {
+                                  "type": "boolean"
+                                },
+                                "highScaleNumber": {
+                                  "type": "boolean"
+                                },
+                                "htmlFormatted": {
+                                  "type": "boolean"
+                                },
+                                "idLookup": {
+                                  "type": "boolean"
+                                },
+                                "inlineHelpText": {
+                                  "type": "null"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "length": {
+                                  "type": "integer"
+                                },
+                                "mask": {
+                                  "type": "null"
+                                },
+                                "maskType": {
+                                  "type": "null"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "nameField": {
+                                  "type": "boolean"
+                                },
+                                "namePointing": {
+                                  "type": "boolean"
+                                },
+                                "nillable": {
+                                  "type": "boolean"
+                                },
+                                "permissionable": {
+                                  "type": "boolean"
+                                },
+                                "picklistValues": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "polymorphicForeignKey": {
+                                  "type": "boolean"
+                                },
+                                "precision": {
+                                  "type": "integer"
+                                },
+                                "queryByDistance": {
+                                  "type": "boolean"
+                                },
+                                "referenceTargetField": {
+                                  "type": "null"
+                                },
+                                "referenceTo": {
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "relationshipName": {
+                                  "type": "string"
+                                },
+                                "relationshipOrder": {
+                                  "type": "null"
+                                },
+                                "restrictedDelete": {
+                                  "type": "boolean"
+                                },
+                                "restrictedPicklist": {
+                                  "type": "boolean"
+                                },
+                                "scale": {
+                                  "type": "integer"
+                                },
+                                "searchPrefilterable": {
+                                  "type": "boolean"
+                                },
+                                "soapType": {
+                                  "type": "string"
+                                },
+                                "sortable": {
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "unique": {
+                                  "type": "boolean"
+                                },
+                                "updateable": {
+                                  "type": "boolean"
+                                },
+                                "writeRequiresMasterRead": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "aggregatable",
+                                "aiPredictionField",
+                                "autoNumber",
+                                "byteLength",
+                                "calculated",
+                                "calculatedFormula",
+                                "cascadeDelete",
+                                "caseSensitive",
+                                "compoundFieldName",
+                                "controllerName",
+                                "createable",
+                                "custom",
+                                "defaultValue",
+                                "defaultValueFormula",
+                                "defaultedOnCreate",
+                                "dependentPicklist",
+                                "deprecatedAndHidden",
+                                "digits",
+                                "displayLocationInDecimal",
+                                "encrypted",
+                                "externalId",
+                                "extraTypeInfo",
+                                "filterable",
+                                "filteredLookupInfo",
+                                "formulaTreatNullNumberAsZero",
+                                "groupable",
+                                "highScaleNumber",
+                                "htmlFormatted",
+                                "idLookup",
+                                "inlineHelpText",
+                                "label",
+                                "length",
+                                "mask",
+                                "maskType",
+                                "name",
+                                "nameField",
+                                "namePointing",
+                                "nillable",
+                                "permissionable",
+                                "picklistValues",
+                                "polymorphicForeignKey",
+                                "precision",
+                                "queryByDistance",
+                                "referenceTargetField",
+                                "referenceTo",
+                                "relationshipName",
+                                "relationshipOrder",
+                                "restrictedDelete",
+                                "restrictedPicklist",
+                                "scale",
+                                "searchPrefilterable",
+                                "soapType",
+                                "sortable",
+                                "type",
+                                "unique",
+                                "updateable",
+                                "writeRequiresMasterRead"
+                              ]
+                            },
+                            "displayLines": {
+                              "type": "integer"
+                            },
+                            "tabOrder": {
+                              "type": "integer"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "details",
+                            "displayLines",
+                            "tabOrder",
+                            "type",
+                            "value"
+                          ]
+                        }
+                      ]
+                    },
+                    "placeholder": {
+                      "type": "boolean"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "editableForNew",
+                    "editableForUpdate",
+                    "label",
+                    "layoutComponents",
+                    "placeholder",
+                    "required"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "editableForNew": {
+                      "type": "boolean"
+                    },
+                    "editableForUpdate": {
+                      "type": "boolean"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "layoutComponents": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "details": {
+                              "type": "object",
+                              "properties": {
+                                "aggregatable": {
+                                  "type": "boolean"
+                                },
+                                "aiPredictionField": {
+                                  "type": "boolean"
+                                },
+                                "autoNumber": {
+                                  "type": "boolean"
+                                },
+                                "byteLength": {
+                                  "type": "integer"
+                                },
+                                "calculated": {
+                                  "type": "boolean"
+                                },
+                                "calculatedFormula": {
+                                  "type": "null"
+                                },
+                                "cascadeDelete": {
+                                  "type": "boolean"
+                                },
+                                "caseSensitive": {
+                                  "type": "boolean"
+                                },
+                                "compoundFieldName": {
+                                  "type": "null"
+                                },
+                                "controllerName": {
+                                  "type": "null"
+                                },
+                                "createable": {
+                                  "type": "boolean"
+                                },
+                                "custom": {
+                                  "type": "boolean"
+                                },
+                                "defaultValue": {
+                                  "type": "null"
+                                },
+                                "defaultValueFormula": {
+                                  "type": "null"
+                                },
+                                "defaultedOnCreate": {
+                                  "type": "boolean"
+                                },
+                                "dependentPicklist": {
+                                  "type": "boolean"
+                                },
+                                "deprecatedAndHidden": {
+                                  "type": "boolean"
+                                },
+                                "digits": {
+                                  "type": "integer"
+                                },
+                                "displayLocationInDecimal": {
+                                  "type": "boolean"
+                                },
+                                "encrypted": {
+                                  "type": "boolean"
+                                },
+                                "externalId": {
+                                  "type": "boolean"
+                                },
+                                "extraTypeInfo": {
+                                  "type": "null"
+                                },
+                                "filterable": {
+                                  "type": "boolean"
+                                },
+                                "filteredLookupInfo": {
+                                  "type": "null"
+                                },
+                                "formulaTreatNullNumberAsZero": {
+                                  "type": "boolean"
+                                },
+                                "groupable": {
+                                  "type": "boolean"
+                                },
+                                "highScaleNumber": {
+                                  "type": "boolean"
+                                },
+                                "htmlFormatted": {
+                                  "type": "boolean"
+                                },
+                                "idLookup": {
+                                  "type": "boolean"
+                                },
+                                "inlineHelpText": {
+                                  "type": "null"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "length": {
+                                  "type": "integer"
+                                },
+                                "mask": {
+                                  "type": "null"
+                                },
+                                "maskType": {
+                                  "type": "null"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "nameField": {
+                                  "type": "boolean"
+                                },
+                                "namePointing": {
+                                  "type": "boolean"
+                                },
+                                "nillable": {
+                                  "type": "boolean"
+                                },
+                                "permissionable": {
+                                  "type": "boolean"
+                                },
+                                "picklistValues": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "polymorphicForeignKey": {
+                                  "type": "boolean"
+                                },
+                                "precision": {
+                                  "type": "integer"
+                                },
+                                "queryByDistance": {
+                                  "type": "boolean"
+                                },
+                                "referenceTargetField": {
+                                  "type": "null"
+                                },
+                                "referenceTo": {
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "relationshipName": {
+                                  "type": "string"
+                                },
+                                "relationshipOrder": {
+                                  "type": "null"
+                                },
+                                "restrictedDelete": {
+                                  "type": "boolean"
+                                },
+                                "restrictedPicklist": {
+                                  "type": "boolean"
+                                },
+                                "scale": {
+                                  "type": "integer"
+                                },
+                                "searchPrefilterable": {
+                                  "type": "boolean"
+                                },
+                                "soapType": {
+                                  "type": "string"
+                                },
+                                "sortable": {
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "unique": {
+                                  "type": "boolean"
+                                },
+                                "updateable": {
+                                  "type": "boolean"
+                                },
+                                "writeRequiresMasterRead": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "aggregatable",
+                                "aiPredictionField",
+                                "autoNumber",
+                                "byteLength",
+                                "calculated",
+                                "calculatedFormula",
+                                "cascadeDelete",
+                                "caseSensitive",
+                                "compoundFieldName",
+                                "controllerName",
+                                "createable",
+                                "custom",
+                                "defaultValue",
+                                "defaultValueFormula",
+                                "defaultedOnCreate",
+                                "dependentPicklist",
+                                "deprecatedAndHidden",
+                                "digits",
+                                "displayLocationInDecimal",
+                                "encrypted",
+                                "externalId",
+                                "extraTypeInfo",
+                                "filterable",
+                                "filteredLookupInfo",
+                                "formulaTreatNullNumberAsZero",
+                                "groupable",
+                                "highScaleNumber",
+                                "htmlFormatted",
+                                "idLookup",
+                                "inlineHelpText",
+                                "label",
+                                "length",
+                                "mask",
+                                "maskType",
+                                "name",
+                                "nameField",
+                                "namePointing",
+                                "nillable",
+                                "permissionable",
+                                "picklistValues",
+                                "polymorphicForeignKey",
+                                "precision",
+                                "queryByDistance",
+                                "referenceTargetField",
+                                "referenceTo",
+                                "relationshipName",
+                                "relationshipOrder",
+                                "restrictedDelete",
+                                "restrictedPicklist",
+                                "scale",
+                                "searchPrefilterable",
+                                "soapType",
+                                "sortable",
+                                "type",
+                                "unique",
+                                "updateable",
+                                "writeRequiresMasterRead"
+                              ]
+                            },
+                            "displayLines": {
+                              "type": "integer"
+                            },
+                            "tabOrder": {
+                              "type": "integer"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "details",
+                            "displayLines",
+                            "tabOrder",
+                            "type",
+                            "value"
+                          ]
+                        }
+                      ]
+                    },
+                    "placeholder": {
+                      "type": "boolean"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "editableForNew",
+                    "editableForUpdate",
+                    "label",
+                    "layoutComponents",
+                    "placeholder",
+                    "required"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "editableForNew": {
+                      "type": "boolean"
+                    },
+                    "editableForUpdate": {
+                      "type": "boolean"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "layoutComponents": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "details": {
+                              "type": "object",
+                              "properties": {
+                                "aggregatable": {
+                                  "type": "boolean"
+                                },
+                                "aiPredictionField": {
+                                  "type": "boolean"
+                                },
+                                "autoNumber": {
+                                  "type": "boolean"
+                                },
+                                "byteLength": {
+                                  "type": "integer"
+                                },
+                                "calculated": {
+                                  "type": "boolean"
+                                },
+                                "calculatedFormula": {
+                                  "type": "null"
+                                },
+                                "cascadeDelete": {
+                                  "type": "boolean"
+                                },
+                                "caseSensitive": {
+                                  "type": "boolean"
+                                },
+                                "compoundFieldName": {
+                                  "type": "null"
+                                },
+                                "controllerName": {
+                                  "type": "null"
+                                },
+                                "createable": {
+                                  "type": "boolean"
+                                },
+                                "custom": {
+                                  "type": "boolean"
+                                },
+                                "defaultValue": {
+                                  "type": "null"
+                                },
+                                "defaultValueFormula": {
+                                  "type": "null"
+                                },
+                                "defaultedOnCreate": {
+                                  "type": "boolean"
+                                },
+                                "dependentPicklist": {
+                                  "type": "boolean"
+                                },
+                                "deprecatedAndHidden": {
+                                  "type": "boolean"
+                                },
+                                "digits": {
+                                  "type": "integer"
+                                },
+                                "displayLocationInDecimal": {
+                                  "type": "boolean"
+                                },
+                                "encrypted": {
+                                  "type": "boolean"
+                                },
+                                "externalId": {
+                                  "type": "boolean"
+                                },
+                                "extraTypeInfo": {
+                                  "type": "null"
+                                },
+                                "filterable": {
+                                  "type": "boolean"
+                                },
+                                "filteredLookupInfo": {
+                                  "type": "null"
+                                },
+                                "formulaTreatNullNumberAsZero": {
+                                  "type": "boolean"
+                                },
+                                "groupable": {
+                                  "type": "boolean"
+                                },
+                                "highScaleNumber": {
+                                  "type": "boolean"
+                                },
+                                "htmlFormatted": {
+                                  "type": "boolean"
+                                },
+                                "idLookup": {
+                                  "type": "boolean"
+                                },
+                                "inlineHelpText": {
+                                  "type": "null"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "length": {
+                                  "type": "integer"
+                                },
+                                "mask": {
+                                  "type": "null"
+                                },
+                                "maskType": {
+                                  "type": "null"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "nameField": {
+                                  "type": "boolean"
+                                },
+                                "namePointing": {
+                                  "type": "boolean"
+                                },
+                                "nillable": {
+                                  "type": "boolean"
+                                },
+                                "permissionable": {
+                                  "type": "boolean"
+                                },
+                                "picklistValues": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "polymorphicForeignKey": {
+                                  "type": "boolean"
+                                },
+                                "precision": {
+                                  "type": "integer"
+                                },
+                                "queryByDistance": {
+                                  "type": "boolean"
+                                },
+                                "referenceTargetField": {
+                                  "type": "null"
+                                },
+                                "referenceTo": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "relationshipName": {
+                                  "type": "null"
+                                },
+                                "relationshipOrder": {
+                                  "type": "null"
+                                },
+                                "restrictedDelete": {
+                                  "type": "boolean"
+                                },
+                                "restrictedPicklist": {
+                                  "type": "boolean"
+                                },
+                                "scale": {
+                                  "type": "integer"
+                                },
+                                "searchPrefilterable": {
+                                  "type": "boolean"
+                                },
+                                "soapType": {
+                                  "type": "string"
+                                },
+                                "sortable": {
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "unique": {
+                                  "type": "boolean"
+                                },
+                                "updateable": {
+                                  "type": "boolean"
+                                },
+                                "writeRequiresMasterRead": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "aggregatable",
+                                "aiPredictionField",
+                                "autoNumber",
+                                "byteLength",
+                                "calculated",
+                                "calculatedFormula",
+                                "cascadeDelete",
+                                "caseSensitive",
+                                "compoundFieldName",
+                                "controllerName",
+                                "createable",
+                                "custom",
+                                "defaultValue",
+                                "defaultValueFormula",
+                                "defaultedOnCreate",
+                                "dependentPicklist",
+                                "deprecatedAndHidden",
+                                "digits",
+                                "displayLocationInDecimal",
+                                "encrypted",
+                                "externalId",
+                                "extraTypeInfo",
+                                "filterable",
+                                "filteredLookupInfo",
+                                "formulaTreatNullNumberAsZero",
+                                "groupable",
+                                "highScaleNumber",
+                                "htmlFormatted",
+                                "idLookup",
+                                "inlineHelpText",
+                                "label",
+                                "length",
+                                "mask",
+                                "maskType",
+                                "name",
+                                "nameField",
+                                "namePointing",
+                                "nillable",
+                                "permissionable",
+                                "picklistValues",
+                                "polymorphicForeignKey",
+                                "precision",
+                                "queryByDistance",
+                                "referenceTargetField",
+                                "referenceTo",
+                                "relationshipName",
+                                "relationshipOrder",
+                                "restrictedDelete",
+                                "restrictedPicklist",
+                                "scale",
+                                "searchPrefilterable",
+                                "soapType",
+                                "sortable",
+                                "type",
+                                "unique",
+                                "updateable",
+                                "writeRequiresMasterRead"
+                              ]
+                            },
+                            "displayLines": {
+                              "type": "integer"
+                            },
+                            "tabOrder": {
+                              "type": "integer"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "details",
+                            "displayLines",
+                            "tabOrder",
+                            "type",
+                            "value"
+                          ]
+                        }
+                      ]
+                    },
+                    "placeholder": {
+                      "type": "boolean"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "editableForNew",
+                    "editableForUpdate",
+                    "label",
+                    "layoutComponents",
+                    "placeholder",
+                    "required"
+                  ]
+                }
+              ]
+            },
+            "id": {
+              "type": "null"
+            },
+            "imageItems": {
+              "type": "null"
+            },
+            "label": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "objectType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "actions",
+            "fieldItems",
+            "id",
+            "imageItems",
+            "label",
+            "name",
+            "objectType"
+          ]
+        }
+      ]
+    },
+    "defaultCompactLayoutId": {
+      "type": "null"
+    },
+    "recordTypeCompactLayoutMappings": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "available": {
+              "type": "boolean"
+            },
+            "compactLayoutId": {
+              "type": "null"
+            },
+            "compactLayoutName": {
+              "type": "string"
+            },
+            "recordTypeId": {
+              "type": "string"
+            },
+            "recordTypeName": {
+              "type": "string"
+            },
+            "urls": {
+              "type": "object",
+              "properties": {
+                "compactLayout": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "compactLayout"
+              ]
+            }
+          },
+          "required": [
+            "available",
+            "compactLayoutId",
+            "compactLayoutName",
+            "recordTypeId",
+            "recordTypeName",
+            "urls"
+          ]
+        }
+      ]
+    },
+    "urls": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "primary"
+      ]
+    }
+  },
+  "required": [
+    "compactLayouts",
+    "defaultCompactLayoutId",
+    "recordTypeCompactLayoutMappings",
+    "urls"
+  ]
+}

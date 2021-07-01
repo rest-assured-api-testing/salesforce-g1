@@ -9,11 +9,11 @@
 package api;
 
 /**
- * This enum class is to determine the status code value
+ * This enum class is to determine the status code value.
  */
 public enum ApiStatusCode {
     OK("OK", 200),
-    CREATED("CREATED",201),
+    CREATED("CREATED", 201),
     NO_CONTENT("NO CONTENT", 204),
     BAD_REQUEST("BAD REQUEST", 400),
     FORBIDDEN("FORBIDDEN", 403),
@@ -28,7 +28,8 @@ public enum ApiStatusCode {
     }
 
     /**
-     * Gets the value of the status code
+     * Gets the value of the status code.
+     *
      * @return an int with the status code
      */
     public int getValue() {

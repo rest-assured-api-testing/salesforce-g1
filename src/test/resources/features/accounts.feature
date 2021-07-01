@@ -21,7 +21,7 @@ Feature: Accounts
       | name | My Account to test |
     And I execute request on "/Account"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Patch an Account
@@ -62,7 +62,7 @@ Feature: Accounts
       | employees | 10 |
     And I execute request on "/Account"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get a single Account with invalid Id
@@ -77,7 +77,7 @@ Feature: Accounts
       | name | My Account to test |
     And I execute request on "/Account"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Patch an Account with empty name
@@ -95,7 +95,7 @@ Feature: Accounts
       | rating | <rating> |
     And I execute request on "/Account"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | rating |
       | My Account to test | Hot |
@@ -119,7 +119,7 @@ Feature: Accounts
       | type | <type> |
     And I execute request on "/Account"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | type |
       | My Account to test | Prospect |
@@ -147,7 +147,7 @@ Feature: Accounts
       | industry | <industry> |
     And I execute request on "/Account"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
+    And The response schema matches "schemas/postSuccess.json"
     Examples:
       | name | industry |
       | My Account to test | Agriculture |
@@ -198,12 +198,14 @@ Feature: Accounts
     Given I build a "GET" request
     When I execute the request on "/Account/describe/compactLayouts"
     Then The response status should be "OK"
+    And The response schema matches "schemas/getAccountCompactLayout.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get Account's approval layouts
     Given I build a "GET" request
     When I execute the request on "/Account/describe/approvalLayouts"
     Then The response status should be "OK"
+    And The response schema matches "schemas/approvalLayout.json"
 
   @CreateAccount @DeleteAccount
   Scenario: Get Account's layouts
