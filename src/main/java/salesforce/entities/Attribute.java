@@ -11,7 +11,7 @@ package salesforce.entities;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * This class is used to obtain attribute's information
+ * This class is used to obtain attribute's information.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Attribute {
@@ -19,7 +19,8 @@ public class Attribute {
     private String url;
 
     /**
-     * Gets the attribute's type
+     * Gets the attribute's type.
+     *
      * @return a String with the attribute's type
      */
     public String getType() {
@@ -27,7 +28,8 @@ public class Attribute {
     }
 
     /**
-     * Sets the attribute's type
+     * Sets the attribute's type.
+     *
      * @param type a String with the type to set
      */
     public void setType(final String type) {
@@ -35,7 +37,8 @@ public class Attribute {
     }
 
     /**
-     * Gets the attribute's URL
+     * Gets the attribute's URL.
+     *
      * @return a String with the attribute's URL
      */
     public String getUrl() {
@@ -43,7 +46,8 @@ public class Attribute {
     }
 
     /**
-     * Sets attribute's URL
+     * Sets attribute's URL.
+     *
      * @param url a String with the URL to set
      */
     public void setUrl(final String url) {

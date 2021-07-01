@@ -9,7 +9,7 @@
 package salesforce.entities;
 
 /**
- * This enum class is to get corresponding feature's name
+ * This enum class is to get corresponding feature's name.
  */
 public enum FeaturesNames {
     Account("Account"),
@@ -25,7 +25,8 @@ public enum FeaturesNames {
     }
 
     /**
-     * Gets the enum's name
+     * Gets the enum's name.
+     *
      * @return a String with the enum's name
      */
     public String getName() {

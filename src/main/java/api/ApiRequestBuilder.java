@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Helps to build an ApiRequest entity.
  */
-public  class ApiRequestBuilder implements IBuilder{
+public  class ApiRequestBuilder implements IBuilder {
     private String baseUri;
     private String endpoint;
     private String body;
@@ -69,7 +69,7 @@ public  class ApiRequestBuilder implements IBuilder{
     /**
      * Adds Token in the request builder.
      *
-     * @param token
+     * @param token a String with the token
      * @return Request builder with token
      */
     public ApiRequestBuilder addToken(String token) {
@@ -80,7 +80,7 @@ public  class ApiRequestBuilder implements IBuilder{
     /**
      * Adds Method in the request builder.
      *
-     * @param method
+     * @param method an Enum with the method name
      * @return Request builder with Method
      */
     public ApiRequestBuilder addMethod(Enum<ApiMethod> method) {
@@ -91,8 +91,8 @@ public  class ApiRequestBuilder implements IBuilder{
     /**
      * Adds Header in the request builder.
      *
-     * @param header
-     * @param value
+     * @param header a String with the header name
+     * @param value a String with the header value
      * @return Request builder with Header
      */
     public ApiRequestBuilder addHeader(final String header, final String value) {
@@ -103,8 +103,8 @@ public  class ApiRequestBuilder implements IBuilder{
     /**
      * Adds Query params in the request builder.
      *
-     * @param param
-     * @param value
+     * @param param a String with the param name
+     * @param value a String with the param value
      * @return Request builder with Query params
      */
     public ApiRequestBuilder addQueryParams(final String param, final String value) {
@@ -115,8 +115,8 @@ public  class ApiRequestBuilder implements IBuilder{
     /**
      * Adds Path params in the request builder.
      *
-     * @param param
-     * @param value
+     * @param param a String with the param name
+     * @param value a String with the value
      * @return Request builder with Path params
      */
     public ApiRequestBuilder addPathParams(final String param, final String value) {

@@ -8,6 +8,9 @@
 
 package api;
 
+/**
+ * This interface sets the builder method.
+ */
 public interface IBuilder {
     ApiRequest build();
 }

@@ -2,6 +2,9 @@ package salesforce.utils;
 
 import static configfile.Configuration.dotenv;
 
+/**
+ * This enum class sets the endpoints values from dotenv file.
+ */
 public enum EndPoints {
     ENDPOINT_ACCOUNTS(dotenv.get("ENDPOINT_ACCOUNTS")),
     ENDPOINT_ACCOUNT(dotenv.get("ENDPOINT_ACCOUNT")),
@@ -16,10 +19,16 @@ public enum EndPoints {
 
     private String name;
 
+
     EndPoints(String name) {
         this.name =  name;
     }
 
+    /**
+     * Gets endpoint's name.
+     *
+     * @return a String with the name
+     */
     public String toName() {
         return name;
     }

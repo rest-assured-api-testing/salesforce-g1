@@ -19,7 +19,6 @@ Feature: Contacts
       | lastName | My contact lastname for testing |
     And I execute request on "/Contact"
     Then The response status should be "CREATED"
-    And The response schema matches "schemas/postRequest.json"
 
   @CreateContact @DeleteContact
   Scenario: Patch a Contact
